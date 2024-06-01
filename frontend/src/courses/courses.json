@@ -1,0 +1,27 @@
+[
+    {
+      "title": "Certified Artificial Intelligence Leader (CAIL™)",
+      "price": "$999",
+      "description": "An emerging leadership program offering a holistic, strategic implementation of AI across sectors.",
+      "content": "Self Paced Content",
+      "duration": "8-24 Weeks",
+      "type": "Non-Technical"
+    },
+    {
+      "title": "Certified Data Scientist (CDS™)",
+      "price": "$1199",
+      "description": "A comprehensive program for mastering data science skills and techniques.",
+      "content": "Self Paced Content",
+      "duration": "10-30 Weeks",
+      "type": "Technical"
+    },
+    {
+      "title": "Certified Machine Learning Specialist (CMLS™)",
+      "price": "$1099",
+      "description": "A specialized program focusing on machine learning applications and practices.",
+      "content": "Self Paced Content",
+      "duration": "12-36 Weeks",
+      "type": "Technical"
+    }
+  ]
+  
