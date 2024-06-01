@@ -5,7 +5,7 @@ import Navbar from "./navbar/Navbar.js";
 const App = () => {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Navbar />
     </div>
   );
