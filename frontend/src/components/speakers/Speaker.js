@@ -7,7 +7,9 @@ const Speaker = () => {
   return (
     <>
       <div id="testimonials" class="p-5">
-        <h2 class="text-[36px] font-bold text-[#074D8D]">Customer Speak</h2>
+        <h2 class="text-[36px] text-[#074D8D] font-semibold p-5 lg:text-2xl">
+          Customer Speak
+        </h2>
         <div class="flex justify-around md:flex-col md:gap-4">
           <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-slate-600 gap-5 md:w-full">
             <img
