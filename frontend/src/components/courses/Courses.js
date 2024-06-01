@@ -1,5 +1,5 @@
 import React from "react";
-import badge from "../images/streamline_star-badge-solid.svg";
+import badge from "../../images/streamline_star-badge-solid.svg";
 const Courses = () => {
   return (
     <>

@@ -1,7 +1,7 @@
 import React from "react";
-import Joshep from "../images/1689046864317.avif";
-import Aiyana from "../images/Rectangle 23.svg";
-import Mike from "../images/Rectangle 21.svg";
+import Joshep from "../../images/1689046864317.avif";
+import Aiyana from "../../images/Rectangle 23.svg";
+import Mike from "../../images/Rectangle 21.svg";
 
 const Speaker = () => {
   return (
