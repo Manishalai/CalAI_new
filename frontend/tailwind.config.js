@@ -2,20 +2,35 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {
-      colors: {
-        "warm-orange": "#FFA500",
-        "deep-red": "#C0392B",
-        "dark-chocolate-brown": "#4E342E",
-        "harvest-gold": "#ECA400",
-        "ghost-white": "#F7F7FF",
-        gunmetal: "#012A36",
-        "chilli-red": "#E3170A",
-      },
-      fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-      },
+    screens: {
+      '3xl': {'min': '1920px'},
+      '2xl': {'max': '1535px'},
+      // => @media (max-width: 1535px) { ... }
+
+      'xl': {'max': '1279px'},
+      // => @media (max-width: 1279px) { ... }
+
+      'lg': {'max': '1023px'},
+      // => @media (max-width: 1023px) { ... }
+
+      'md': {'max': '767px'},
+      // => @media (max-width: 767px) { ... }
+
+      'sm': {'max': '639px'},
+      // => @media (max-width: 639px) { ... }
     },
+    extend: {
+      animation: {
+        'infinite-scroll': 'infinite-scroll 25s linear infinite',
+      },
+      keyframes: {
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        }
+      }         
+    
   },
+},
   plugins: [],
 };
