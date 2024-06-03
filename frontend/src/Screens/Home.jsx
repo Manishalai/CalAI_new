@@ -5,7 +5,7 @@ import Footer from "../components/footer/Footer";
 import Courses from "../components/courses/Courses";
 import Speaker from "../components/speakers/Speaker";
 import Slider from "../components/slider/Slider";
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <Header />
@@ -17,3 +17,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;
