@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -250,22 +251,22 @@ const Footer = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        href="terms&conditions.html"
+                      <Link
+                        to="/Terms&Conditions"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
                         Terms & Conditions
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="privact.html"
+                      <Link
+                        to="/Privacy_Policy"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
                         Privacy Policy
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -275,33 +276,33 @@ const Footer = () => {
 
                   <ul class="mt-6 space-y-4 text-sm ">
                     <li>
-                      <a
-                        href="AI-Developer.html"
+                      <Link
+                        to="/AI_Developer"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
                         Certified Artificial Intelligence Developer{" "}
-                      </a>
+                      </Link>
                     </li>
 
                     <li>
-                      <a
-                        href="AI-Lead.html"
+                      <Link
+                        to="/AI_Manager"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
                         Certified Artificial Intelligence Manager
-                      </a>
+                      </Link>
                     </li>
 
                     <li>
-                      <a
-                        href="AILeadership.html"
+                      <Link
+                        to="/AI_Leader"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
                         Certified Artificial Intelligence Leader{" "}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -311,56 +312,56 @@ const Footer = () => {
 
                   <ul class="mt-6 space-y-4 text-sm">
                     <li>
-                      <a
-                        href="The Present and Future of AI Shaping Our Lives.html"
+                      <Link
+                        to="/Blog/Blog5"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
                         The Present and Future of AI: Shaping Our Lives{" "}
-                      </a>
+                      </Link>
                     </li>
 
                     <li>
-                      <a
-                        href="Enhancing Software Development with Generative AI.html"
+                      <Link
+                        to="/Blog/Blog2"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
                         Enhancing Software Development with Generative AI{" "}
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="Unlocking Creativity ChatGPT's Role in Content Writing.html"
+                      <Link
+                        to="/Blog/Blog6"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
                         Unlocking Creativity: ChatGPT's Role in Content Writing
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="The Machine Learning Product Lifecycle.html"
+                      <Link
+                        to="/Blog/Blog3"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         The Machine Learning Product Lifecycle
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="AI revolutionizes communication through NLP.html"
+                      <Link
+                        to="/Blog/Blog1"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         AI revolutionizes communication through NLP
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="Maximize productivity ChatGPT tools, tips, efficiency.html"
+                      <Link
+                        to="/Blog/Blog4"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         Maximize productivity: ChatGPT tools, tips, efficiency
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

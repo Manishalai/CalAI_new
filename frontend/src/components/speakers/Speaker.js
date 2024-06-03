@@ -11,7 +11,7 @@ const Speaker = () => {
           Customer Speak
         </h2>
         <div class="flex justify-around md:flex-col md:gap-4">
-          <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-slate-600 gap-5 md:w-full">
+          <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-black transition-transform transform hover:-translate-y-1 hover:shadow-lg gap-5 md:w-full">
             <img
               class="h-[150px] rounded-full"
               src={Joshep}
@@ -30,7 +30,7 @@ const Speaker = () => {
               introduction to artificial intelligence
             </p>
           </div>
-          <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-slate-600 gap-5  md:w-full">
+          <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-black transition-transform transform hover:-translate-y-1 hover:shadow-lg gap-5  md:w-full">
             <img
               class="h-[150px] rounded-full"
               src={Aiyana}
@@ -50,7 +50,7 @@ const Speaker = () => {
               development.
             </p>
           </div>
-          <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-slate-600 gap-5 md:w-full">
+          <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-black transition-transform transform hover:-translate-y-1 hover:shadow-lg gap-5 md:w-full">
             <img
               class="h-[150px] rounded-full"
               src={Mike}

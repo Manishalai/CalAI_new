@@ -1,7 +1,9 @@
 import React from "react";
 import badge from "../../images/streamline_star-badge-solid.svg";
+import { useNavigate } from "react-router-dom";
 
 const Courses = () => {
+  const navigate = useNavigate();
   return (
     <>
       <h1 className="text-[36px] text-[#074D8D] font-semibold p-5 lg:text-2xl">
@@ -11,16 +13,16 @@ const Courses = () => {
         id="Comprehensive"
         className="w-full p-5 flex justify-around lg:flex-col lg:items-center lg:gap-5 lg:p-8"
       >
-        <div className="card flex flex-col w-[400px] relative border-solid border-2 border-black rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-lg lg:w-full">
+        <div className="card flex flex-col w-[400px] relative shadow-xl rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-2xl border border-black lg:w-full">
           <img
             className="absolute h-[55px] left-1 top-10"
             src={badge}
             alt="CalAI-Best-Online-Certification-in-USA"
           />
-          <button className="absolute p-1 h-[28px] text-[18px] right-0 bg-[#CBA135] font-bold">
+          <button className="absolute p-1 h-[28px] text-[18px] rounded-tr-lg right-0 bg-[#CBA135] font-bold">
             $899
           </button>
-          <div className="flex flex-col text-center gap-3 items-center justify-center">
+          <div className="flex flex-col text-center gap-3 items-center justify-center flex-grow">
             <h1 className="text-[#074D8D] text-[20px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
               Certified Artificial Intelligence Developer (CAID <sup>TM</sup>)
             </h1>
@@ -34,32 +36,33 @@ const Courses = () => {
             <p>5-16 Weeks</p>
             <p>Technical</p>
           </div>
-          <div className="flex mt-4">
+          <div className="flex mt-4 justify-end">
             <button
               id="knowMore"
-              className="w-[225px] bg-white font-bold border-t-2 border-solid border-black lg:w-[480px]"
-              onClick={() => (window.location.href = "AI-Developer.html")}
+              className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
+              onClick={() => navigate("/AI_Developer")}
             >
               Know More
             </button>
             <button
               id="applyNow"
-              className="w-[225px] bg-blue-800 text-white font-bold p-2 lg:w-[480px]"
+              className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
             >
               Apply Now
             </button>
           </div>
         </div>
-        <div className="card flex flex-col w-[400px] relative border-solid border-2 border-black rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-lg lg:w-full">
+
+        <div className="card flex flex-col w-[400px] relative shadow-xl rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-2xl border border-black lg:w-full">
           <img
             className="absolute h-[55px] left-1 top-10"
             src={badge}
             alt="CalAI-Best-Online-Certification-in-USA"
           />
-          <button className="absolute p-1 h-[28px] text-[18px] right-0 bg-[#CBA135] font-bold">
+          <button className="absolute p-1 h-[28px] text-[18px] rounded-tr-lg right-0 bg-[#CBA135] font-bold">
             $999
           </button>
-          <div className="flex flex-col text-center items-center justify-center gap-3">
+          <div className="flex flex-col text-center items-center justify-center flex-grow">
             <h1 className="text-[#074D8D] text-[20px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
               Certified Artificial Intelligence Leader (CAIL<sup>TM</sup>)
             </h1>
@@ -73,32 +76,32 @@ const Courses = () => {
             <p>8-24 Weeks</p>
             <p>Non-Technical</p>
           </div>
-          <div className="flex mt-4 lg:w-full">
+          <div className="flex mt-4 justify-end">
             <button
               id="knowMore"
-              className="w-[225px] bg-white font-bold border-t-2 border-solid border-black lg:w-[480px]"
-              onClick={() => (window.location.href = "AI-Developer.html")}
+              className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
+              onClick={() => navigate("/AI_Leader")}
             >
               Know More
             </button>
             <button
               id="applyNow"
-              className="w-[225px] bg-blue-800 text-white font-bold p-2 lg:w-[480px]"
+              className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
             >
               Apply Now
             </button>
           </div>
         </div>
-        <div className="card flex flex-col w-[400px] relative border-solid border-2 border-black rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-lg lg:w-full">
+        <div className="card flex flex-col w-[400px] relative shadow-xl rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-2xl border border-black lg:w-full">
           <img
             className="absolute h-[55px] left-1 top-10"
             src={badge}
             alt="CalAI-Best-Online-Certification-in-USA"
           />
-          <button className="absolute p-1 h-[28px] text-[18px] right-0 bg-[#CBA135] font-bold">
+          <button className="absolute p-1 h-[28px] text-[18px] rounded-tr-lg right-0 bg-[#CBA135] font-bold">
             $499
           </button>
-          <div className="flex flex-col text-center items-center justify-center gap-3">
+          <div className="flex flex-col text-center items-center justify-center flex-grow">
             <h1 className="text-[#074D8D] text-[20px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
               Certified Artificial Intelligence Manager (CAIM <sup>TM</sup>)
             </h1>
@@ -112,17 +115,17 @@ const Courses = () => {
             <p>8-24 Weeks</p>
             <p>Non-Technical</p>
           </div>
-          <div className="flex mt-4">
+          <div className="flex mt-4 justify-end">
             <button
               id="knowMore"
-              className="w-[225px] bg-white font-bold border-t-2 border-solid border-black lg:w-[480px]"
-              onClick={() => (window.location.href = "AI-Developer.html")}
+              className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
+              onClick={() => navigate("/AI_Manager")}
             >
               Know More
             </button>
             <button
               id="applyNow"
-              className="w-[225px] bg-blue-800 text-white font-bold p-2 lg:w-[480px]"
+              className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
             >
               Apply Now
             </button>
