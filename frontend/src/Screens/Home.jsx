@@ -5,11 +5,13 @@ import Footer from "../components/footer/Footer";
 import Courses from "../components/courses/Courses";
 import Speaker from "../components/speakers/Speaker";
 import Slider from "../components/slider/Slider";
+import { Aboutus } from "../components/Aboutus/Aboutus";
 const Home = () => {
   return (
     <>
       <Header />
       <Navbar />
+      <Aboutus />
       <Courses />
       <Speaker />
       <Slider />
