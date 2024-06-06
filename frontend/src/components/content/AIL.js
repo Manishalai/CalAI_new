@@ -52,112 +52,102 @@ const AIL_content = () => {
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Strategic Foundations of AI{" "}
+              Introduction to AI and Its Implications{" "}
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">12%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>Understanding AI's Role in Business Strategy</li>
-              <li>Strategic Integration of AI for Competitive Advantage</li>
-              <li>Ethical Considerations in AI Leadership</li>
-              <li>Real-world Case Studies in Strategic AI Implementation</li>
+              <li> Introduction to AI</li>
+              <li>Key AI Technologies</li>
+              <li> Large Language Models (LLMs) and Generative AI</li>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                AI for Decision Makers
+              AI in Various Industries
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">15%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Navigating Business Decisions with AI Insights</li>
-              <li>AI-Driven Decision Support Systems</li>
-              <li>Interpreting AI Recommendations for Leadership</li>
-              <li>Strategies for Effective Decision Implementation</li>
+              <li> AI Applications in Healthcare and Finance</li>
+              <li> AI Applications in Retail and Manufacturing</li>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Human-AI Collaboration{" "}
+              AI Technologies Continued{" "}
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>Enhancing Human Capabilities with AI</li>
-              <li>Building Effective Human-AI Teams</li>
-              <li>Managing Change in AI-Integrated Work</li>
-              <li>Case Studies on Successful Human-AI Collaboration</li>
+              <li> Robotics in AI</li>
+              <li> Advanced Machine Learning Techniques</li>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                AI in Customer-Centric Leadership
+              Ethical and Societal Implications of AI
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">8%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Personalizing Customer Experiences with AI</li>
-              <li>Leveraging AI for Customer Relationship Management</li>
-              <li>Customer-Centric AI Strategies</li>
-              <li>Implementing AI in Customer-Focused Leadership</li>
+              <li>Ethical AI</li>
+              <li>Bias and Fairness in AI Systems</li>
+              <li>AI and Privacy</li>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                AI for Operational Excellence{" "}
+              Strategic AI Leadership{" "}
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">12%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>Optimizing Business Processes with AI</li>
-              <li>Implementing AI for Operational Efficiency</li>
-              <li>AI-Enhanced Supply Chain Management</li>
-              <li>Real-world Applications of AI in Operations</li>
+              <li> Economies of AI-based Business Models</li>
+              <li> Developing an AI Strategy for Your Organization</li>
+              <li>Integrating AI into Business Processes</li>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Innovative Leadership with AI
+              AI Project Management
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Fostering Innovation through AI</li>
-              <li>AI-Driven Product Development Strategies</li>
-              <li>Leading Innovation Teams in AI Era</li>
-              <li>Case Studies on Innovation with AI</li>
+              <li>Agile Methodologies for AI Projects</li>
+              <li> Managing AI Teams and Projects</li>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                AI Risk Management
+              Risk and Change Management in AI
+
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">8%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>Understanding Risks Associated with AI</li>
-              <li>Implementing AI Safeguards in Business</li>
-              <li>Ethical and Legal Considerations in AI Risk Management</li>
-              <li>Practical Strategies for Mitigating AI Risks</li>
+              <li> Risk Management in AI Deployments</li>
+              <li>Change Management and AI</li>
             </ul>
           </div>
 
@@ -170,29 +160,25 @@ const AIL_content = () => {
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Leadership Insights from Data</li>
+              <li>Leadership and Innovation with AI</li>
               <li>
-                Strategies for Leveraging Big Data and AIAI-Driven Product
-                Development Strategies
+              Capstone Project Presentations and Program Wrapup
+
               </li>
-              <li>AI-Enhanced Data-driven Decision Making</li>
-              <li>Practical Applications of Data-Driven Leadership</li>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                AI-Enabled Team Building
+              Voluntary Coding
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">7%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>Building High-Performing AI Teams</li>
-              <li>Leadership Skills for AI-Integrated Teams</li>
-              <li>Collaboration Strategies in Cross-functional AI Teams</li>
-              <li>Case Studies on Successful AI-Enabled Team Building</li>
+              <li>ython, scikit-learn, and TensorFlow</li>
+
             </ul>
           </div>
 
