@@ -1,9 +1,31 @@
+// src/components/Courses.jsx
 import React from "react";
+import { useState, useEffect } from "react";
 import badge from "../../images/streamline_star-badge-solid.svg";
 import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Courses = () => {
+  const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+  }, []);
+
+  const handleApplyNowClick = (coursePath, courseName, price) => {
+    if (currentUser) {
+      navigate("/checkout", {
+        state: { courseName, price }, // Pass course details
+      });
+    } else {
+      navigate("/login&signup");
+    }
+  };
+
   return (
     <>
       <h1 className="text-[36px] text-[#074D8D] font-semibold p-5 lg:text-2xl">
@@ -13,6 +35,7 @@ const Courses = () => {
         id="Comprehensive"
         className="w-full p-5 flex justify-around lg:flex-col lg:items-center lg:gap-5 lg:p-8"
       >
+        {/* Course 1 */}
         <div className="card flex flex-col w-[400px] relative shadow-xl rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-2xl border border-black lg:w-full">
           <img
             className="absolute h-[55px] left-1 top-10"
@@ -47,12 +70,20 @@ const Courses = () => {
             <button
               id="applyNow"
               className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
+              onClick={() =>
+                handleApplyNowClick(
+                  "/register",
+                  "Certified Artificial Intelligence Developer (CAID TM)",
+                  899
+                )
+              }
             >
               Apply Now
             </button>
           </div>
         </div>
 
+        {/* Course 2 */}
         <div className="card flex flex-col w-[400px] relative shadow-xl rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-2xl border border-black lg:w-full">
           <img
             className="absolute h-[55px] left-1 top-10"
@@ -87,11 +118,20 @@ const Courses = () => {
             <button
               id="applyNow"
               className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
+              onClick={() =>
+                handleApplyNowClick(
+                  "/register",
+                  "Certified Artificial Intelligence Leader (CAIL TM)",
+                  999
+                )
+              }
             >
               Apply Now
             </button>
           </div>
         </div>
+
+        {/* Course 3 */}
         <div className="card flex flex-col w-[400px] relative shadow-xl rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-2xl border border-black lg:w-full">
           <img
             className="absolute h-[55px] left-1 top-10"
@@ -126,6 +166,13 @@ const Courses = () => {
             <button
               id="applyNow"
               className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
+              onClick={() =>
+                handleApplyNowClick(
+                  "/register",
+                  "Certified Artificial Intelligence Manager (CAIM TM)",
+                  499
+                )
+              }
             >
               Apply Now
             </button>
