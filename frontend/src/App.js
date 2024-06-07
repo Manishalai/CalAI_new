@@ -1,5 +1,7 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Home from "./Screens/Home.jsx";
 import Login from "./Screens/Login/Login.jsx";
 import AID from "./Screens/Know_more/AID.jsx";
@@ -14,8 +16,20 @@ import Blog_UC from "./Screens/Blogs/Blog4_UC.jsx";
 import Blog_PF from "./Screens/Blogs/Blog2_PF.jsx";
 import Blog_ML from "./Screens/Blogs/Blog1_ML.jsx";
 import Checkout from "./Screens/Checkout/Checkout.jsx";
+import Profile from "./Screens/Profile/Profile.jsx";
 
 const App = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
   return (
     <Router>
       <Routes>
@@ -25,6 +39,7 @@ const App = () => {
         <Route path="/AI_Manager" element={<AIM />} />
         <Route path="/AI_Leader" element={<AIL />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/user/Profile" element={<Profile />} />
         <Route path="/Privacy_Policy" element={<PvP />} />
         <Route path="/Terms&Conditions" element={<TNC />} />
         <Route path="/Blog/Blog1" element={<Blog_AI />} />

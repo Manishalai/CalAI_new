@@ -68,23 +68,24 @@ const Checkout = () => {
           <h1 className="text-[24px] text-[#074D8D] font-semibold mb-4 text-center">
             Checkout
           </h1>
-          <div className="checkout-details mb-4 grid grid-cols-2 gap-4 text-left">
+          <hr className="col-span-2 border-t mb-5 border-gray-600" />
+          <div className="checkout-details mb-1 grid grid-cols-2 gap-3 text-left">
             <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
               Course Name:
             </p>
-            <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-light">
+            <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-light break-words w-full">
               {courseName}
             </p>
             <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
               Email:
             </p>
-            <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-light">
+            <p className="text-[16px] sm:text-[15px] lg:text-[18px] font-light break-words w-full">
               {email}
             </p>
             <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
               Name:
             </p>
-            <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-light">
+            <p className="text-[16px] sm:text-[15px] lg:text-[18px] font-light break-words w-full">
               {name}
             </p>
             <hr className="col-span-2 border-t border-gray-600" />

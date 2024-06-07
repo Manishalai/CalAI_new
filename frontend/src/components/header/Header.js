@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   const handleProfile = () => {
-    navigate("/profile"); // Adjust the path to your profile route
+    navigate("/user/Profile"); // Adjust the path to your profile route
   };
 
   const handleSignOut = () => {
@@ -49,10 +49,19 @@ const Header = () => {
         {currentUser ? (
           <>
             <button className="focus:outline-none" onClick={toggleDropdown}>
-              <AccountCircleIcon
-                className="text-blue-800 md:text-[30px]"
-                style={{ fontSize: "40px" }} // Adjusted font size
-              />
+              {currentUser.photoURL ? (
+                <img
+                  src={currentUser.photoURL}
+                  alt="User"
+                  className="rounded-full"
+                  style={{ width: "40px", height: "40px" }}
+                />
+              ) : (
+                <AccountCircleIcon
+                  className="text-gray-300"
+                  style={{ fontSize: "40px" }}
+                />
+              )}
             </button>
             {dropdownVisible && (
               <div
