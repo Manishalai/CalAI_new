@@ -472,7 +472,7 @@ app.post("/register", async (req, res) => {
 
 //SERVER CHECK
 app.get("/", async (req, res) => {
-  res.send("Hello!! World i am safe");
+  res.send("Hello!! World");
 });
 // START SERVER
 app.listen(port, () => {
