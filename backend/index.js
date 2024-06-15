@@ -14,12 +14,11 @@ const cors = require("cors");
 app.use(cors({ origin: "https://new-cal-ai.vercel.app" }));
 
 // Middleware for parsing JSON and URL-encoded request bodies
+// Middleware for parsing JSON and URL-encoded request bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Use cors middleware to handle CORS
-app.use(cors());
 let userEmail;
 const port = process.env.PORT || 5000;
 
