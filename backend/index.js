@@ -1,6 +1,5 @@
 const express = require("express");
 const firebase = require("firebase/app");
-const cors = require("cors");
 const app = express();
 const axios = require("axios");
 const nodemailer = require("nodemailer");
@@ -11,18 +10,9 @@ require("firebase/auth");
 require("firebase/database");
 require("firebase/firestore");
 
-app.use(cors());
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://new-cal-ai.vercel.app/"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+const cors = require("cors");
+app.use(cors({ origin: "https://new-cal-ai.vercel.app" }));
+
 // Middleware for parsing JSON and URL-encoded request bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
