@@ -36,8 +36,8 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 //PAYPAL CREDENTIALS
-const clientId = process.env.PAYPAL_CLIENT_ID;
-const clientSecret = process.env.PAYPAL_SECRET_KEY;
+const clientId = process.env.PAYPAL_CLIENT_ID_SANDBOX;
+const clientSecret = process.env.PAYPAL_SECRET_KEY_SANDBOX;
 const auth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
 
 // NODEMAILER CONFIGURATION
@@ -187,7 +187,7 @@ async function generatePdf(orderData, program) {
 async function sendEmailWithPdf(email, pdfBuffer) {
   const mailOptions = {
     from: "Kristin Parker <kristin.p@calai.org>",
-    to: email,
+    to: "ama@gmail.com",
     subject: "Your Order Receipt",
     text: "Thank you for your purchase. Please find your order receipt attached.",
     attachments: [
@@ -208,7 +208,7 @@ async function sendEmailWithPdf(email, pdfBuffer) {
 const generateToken = async () => {
   try {
     const tokenResponse = await axios.post(
-      "https://api.paypal.com/v1/oauth2/token",
+      "https://api.sandbox.paypal.com/v1/oauth2/token",
       "grant_type=client_credentials",
       {
         headers: {
@@ -227,7 +227,7 @@ const generateToken = async () => {
 
 //CREATING ORDER
 app.post("/create-order", async (req, res) => {
-  const url = "https://api.paypal.com/v2/checkout/orders";
+  const url = "https://api.sandbox.paypal.com/v2/checkout/orders";
   const { amount, program } = req.body;
   // console.log(amount);
   const queryParams = new URLSearchParams({
@@ -246,8 +246,8 @@ app.post("/create-order", async (req, res) => {
     application_context: {
       brand_name: "CalAI",
       locale: "en-US",
-      return_url: `https://calai.org/capture/success.html?${queryParams}`, // This is the returnUrl
-      cancel_url: "https://calai.org/capture/cancel.html", // Your cancel URL
+      return_url: `http://localhost:3000/success?${queryParams}`, // This is the returnUrl
+      cancel_url: "http://localhost:3000/cancel.html", // Your cancel URL
     },
   };
   const accessToken = await generateToken();
@@ -261,7 +261,7 @@ app.post("/create-order", async (req, res) => {
     console.log("Order Created:", response.data);
     const { links } = response.data;
     const paypalRedirect = links.find((link) => link.rel === "approve");
-    console.log(response.data.id);
+    console.log(paypalRedirect.href);
     if (paypalRedirect) {
       res.json({ orderId: response.id, approvalUrl: paypalRedirect.href });
     } else {
@@ -274,75 +274,66 @@ app.post("/create-order", async (req, res) => {
 
 //CAPTURING ORDER
 app.post("/capture-order", async (req, res) => {
-  const { orderId, program } = req.body;
-
-  if (!orderId) {
-    return res.status(400).json({ error: "Order ID is required" });
-  }
-
-  const url = `https://api.paypal.com/v2/checkout/orders/${orderId}/capture`;
-  const data = {
-    note_to_payer: "Thank you for your purchase!",
-  };
-
-  const accessToken = await generateToken(); // Assuming this function generates the access token
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${accessToken}`,
-  };
-
   try {
+    const { orderId, program } = req.body;
+
+    if (!orderId) {
+      return res.status(400).json({ error: "Order ID is required" });
+    }
+
+    const url = `https://api.sandbox.paypal.com/v2/checkout/orders/${orderId}/capture`;
+    const data = {
+      note_to_payer: "Thank you for your purchase!",
+    };
+
+    const accessToken = await generateToken(); // Ensure this function generates the access token correctly
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    // Check if the order is already captured before capturing it
+    const orderDetailsUrl = `https://api.sandbox.paypal.com/v2/checkout/orders/${orderId}`;
+    const orderDetailsResponse = await axios.get(orderDetailsUrl, { headers });
+    const orderDetails = orderDetailsResponse.data;
+    console.log("order details:", orderDetails.status);
+    if (orderDetails.status === "COMPLETED") {
+      return res.status(400).json({ error: "Order already captured" });
+    }
+
     const response = await axios.post(url, data, { headers });
-    console.log("Order Captured:", response.data);
+    // console.log("Order Captured:", response.data);
+
     // Generate PDF
     const orderData = response.data;
     const pdfBuffer = await generatePdf(orderData, program);
-    console.log(pdfBuffer);
     // Send PDF via email
     await sendEmailWithPdf(orderData.payer.email_address, pdfBuffer);
 
-    console.log("PDF sent successfully to", orderData.payer.email_address);
-    // Store only the necessary order data in Firestore
-    console.log(userEmail);
+    // Store the order in Firestore
     const orderRef = db
       .collection("after_transaction")
-      .doc(response.data.payer.email_address)
+      .doc(orderData.payer.email_address)
       .collection("successfulPayments")
       .doc(orderId);
-    await orderRef.set(response.data);
+    await orderRef.set(orderData);
     console.log("Order Captured Successfully");
 
-    res.json({
+    // Send a success response
+    return res.json({
       message: "Order captured successfully",
-      transactionId: response.data.id,
+      transactionId: orderData.id,
     });
   } catch (error) {
     console.error("Error capturing order:", error.message);
-    console.error("Error response:", error.response.data); // Log detailed error response
 
-    // Handle payment failure
-    const failureData = {
-      orderId: orderId,
-      error: error.message, // Or use error.response.data to capture detailed error information
-      timestamp: new Date(),
-      resp: response.data,
-    };
-
-    // Ensure that the user is authenticated and get their email
-
-    if (userEmail) {
-      // Store the failure data in Firestore under the user's email
-      const failureRef = db
-        .collection("after_transaction")
-        .doc(userEmail)
-        .collection("failed_payments")
-        .doc();
-      await failureRef.set(failureData);
-    }
+    // Ensure error.response and error.response.data are safely accessed
+    const status = error.response ? error.response.status : 500;
+    const errorDetails = error.response ? error.response.data : "Unknown error";
 
     res
-      .status(error.response.status || 500)
-      .json({ error: "Failed to capture order", details: error.response.data });
+      .status(status)
+      .json({ error: "Failed to capture order", details: errorDetails });
   }
 });
 

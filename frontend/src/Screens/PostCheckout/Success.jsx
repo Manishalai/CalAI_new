@@ -1,21 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Success = () => {
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
   const [transactionId, setTransactionId] = useState(null);
+  const [error, setError] = useState(false); // State for error handling
   const navigate = useNavigate();
+  const hasRun = useRef(false);
 
   useEffect(() => {
+    if (hasRun.current) return; // If already run, return early
+    hasRun.current = true;
     const captureOrder = async () => {
       try {
         // Get the orderId and certification from the URL query parameters
+        console.log("error");
         const urlParams = new URLSearchParams(window.location.search);
         const orderId = urlParams.get("token");
-        const certification = urlParams.get("certification"); // Fixed typo from "cretification"
+        const certification = urlParams.get("certification");
 
         if (!orderId) {
           console.error("Order ID not found in URL.");
+          setError(true); // Set error state if order ID is missing
           return;
         }
 
@@ -41,9 +47,11 @@ const Success = () => {
           setPaymentConfirmed(true);
         } else {
           console.error("Failed to capture order");
+          setError(true); // Set error state if capture fails
         }
       } catch (error) {
         console.error("Error capturing order:", error.message);
+        setError(true); // Set error state on exception
       }
     };
 
@@ -56,7 +64,23 @@ const Success = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      {!paymentConfirmed ? (
+      {error ? (
+        <div className="flex flex-col items-center text-center">
+          <p className="text-2xl font-semibold text-red-600">
+            Oops! Something went wrong.
+          </p>
+          <p className="text-lg text-gray-600 mt-4">
+            If money has been deducted, it will be returned within 2-3 business
+            days.
+          </p>
+          <button
+            onClick={handleGoHome}
+            className="mt-8 px-6 py-3 bg-red-500 text-white text-lg rounded-md shadow-md hover:bg-red-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300"
+          >
+            Go Back to Home Screen
+          </button>
+        </div>
+      ) : !paymentConfirmed ? (
         <div className="flex flex-col items-center text-center">
           <p className="text-2xl font-semibold text-gray-700">
             Confirming your payment status...
