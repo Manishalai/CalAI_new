@@ -89,11 +89,11 @@ const Checkout = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include", // Include credentials in request
         body: JSON.stringify({
           amount: price * (1 - discount),
           program: courseName,
         }),
-        credentials: "include",
       });
 
       if (response.ok) {
