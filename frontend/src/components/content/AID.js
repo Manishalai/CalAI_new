@@ -95,173 +95,1564 @@ const AID_content = () => {
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Introduction to AI Development
+                Module 1: Introduction to Artificial Intelligence
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
             </div>
-            <div class="bg-[black] h-[2px] w-full"></div>
+            <hr class="bg-[black] h-[2px] w-full" />
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>Big Data and AI</li>
-              <li>Artificial Intelligence on the Cloud</li>
-              <li>AI in Banking</li>
-              <li>Exploring Feature Selection</li>
-              <li>Chatbots</li>
-              <li>White box XAI for AI Bias & Ethics</li>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Big Data and AI
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Big Data and AI
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Definition and Importance of Big Data</li>
+                          <li>Overview of Artificial Intelligence</li>
+                          <li>The Three Vs of Big Data</li>
+                          <li>
+                            Key Technologies: Hadoop, Spark, NoSQL databases
+                          </li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Data Processing and Analytics
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Data Preprocessing</li>
+                          <li>Data Storage and Management</li>
+                          <li>Introduction to Data Analytics</li>
+                          <li>Machine Learning Basics</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Analytics and AI Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Deep Learning</li>
+                          <li>Natural Language Processing (NLP)</li>
+                          <li>Computer Vision</li>
+                          <li>Reinforcement Learning</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Applications and Case Studies
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Big Data and AI Applications</li>
+                          <li>Ethical and Legal Considerations</li>
+                          <li>Real World Case Studies</li>
+                          <li>Hands-on Exercise</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Artificial Intelligence on the Cloud
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Cloud Computing and AI
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Cloud Computing Basics</li>
+                          <li>Major Cloud Providers</li>
+                          <li>AI on the Cloud Introduction</li>
+                          <li>Hands-on Exercise</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        AI Services on Cloud Platforms
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Overview of AI Services</li>
+                          <li>Machine Learning on the Cloud</li>
+                          <li>Overview of AI Services</li>
+                          <li>Machine Learning on the Cloud</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Big Data and AI Integration on the Cloud
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Big Data on the Cloud</li>
+                          <li>Data Analytics with AI</li>
+                          <li>AI-driven Big Data Solutions</li>
+                          <li>Hands-on Exercise</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Topics and Future Trends
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Advanced AI Services</li>
+                          <li>AI Ethics and Governance</li>
+                          <li>Edge AI and IoT Integration</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  AI in Banking
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to AI in Banking
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Overview of AI in Banking</li>
+                          <li>Use Cases</li>
+                          <li>AI Technologies in Banking</li>
+                          <li>Hands-on Intriduction</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        AI Applications in Banking Operations
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Automated Customer Service</li>
+                          <li>Fraud Detection and Prevention</li>
+                          <li>Risk Management</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        AI for Customer Experience Enhancement
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Personalised Marketing and Recommendation</li>
+                          <li>Pedictive Analytics</li>
+                          <li>Sentiment Analysis and VoC Analytics</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Future Trends and Ethical Considerations
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Emerging AI Technologies</li>
+                          <li>Ethical Considerations</li>
+                          <li>Regulatory Landscape</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Exploring Feature Selection
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Exploring Feature Selection
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Feature Selection Techniques</li>
+                          <li>Types of Features</li>
+                          <li>Overview of Feature Selection</li>
+                          <li>Hands-on Introduction</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Filter Methods
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Filter Method Overview</li>
+                          <li>Fraud Detection and Prevention</li>
+                          <li>Risk Management</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Wrapper Method
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Wrapper Methods Overview</li>
+                          <li>Generic Algorithms</li>
+                          <li>Recirsive Feature Elimination</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Future Trends and Ethical Considerations
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Embedded Methods</li>
+                          <li>Feature Sleection with Deep Learning</li>
+                          <li>Regulatory Landscape</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Chatbots
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Chatbots
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Overview of Chatbots</li>
+                          <li>Types of chatbots</li>
+                          <li>Introduction to NLP</li>
+                          <li>Hands-on Introduction</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Building AI-based Chatbots
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>AI-based Chatbots Overview</li>
+                          <li>Dialog Systems</li>
+                          <li>Training Chatbots</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Chatbots Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>NLU and Sentiments Analysis</li>
+                          <li>Conversational AI</li>
+                          <li>Chatbot Analytics</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Ethical Considerations and Future Trends
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Ethical Considerations</li>
+                          <li>Feature Sleection with Deep Learning</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Graphs and Graph Databases
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Graphs
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Graph Theory basics</li>
+                          <li>Types of Graph</li>
+                          <li>Graph Representation</li>
+                          <li>Graph Algorithms</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Graph Databases
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Introduction to Graph Databases</li>
+                          <li>Quey Languages</li>
+                          <li>Graph Database Models</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Graph Algorithms and Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Traversal Algorithms</li>
+                          <li>Community Detection</li>
+                          <li>Applications of Graphs</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advan' Topics and Case Studies
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Graph Embeddings</li>
+                          <li>Time Series Analysis</li>
+                          <li>Spatial Analysis</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Essential of Machine Learning
+                Module 2: Essential of Machine Learning
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">15%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg   md:grid-cols-1">
-              <li>Machine Learning and Python</li>
-              <li>Supervised Learning: Classification and Regression</li>
-              <li>Unsupervised Learning: Detecting Patterns</li>
-              <li>Dimensionality Reduction</li>
-              <li>Visualising Data for Machine Learning</li>
+            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Graphs and Graph Databases
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Python for Machine Learning
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Python Basics</li>
+                          <li>Control Flow</li>
+                          <li>Data Structures</li>
+                          <li>Functions and Modules</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to NumPy and Pandas
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Introduction to Pandas</li>
+                          <li>Data Visualization</li>
+                          <li>Data Cleaning and Preprocessing</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Manchine Learning woth Scikit-Learn
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Introduction to Machine</li>
+                          <li>Learning with Scikit-Learn</li>
+                          <li>Model Evaluation</li>
+                          <li>Reinforcement Learning</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Model Deployment and Real-world Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Model Deployment</li>
+                          <li>Best Practices</li>
+                          <li>Real-World Applications of Machine Learning</li>
+                          <li>Hands-on Exercise</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Supervised Learning: Classification and Regression
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Supervised Learning and Linear
+                        Regression
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Overview of supervised Learning </li>
+                          <li>Linear Regression</li>
+                          <li>Multiple Linear Regression</li>
+                          <li>Model Evaluations Metrics</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Classification Algorithms
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Introduction to Algorithms</li>
+                          <li>Decision Trees</li>
+                          <li>Model Evaluation Metrics</li>
+                          <li>Logistic Regression</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Classification Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Support Vector Machines</li>
+                          <li>Ensemble Methods</li>
+                          <li>Hyperparameter Tuning</li>
+                          <li>Hands-on Exercise</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Project Work
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Prject Work</li>
+                          <li>Real World Applications</li>
+                          <li>Case Studies</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Unsupervised Learning: Detecting Patterns
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Unsupervised Learning and Clustering
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Overview of Unsupervised Learning</li>
+                          <li>K-means Clustering</li>
+                          <li>Hierarchical Clustering</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Density-based Clustering and Dimensionality Reduction
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Density based Clustering: DBSACN</li>
+                          <li>Principal Component Analysis</li>
+                          <li>Risk Management</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Topics and Real-World Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Semi Supervised Learning</li>
+                          <li>Real-world Applications</li>
+                          <li>Best Practices and Pitfalls</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Visualising Data for Machine Learning
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introductionto Data Visualization and Basic Plotting
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Importance of Data Visualising</li>
+                          <li>Customisiing Plots</li>
+                          <li>Overview of Visualization Libraries</li>
+                          <li>Hands-on Introduction</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Plotting Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Statistical Visualization</li>
+                          <li>Fraud Detection and Prevention</li>
+                          <li>Geographic Data Visualization</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Interactive Dashboards and Real-World Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Deployment of Dashboards</li>
+                          <li>Creating Interactive Visualizations</li>
+                          <li>Introduction to Interactive Dashboards</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Deep Learning Foundation{" "}
+                Module 3: Deep Learning
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">15%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>TensorFlow and its functionalities</li>
-              <li>Deep Learning with TensorFlow on the Cloud</li>
-              <li>TensorFlow for Mobile and IOT</li>
-              <li>Life Cycle of Model Creation</li>
-              <li>Deep Learning with KERAS</li>
-              <li>Activation Function</li>
-              <li>Confusion Matrix</li>
-              <li>Underfitting and Overfitting</li>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  TensorFlow and its Functionalities
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to TensorFlow Basics
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Overview of TensorFlow</li>
+                          <li>TensorFlow Architecture</li>
+                          <li>Building Computational Graphs</li>
+                          <li>Custom Loss Functions</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        TensorFlow Operations and Optimization
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>TensorFlow Operations</li>
+                          <li>Optimizers</li>
+                          <li>Saving and Restoring Models</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        TensorFlow High-level APIs and Advanced Topics
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Training and Evaluating Model</li>
+                          <li>Building Models with Keras</li>
+                          <li>Advacned TensorFlow Topics</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        TensorFlow Deployment and Real-World Application
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>TensorFlow Serving</li>
+                          <li>TensorFlow Lite</li>
+                          <li>Temporal Difference</li>
+                          <li>Real-world Applications</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Tensor Flow for Mobile and IoT
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        TensorFlow for Moblie Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>TensorFlow Lite Convertor</li>
+                          <li>Mobile Acceleration</li>
+                          <li>Model Optimization Techniques</li>
+                          <li>Mobile Acceleration</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        TensorFlow for IoT Devices
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Introduction to IoT Devices</li>
+                          <li>TensorFlow lite for Micro Controllers</li>
+                          <li>Supported Hardware Platform</li>
+                          <li>Deploying Models to IoT Devices</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Real world Application and Case Studies
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Real World Applications</li>
+                          <li>Case Studies</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Underfitting and Overfitting
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Techniques to Address Underfitting
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Increasing Model Complexity</li>
+                          <li>Feature Engineering</li>
+                          <li>Model Ensemble</li>
+                          <li>Hyperparameter Tuning</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Techniques to Address Overfitting
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Regularization Techniques</li>
+                          <li>Early Stopping</li>
+                          <li>Dropout Regularization</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Early Stopping Data Augmentation
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Cross-validation</li>
+                          <li>Model Selection</li>
+                          <li>Fine-tuning</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Natural Language Processing (NLP)
-              </h1>
-              <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
-            </div>
-            <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Natural Language Processing using Python</li>
-              <li>Transform Text File into Data Structures</li>
-              <li>Word Embeddings and Text Distance Metrics</li>
-              <li>Document, Sentence, and Character-Level Embedding</li>
-              <li>Text Data Analysis</li>
-            </ul>
-          </div>
-
-          <div class="bg-[#e7e7e7] mx-4 relative">
-            <div class="relative flex p-4 justify-between">
-              <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                {" "}
-                Large Language Model Operations (LLMops)
-              </h1>
-              <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
-            </div>
-            <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px]  md:grid-cols-1">
-              <li>Foundations of LLMOps</li>
-              <li>Advanced LLMOps Techniques</li>
-              <li>LLMOps in Production Environments</li>
-              <li>LLM Prompt Engineering</li>
-            </ul>
-          </div>
-
-          <div class=" mx-4 relative">
-            <div class="relative flex p-4 justify-between">
-              <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                {" "}
-                Computer Vision and GANs
-              </h1>
-              <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
-            </div>
-            <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Computer Vision, Raspberry Pi</li>
-              <li>Multiclassifier to recognize traffic signals</li>
-              <li>GANs: Applications, Architecture, Variants and Advantages</li>
-              <li>Object Detection Using OpenCV</li>
-              <li>Face detection and recognition</li>
-              <li>Real-time Face, Age and Gender Detection</li>
-              <li>Image, Age and Gender Detection</li>
-            </ul>
-          </div>
-
-          <div class="bg-[#e7e7e7] mx-4 relative">
-            <div class="relative flex p-4 justify-between">
-              <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Reinforcement Learning
+                Module 4: Natural Language Processing (NLP)
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>Reinforcement Learning</li>
-              <li>Bellman Equation and Dynamic Programming</li>
-              <li>Monte Carlo (MC) Methods</li>
-              <li>Temporal Difference Learning</li>
-              <li>Multi-Armed Bandit(MAB) Problem</li>
-            </ul>
-          </div>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Natural Language Processing using Python
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Natural Language Processing (NLP)
+                        Fundamentals
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Intoduction to Natural</li>
+                          <li>Text Normalization</li>
+                          <li>EDA for Text Data</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Text Representation and Feature Extraction
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Bag of Words (BOW) Model</li>
+                          <li>TF-IDF</li>
+                          <li>Document Embeddings</li>
+                          <li>Word Embeddings</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Support Vector Machines (SVM) Sentiment Analysis
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>File Input/Output</li>
+                          <li>Parsing Techniques</li>
+                          <li>Regular Expression</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Deep Learing with Keras
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Deep Learning Model with Keras
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Functional APIs</li>
+                          <li>Batch Normalization</li>
+                          <li>Callbacks</li>
+                          <li>Custom Loss Functions</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Image Classification Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Image Classification ALgorithm</li>
+                          <li>Convolutional Neural Network</li>
+                          <li>Model Training</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Transfer Learning and Model Fine-tuning
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Transfer Learning</li>
+                          <li>Fine-tuning techniques</li>
 
-          <div class=" mx-4 relative">
-            <div class="relative flex p-4 justify-between">
-              <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Deep Reinforcement Learning
-              </h1>
-              <h1 class="text-2xl text-[#CBA135] font-semibold">5%</h1>
-            </div>
-            <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Deep Q Network</li>
-              <li>Actor Critic and Policy Gradient</li>
-              <li>Method Learning DDPG, TD3 and SAC</li>
+                          <li>Handling imbalanced Techniques</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Deployment and Real world Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Model Deployment</li>
+                          <li>serving keras model</li>
+                          <li>Case studies</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Visualization Optimization Techniques
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Word Embeddings
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Word Representations</li>
+                          <li>Word Embeddings Techniques</li>
+                          <li>Word2Vec</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Text Distance Metrics
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Text Similarity Metrics</li>
+                          <li>Edit Distance</li>
+                          <li>Cosine Similarity</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Text Dsitance Metrics and Application
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Word Mover's Distance</li>
+                          <li>Sentence Embeddings</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Text Data Analysis
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Text Data Analysis
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Text Data Analysis Overview</li>
+                          <li>Exploratory Data Analysis</li>
+                          <li>Text Data Preprocessing</li>
+                          <li>Hands-on Introduction</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Text Mining and feature Extraction
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Text Mining Techniques</li>
+                          <li>Bag of Words (BoW) model</li>
+                          <li>TF-IDF</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Text Analysis Techniques and Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Advanced Text analysis Techniques</li>
+                          <li>Sentiments Analysis Techniquest</li>
+                          <li>Text Classification Pipeline</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Model Interpretability and Explainability
+                Module 5: Computer Vision and GANs
               </h1>
-              <h1 class="text-2xl text-[#CBA135] font-semibold">5%</h1>
+              <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>Interpreting Model Predictions</li>
-              <li>Explainable AI Techniques</li>
-              <li>Building Transparent and Trustworthy Models</li>
-              <li>Industry Best Practices</li>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Computer Vision, Raspberry Pi
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Computer Vision and Raspberry Pi
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Image Filtering</li>
+                          <li>Basics of Image Processing</li>
+                          <li>Model Evaluations Metrics</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Image Acquisition and Processing
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Intoduction to OpenCV</li>
+                          <li>Raspberry pi setup</li>
+                          <li>Object Detection Techniques</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Object Detection and Recognition
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Image Classification Techniques</li>
+                          <li>Transfer Learning</li>
+                          <li>Introduction to Deep Learning</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Topics and project
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Real time object tracking</li>
+                          <li>Raspberry pi camera Module</li>
+                          <li>Facial Recognition</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Multiclassifier to recognize traffic signals
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Traffic Sign Recognition
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Introduction to Traffic Sign Recognition</li>
+                          <li>Dataset Exploration</li>
+                          <li>Data Preprocessing</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Image Classification Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Image Classification ALgorithm</li>
+                          <li>Convolutional Neural Network</li>
+                          <li>Model Training</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Evaluation and Optimization
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Model Evaluation</li>
+                          <li>Hyperparameter Tuning</li>
+                          <li>Data Augmentation</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Deployment and Future Enhancement
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Model Deployment</li>
+                          <li>Real-time Inference</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  GANs: Applications, Architecture, Variants and Advantages
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to GANs and Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Introduction</li>
+                          <li>GANs Applications</li>
+                          <li>Hands on experience</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        GAN Architecture and Training
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>GAN Architecture</li>
+                          <li>Training GANs</li>
+                          <li>Loss Functions</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Variants of GANs
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Conditional GANs </li>
+                          <li>Cycle GANs</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Image, Age and Gender Detection
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Image Analysis
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Image analysis Overview</li>
+                          <li>Introduction to OpenCV</li>
+                          <li>Image Preprocessing</li>
+                          <li>Hands-on Introduction</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Real-time Image, Age and Gender Detection
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Performnace Optimization</li>
+                          <li>Application Development</li>
+                          <li>UCB-Tuned Algorithm</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Techniques and Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Advanced Image analysis Techniques</li>
+                          <li>Application Development</li>
+                          <li>Performance Optimization</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                AI Developer Capstone Project
+                Module 6: Reinforcement Learning
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Apply Knowledge to Real-world Scenario</li>
-              <li>Collaborate on a Comprehensive AI Project</li>
-              <li>Showcase Skills to Potential Employers</li>
-              <li>Receive Feedback and Enhance Portfolio</li>
+            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Reinforcement Learning
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Reinforcement Learning
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Q-Learning</li>
+                          <li>Markov Decision Processes</li>
+                          <li>Model Evaluations Metrics</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Deep Q-Network
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Challenges with Q-Learning</li>
+                          <li>Decision Trees</li>
+                          <li>Experience Replay</li>
+                          <li>Logistic Regression</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced DQN Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Double DQN</li>
+                          <li>Dueling DQN</li>
+                          <li>Hands-on Exercise</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Applications and Future Directions
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Application of DQN</li>
+                          <li>Recent Advances and Future Directions</li>
+                          <li>Case Studies</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Monte Carlo Method
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Monte Carlo Method
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Monte Carlo Methods Overview</li>
+                          <li>Monte Carlo Prediction</li>
+                          <li>First Visit Monte Carlo Method</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Monte Carlo Control
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Monte Carlo Control Overview</li>
+                          <li>On-Policy Monte Carlo Control</li>
+                          <li>Experience Replay</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Exploration Strategies and Improvements
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Explorating Starts</li>
+                          <li>Incremental Implementation</li>
+                          <li>Hands-on Exercise</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Applications and Future Directions
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Application of Monte Carlo Method</li>
+                          <li>Batch Reinforcement Learning</li>
+                          <li>Temporal Difference</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Temporal Difference Learning
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Temporal Difference Control
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>TD control Overview</li>
+                          <li>SARSA Algorithm</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Eligibility Traces and Improvements
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Introduction to Elegibility Traces</li>
+                          <li>TD Algorithm</li>
+                          <li>n-step TD Method</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Extensions and Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>TD Learning Extensions</li>
+                          <li>Hands-on Projects</li>
+                          <li>Applications of TD Learning</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Multi-Armed Bandit(MAB) Problem
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Upper Conofidence Bound (UCB) Methods
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>UCB Methods Overview</li>
+                          <li>UCB-Tuned ALgorithm</li>
+                          <li>UCB1 Algorithm</li>
+                          <li>Hands-on Introduction</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Thompsom Sampling
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Thompsom Sampling Overview</li>
+                          <li>Thompson Sampling Algorithms</li>
+                          <li>UCB-Tuned Algorithm</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Extensions and Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Contextual Bandits</li>
+                          <li>Applicatoins on MAB problem</li>
+                          <li>Hands-on Project</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+            </ul>
+          </div>
+
+          <div class="bg-[#e7e7e7] mx-4 relative">
+            <div class="relative flex p-4 justify-between">
+              <h1 class=" text-2xl text-[#074D8D] font-semibold">
+                Module 7: Deep Reinforcement Learning
+              </h1>
+              <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
+            </div>
+            <div class="bg-[black] h-[2px] w-full"></div>
+            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Deep Q Network
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Reinforcement Learning
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Q-Learning</li>
+                          <li>Markov Decision Processes</li>
+                          <li>Model Evaluations Metrics</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Deep Q-Network
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Challenges with Q-Learning</li>
+                          <li>Decision Trees</li>
+                          <li>Experience Replay</li>
+                          <li>Logistic Regression</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced DQN Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Double DQN</li>
+                          <li>Dueling DQN</li>
+                          <li>Hands-on Exercise</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Applications and Future Directions
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Application of DQN</li>
+                          <li>Recent Advances and Future Directions</li>
+                          <li>Case Studies</li>
+                          <li>Future Trends</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Actor Critic and Policy Gradient
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Policy Gradient Methods
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Reinforcement Learning Overview</li>
+                          <li>Markov Decision Processes (MDPs)</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Actor-Critic Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>A3C</li>
+                          <li>Proximal Policy Optimization (PPO)</li>
+                          <li>Trust Region Policy</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Application and Future Directions
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Applications of Actor</li>
+                          <li>Recent Advances and Future Directions</li>
+                          <li>Hands on Project</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
+              <details class="p-2">
+                <summary class="outline-none font-semibold cursor-pointer focus:underline">
+                  Method Learning DDPG TD3 and SAC
+                </summary>
+                <div class="">
+                  <ul class="p-4 list-inside list-disc">
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Deep Deterministic Policy Gradient (DDPG)
+                        Techniques
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Challenges with DDPG</li>
+                          <li>Exploration Strategies</li>
+                          <li>Overview of Visualization Libraries</li>
+                          <li>Hands-on Introduction</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Introduction to Soft Actor-Critic (SAC)
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Extropy Regularisation</li>
+                          <li>Target Entropy and Temperature</li>
+                          <li>Soft Actor-Critic (SAC) Overview</li>
+                        </ul>
+                      </div>
+                    </details>
+                    <details class="p-2">
+                      <summary class="outline-none cursor-pointer focus:underline">
+                        Advanced Topics and Applications
+                      </summary>
+                      <div class="px-4 pb-4">
+                        <ul class="list-inside list-disc">
+                          <li>Continuos Control Applications</li>
+                          <li>Hands-on Projects</li>
+                          <li>Introduction to Interactive Dashboards</li>
+                        </ul>
+                      </div>
+                    </details>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
@@ -273,11 +1664,9 @@ const AID_content = () => {
           </button>
           <div class="bg-[#e7e7e7] mx-4 relative mt-4 p-4">
             <h1 class="text-2xl font-bold">
-              Program Fee:$699 Limited Slots available for CalAI Sholarship
-              Program.Hurry up and{" "}
-              <a class="text-blue-700" href="Starttest.html">
-                Apply Now
-              </a>
+              Program Fee:$699. Limited Offer: Apply now to avail a 10% Early
+              bird discount with code{" "}
+              <strong style="color: blue;">Early10</strong> at checkout!
             </h1>
           </div>
 

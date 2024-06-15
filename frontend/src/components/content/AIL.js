@@ -52,149 +52,448 @@ const AIL_content = () => {
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-              Introduction to AI and Its Implications{" "}
+                Module 1: Introduction to AI and Its Implications
               </h1>
-              <h1 class="text-2xl text-[#CBA135] font-semibold">12%</h1>
+              <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li> Introduction to AI</li>
-              <li>Key AI Technologies</li>
-              <li> Large Language Models (LLMs) and Generative AI</li>
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 1: Introduction to AI
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Overview of AI evolution, foundational concepts, and
+                      critical milestones
+                    </li>
+                    <li>
+                      Discussion on the distinctions between AI, machine
+                      learning, and deep learning
+                    </li>
+                    <li>
+                      Examination of AI’s potential impact on future
+                      technological developments and societal shifts
+                    </li>
+                    <li>
+                      Analysis of case studies showcasing successful AI
+                      applications
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 2: Key AI Technologies
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      In-depth exploration of Natural Language Processing and
+                      its role in AI.
+                    </li>
+                    <li>
+                      Discussion on how AI technologies are integrated into
+                      mobile and web applications.
+                    </li>
+                    <li>
+                      Overview of Computer Vision technologies and their
+                      applications
+                    </li>
+                    <li>
+                      Analysis of challenges in scaling AI technologies across
+                      different industries.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 3: Large Language Models (LLMs) and Generative AI
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Overview of Large Language Models and their applications.
+                    </li>
+                    <li>
+                      Discussion on the challenges and ethical implications of
+                      LLMs
+                    </li>
+                    <li>
+                      Examination of how LLMs are used in natural language
+                      understanding and generation
+                    </li>
+                    <li>
+                      Generative AI, also known as GenAI, to create original
+                      content across various media formats, including text,
+                      images, audio, and video
+                    </li>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-              AI in Various Industries
+                Module 2: AI in Various Industries
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">15%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li> AI Applications in Healthcare and Finance</li>
-              <li> AI Applications in Retail and Manufacturing</li>
+            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  {" "}
+                  Lecture 4: AI Applications in Healthcare and Finance
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Exploration of AI’s role in healthcare, including
+                      diagnostics, personalized medicine, and patient care
+                      management.
+                    </li>
+                    <li>
+                      Discussion on AI’s impact on financial operations, fraud
+                      detection, and customer interactions.
+                    </li>
+                    <li>
+                      Review of ethical and regulatory challenges in both
+                      healthcare and finance
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 5: AI Applications in Retail and Manufacturing
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Exploration of AI in customer personalization, inventory
+                      management, and retail operations.
+                    </li>
+                    <li>
+                      Discussion on AI-driven automation in manufacturing,
+                      including predictive maintenance and quality control.
+                    </li>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-              AI Technologies Continued{" "}
+                Module 3: AI Technologies Continued
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li> Robotics in AI</li>
-              <li> Advanced Machine Learning Techniques</li>
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 6: Robotics in AI
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Review of advancements in AI-driven robotics and
+                      automation.
+                    </li>
+                    <li>
+                      Discussion of robotics applications in complex
+                      environments such as space exploration and healthcare.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 7: Advanced Machine Learning Techniques
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Exploration of advanced algorithms like supervised
+                      learning and deep neural networks.
+                    </li>
+                    <li>
+                      Discussion on the use of big data for enhancing machine
+                      learning model accuracy.
+                    </li>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-              Ethical and Societal Implications of AI
+                Module 4: Ethical and Societal Implications of AI{" "}
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">8%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Ethical AI</li>
-              <li>Bias and Fairness in AI Systems</li>
-              <li>AI and Privacy</li>
+            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 8: Ethical AI
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Discussion of the principles and practices of ethical AI
+                      development.
+                    </li>
+                    <li>
+                      Review of case studies where AI ethics were challenged.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 9: Bias and Fairness in AI Systems{" "}
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>Understanding sources and impacts of bias in AI.</li>
+                    <li>
+                      Techniques for mitigating bias and promoting fairness in
+                      AI systems.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 10: AI and Privacy
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>Developing an AI Adoption Roadmap.</li>
+                    <li>Scaling AI Initiatives in Large Organizations.</li>
+                    <li>Overcoming Challenges in AI Implementation.</li>
+                    <li>Strategies for Sustained AI Leadership.</li>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-              Strategic AI Leadership{" "}
+                Module 5: Strategic AI Leadership
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">12%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li> Economies of AI-based Business Models</li>
-              <li> Developing an AI Strategy for Your Organization</li>
-              <li>Integrating AI into Business Processes</li>
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  {" "}
+                  Lecture 11: Economies of AI-based Business Models{" "}
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Understanding AI business models and operational
+                      efficiency.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 12: Developing an AI Strategy for Your Organization
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Discussion on key components of a successful AI strategy.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 13: Integrating AI into Business Processes
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Discussion on overcoming challenges in AI integration.
+                    </li>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-              AI Project Management
+                Module 6: AI Project Management
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Agile Methodologies for AI Projects</li>
-              <li> Managing AI Teams and Projects</li>
+            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 14: Agile Methodologies for AI Projects
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Discussion on adapting agile methodologies for AI
+                      projects.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 15: Managing AI Teams and Projects
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Discussion on unique challenges in managing AI teams.
+                    </li>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-              Risk and Change Management in AI
-
+                Module 7: Risk and Change Management in AI
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">8%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li> Risk Management in AI Deployments</li>
-              <li>Change Management and AI</li>
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 16: Risk Management in AI Deployments
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Techniques for identifying and mitigating risks in AI
+                      implementations.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 17: Change Management and AI
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Challenges of AI adoption and effective strategies for
+                      managing change.
+                    </li>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Data-Driven Leadership
+                Module 8: Leadership and Innovation with AI
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">8%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Leadership and Innovation with AI</li>
-              <li>
-              Capstone Project Presentations and Program Wrapup
+            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 18: Leading AI Innovation{" "}
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Discussion on nurturing a culture supportive of continuous
+                      innovation.
+                    </li>
+                  </ul>
+                </div>
+              </details>
 
-              </li>
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Lecture 19: Capstone Project Presentations and Program Wrapup
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>
+                      Presentation of capstone projects and gathering feedback.
+                    </li>
+                    <li>
+                      Reflection on the program’s impact and participant
+                      achievements.
+                    </li>
+                    <li>Discussion on continuous learning paths in AI.</li>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
           <div class="bg-[#e7e7e7] mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-              Voluntary Coding
+                Module 9: Voluntary Coding
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">7%</h1>
             </div>
             <div class="bg-[black] h-[2px] w-full"></div>
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
-              <li>ython, scikit-learn, and TensorFlow</li>
-
-            </ul>
-          </div>
-
-          <div class=" mx-4 relative">
-            <div class="relative flex p-4 justify-between">
-              <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Strategies for AI Adoption and Scaling
-              </h1>
-              <h1 class="text-2xl text-[#CBA135] font-semibold">10%</h1>
-            </div>
-            <div class="bg-[black] h-[2px] w-full"></div>
-            <ul class="grid grid-cols-2 p-4 list-inside list-disc text-lg md:grid-cols-1">
-              <li>Developing an AI Adoption Roadmap</li>
-              <li>Scaling AI Initiatives in Large Organizations</li>
-              <li>Overcoming Challenges in AI Implementation</li>
-              <li>Strategies for Sustained AI Leadership</li>
+              <details>
+                <summary class="py-2 outline-none cursor-pointer focus:underline">
+                  Python, scikit-learn, and TensorFlow
+                </summary>
+                <div class="px-4 pb-4">
+                  <ul class="list-disc list-inside">
+                    <li>Basics of Python.</li>
+                    <li>Basics of Data Science.</li>
+                    <li>Basics of scikit-learn and TensorFlow.</li>
+                    <li>
+                      AI Models and Projects: Data Science, Natural Language
+                      Processing and Reinforcement Laarning.
+                    </li>
+                    <li>Notebooks.</li>
+                    <li>Coding Assignments.</li>
+                  </ul>
+                </div>
+              </details>
             </ul>
           </div>
 
@@ -299,9 +598,7 @@ const AIL_content = () => {
                 schedule. Now, armed with AI insights, we're revolutionizing our
                 products and services, thanks to the invaluable lessons learned
                 from CalAI."-
-                <span class="font-bold">
-                  Alex Smith, CEO, Nexus Dynamics.
-                </span>{" "}
+                <span class="font-bold">Alex Smith, CEO, Nexus Dynamics.</span>{" "}
               </p>
             </div>
           </div>
