@@ -84,17 +84,20 @@ const Checkout = () => {
       setTimeout(() => {
         setLoading(true);
       }, 500);
-      const response = await fetch("http://localhost:5000/create-order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include", // Include credentials in request
-        body: JSON.stringify({
-          amount: price * (1 - discount),
-          program: courseName,
-        }),
-      });
+      const response = await fetch(
+        "https://cal-ai-new.vercel.app/create-order",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // Include credentials in request
+          body: JSON.stringify({
+            amount: price * (1 - discount),
+            program: courseName,
+          }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
