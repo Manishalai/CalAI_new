@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 const Checkout = () => {
   const location = useLocation();
@@ -34,6 +36,10 @@ const Checkout = () => {
     // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
+
+  const handlePhoneChange = (value) => {
+    setPhone(value);
+  };
 
   const handleCouponChange = (e) => {
     setCoupon(e.target.value);
@@ -145,12 +151,13 @@ const Checkout = () => {
               className="px-2 border-2 border-gray-400 text-[16px] sm:text-[15px] lg:text-[18px] bg-slate-200 rounded-lg font-light break-words w-full"
             />
             <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
-              Phone :
+              Phone:
             </p>
-            <input
-              type="text"
+            <PhoneInput
+              international
+              defaultCountry="US"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={handlePhoneChange}
               className="px-2 border-2 border-gray-400 text-[16px] sm:text-[15px] lg:text-[18px] bg-slate-200 rounded-lg font-light break-words w-full"
             />
             <hr className="col-span-2 border-t border-gray-600" />

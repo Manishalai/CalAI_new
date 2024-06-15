@@ -368,31 +368,31 @@ app.post("/order-cancel", async (req, res) => {
 });
 
 //GETTING COURSE DETAILS
-app.post("/getCourseDetails", async (req, res) => {
-  const { certificationId } = req.body;
+// app.post("/getCourseDetails", async (req, res) => {
+//   const { certificationId } = req.body;
 
-  try {
-    // Retrieve course details from Firestore based on certification ID
-    const courseRef = db.collection("courses").doc(certificationId);
-    const doc = await courseRef.get();
+//   try {
+//     // Retrieve course details from Firestore based on certification ID
+//     const courseRef = db.collection("courses").doc(certificationId);
+//     const doc = await courseRef.get();
 
-    if (!doc.exists) {
-      console.log("No such document!");
-      res.status(404).json({ error: "Course not found" });
-    } else {
-      console.log(doc.data());
-      const courseData = doc.data();
-      res.json({
-        certName: courseData.course_name,
-        courseFee: courseData.course_fees,
-        registrationFee: courseData.registration_fees,
-      });
-    }
-  } catch (error) {
-    console.error("Error getting document:", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
+//     if (!doc.exists) {
+//       console.log("No such document!");
+//       res.status(404).json({ error: "Course not found" });
+//     } else {
+//       console.log(doc.data());
+//       const courseData = doc.data();
+//       res.json({
+//         certName: courseData.course_name,
+//         courseFee: courseData.course_fees,
+//         registrationFee: courseData.registration_fees,
+//       });
+//     }
+//   } catch (error) {
+//     console.error("Error getting document:", error);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });
 
 //DISCOUNT VALIDATION
 app.post("/validate-coupon", async (req, res) => {
