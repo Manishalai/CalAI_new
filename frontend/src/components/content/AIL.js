@@ -505,11 +505,9 @@ const AIL_content = () => {
           </button>
           <div class="bg-[#e7e7e7] mx-4 relative mt-4 p-4">
             <h1 class="text-2xl font-bold">
-              Program Fee:$999 Limited Slots available for CalAI Sholarship
-              Program.Hurry up and{" "}
-              <a class="text-blue-700" href="Starttest.html">
-                Apply Now
-              </a>
+              Program Fee:$699. Limited Offer: Apply now to avail a 10% Early
+              bird discount with code{" "}
+              <strong style={{ color: "blue" }}>Early10</strong> at checkout!
             </h1>
           </div>
 
@@ -598,7 +596,9 @@ const AIL_content = () => {
                 schedule. Now, armed with AI insights, we're revolutionizing our
                 products and services, thanks to the invaluable lessons learned
                 from CalAI."-
-                <span class="font-bold">Alex Smith, CEO, Nexus Dynamics.</span>{" "}
+                <span class="font-bold">
+                  Alex Smith, CEO, Nexus Dynamics.
+                </span>{" "}
               </p>
             </div>
           </div>

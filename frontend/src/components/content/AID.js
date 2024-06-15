@@ -1666,7 +1666,7 @@ const AID_content = () => {
             <h1 class="text-2xl font-bold">
               Program Fee:$699. Limited Offer: Apply now to avail a 10% Early
               bird discount with code{" "}
-              <strong style="color: blue;">Early10</strong> at checkout!
+              <strong style={{ color: "blue" }}>Early10</strong> at checkout!
             </h1>
           </div>
 
