@@ -48,7 +48,7 @@ const Checkout = () => {
   const applyCoupon = async () => {
     try {
       const response = await fetch(
-        "https://cal-ai-eta.vercel.app/validate-coupon",
+        "https://cal-ai-new.vercel.app/validate-coupon",
         {
           method: "POST",
           headers: {
