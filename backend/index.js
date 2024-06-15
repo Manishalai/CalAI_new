@@ -13,9 +13,9 @@ require("firebase/firestore");
 const cors = require("cors");
 app.use(
   cors({
-    origin: "https://new-cal-ai.vercel.app", // Change to your client URL
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-    credentials: true, // Allow credentials to be included
+    origin: "https://new-cal-ai.vercel.app", // Replace with your client URL
+    methods: ["GET", "POST"], // Adjust methods as needed
+    credentials: true, // Allow credentials (cookies, authorization headers)
   })
 );
 
