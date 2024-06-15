@@ -95,6 +95,7 @@ const Checkout = () => {
             amount: price * (1 - discount),
             program: courseName,
           }),
+          credentials: "include",
         }
       );
 

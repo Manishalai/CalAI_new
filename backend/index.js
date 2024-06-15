@@ -11,8 +11,13 @@ require("firebase/database");
 require("firebase/firestore");
 
 const cors = require("cors");
-app.use(cors({ origin: "https://new-cal-ai.vercel.app" }));
-
+app.use(
+  cors({
+    origin: "https://new-cal-ai.vercel.app", // Change this to your client URL
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 // Middleware for parsing JSON and URL-encoded request bodies
 // Middleware for parsing JSON and URL-encoded request bodies
 app.use(express.json());
