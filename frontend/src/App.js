@@ -17,6 +17,8 @@ import Blog_PF from "./Screens/Blogs/Blog2_PF.jsx";
 import Blog_ML from "./Screens/Blogs/Blog1_ML.jsx";
 import Checkout from "./Screens/Checkout/Checkout.jsx";
 import Profile from "./Screens/Profile/Profile.jsx";
+import Success from "./Screens/PostCheckout/Success.jsx";
+import Cancel from "./Screens/PostCheckout/Cancel.jsx";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -39,6 +41,8 @@ const App = () => {
         <Route path="/AI_Manager" element={<AIM />} />
         <Route path="/AI_Leader" element={<AIL />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
         <Route path="/user/Profile" element={<Profile />} />
         <Route path="/Privacy_Policy" element={<PvP />} />
         <Route path="/Terms&Conditions" element={<TNC />} />

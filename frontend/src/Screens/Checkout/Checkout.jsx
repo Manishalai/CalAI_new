@@ -1,22 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import axios from "axios";
 
 const Checkout = () => {
   const location = useLocation();
   const { courseName, price } = location.state || {};
-  const auth = getAuth();
-  const currentUser = auth.currentUser;
-  const email = currentUser ? currentUser.email : "";
-  const name = currentUser ? currentUser.displayName : "";
-
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("0123456789");
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
   const [couponApplied, setCouponApplied] = useState(false);
   const [invalidCoupon, setInvalidCoupon] = useState(false);
+  const [loading, setLoading] = useState(false); // State to manage loading screen
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setEmail(user.email || "");
+        setName(user.displayName || "");
+        setPhone(user.phoneNumber || "0123456789");
+      } else {
+        // Handle the case when the user is not logged in
+        setEmail("");
+        setName("");
+        setPhone("0123456789");
+      }
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
 
   const handleCouponChange = (e) => {
     setCoupon(e.target.value);
@@ -55,9 +72,42 @@ const Checkout = () => {
     }
   };
 
-  const handlePayNow = () => {
-    alert("Payment processing...");
-    // Implement payment processing logic here
+  const handlePayNow = async () => {
+    console.log(price * (1 - discount), courseName);
+    try {
+      setTimeout(() => {
+        setLoading(true);
+      }, 500);
+      const response = await fetch("http://localhost:5000/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: price * (1 - discount),
+          program: courseName,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        const approvalURL = data.approvalUrl;
+
+        if (approvalURL) {
+          window.location.href = approvalURL;
+        } else {
+          console.timeLog(response);
+          console.error("Approval URL not found in response.");
+        }
+      } else {
+        console.error("Payment initiation failed.");
+      }
+    } catch (error) {
+      console.error("Error initiating payment:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -79,15 +129,30 @@ const Checkout = () => {
             <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
               Email:
             </p>
-            <p className="text-[16px] sm:text-[15px] lg:text-[18px] font-light break-words w-full">
-              {email}
-            </p>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="px-2 border-2 border-gray-400 text-[16px] sm:text-[15px] lg:text-[18px] bg-slate-200 rounded-lg font-light break-words w-full"
+            />
             <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
               Name:
             </p>
-            <p className="text-[16px] sm:text-[15px] lg:text-[18px] font-light break-words w-full">
-              {name}
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="px-2 border-2 border-gray-400 text-[16px] sm:text-[15px] lg:text-[18px] bg-slate-200 rounded-lg font-light break-words w-full"
+            />
+            <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
+              Phone :
             </p>
+            <input
+              type="text"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="px-2 border-2 border-gray-400 text-[16px] sm:text-[15px] lg:text-[18px] bg-slate-200 rounded-lg font-light break-words w-full"
+            />
             <hr className="col-span-2 border-t border-gray-600" />
             <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
               Total Fees:
@@ -114,7 +179,7 @@ const Checkout = () => {
           <div className="coupon-section mt-4 flex flex-col items-center">
             <input
               type="text"
-              placeholder="Enter coupon code"
+              placeholder="Enter coupon code (if any)"
               value={coupon}
               onChange={handleCouponChange}
               className="w-full p-2 mb-2 border rounded bg-gray-200"
@@ -140,9 +205,17 @@ const Checkout = () => {
           <div className="pay-now flex justify-center mt-6">
             <button
               onClick={handlePayNow}
-              className="w-full p-2 bg-blue-900 hover:bg-blue-700 text-white rounded"
+              className={`w-full text-white rounded p-2 ${
+                loading
+                  ? "cursor-not-allowed bg-transparent text-sky-500"
+                  : "bg-blue-900 hover:bg-blue-700 "
+              } `}
             >
-              PAY NOW
+              {loading ? (
+                <>Hold On !! Making a secure payment...</>
+              ) : (
+                <>PAY NOW</>
+              )}
             </button>
           </div>
         </div>
