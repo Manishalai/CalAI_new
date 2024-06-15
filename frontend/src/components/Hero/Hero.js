@@ -1,43 +1,32 @@
-import React from 'react'
-import banner from "../../images/banner.svg";
+import React from "react";
+import banner from "../../images/Main_Banner_.svg";
 
 export const Hero = () => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
-    <div><section
-    className="relative w-full bg-cover bg-center bg-no-repeat md:h-[150px]"
+    <div>
+      <section
+        className="relative w-full bg-cover bg-center bg-no-repeat md:h-[150px]"
         style={{ backgroundImage: `url(${banner})` }}
-    >
-  
-    
-    <div
-    class={`relative mx-auto  max-w-screen-xl py-6 md:hidden  `}
-    >
-  
-    
-    
-    <div class="relative mt-[45vh] pl-[48vw] 3xl:pl-[58vw] w-full flex flex-col gap-4 ">
-  
-      <h2 class="text-center text-[20px] text-white font-bold mt-8">Offer Valid Till 15th June</h2>
-  
-      <div class="flex  gap-4 text-center mx-12 ">
-        <a
-      href="Starttest.html"
-      class="block w-[300px] rounded bg-rose-600 px-12 py-3 text-lg font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 "
-    >
-      Start Test
-    </a>
-    
-    <a
-      href="Schedulelater.html"
-      class="block w-[280px] rounded bg-white px-12 py-3 text-lg font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500"
-    >
-      Schedule Later
-    </a>
-      </div>
-    
-    
+      >
+        <div className="relative mx-auto max-w-screen-xl py-6 md:hidden">
+          <div className="relative mt-[45vh] pl-[58vw] 3xl:pl-[68vw] w-full flex flex-col gap-6">
+            <div className="flex gap-4 text-center mx-1 justify-around">
+              <button
+                onClick={() => scrollToSection("courses-section")}
+                className="block w-[280px] rounded bg-white px-12 py-3 text-lg font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500"
+              >
+                Explore Programs
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-    </div>
-  </section></div>
-  )
-}
+  );
+};

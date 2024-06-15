@@ -11,16 +11,20 @@ require("firebase/database");
 require("firebase/firestore");
 
 const cors = require("cors");
-app.use(
-  cors({
-    origin: "https://new-cal-ai.vercel.app", // Replace with your client URL
-    methods: ["GET", "POST"], // Adjust methods as needed
-    credentials: true, // Allow credentials (cookies, authorization headers)
-  })
-);
-
+app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+// Middleware for parsing JSON and URL-encoded request bodies
+// Middleware for parsing JSON and URL-encoded request bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 let userEmail;
 const port = process.env.PORT || 5000;
@@ -472,7 +476,7 @@ app.post("/register", async (req, res) => {
 
 //SERVER CHECK
 app.get("/", async (req, res) => {
-  res.send("Hello!! World");
+  res.send("Hello!! World i am done");
 });
 // START SERVER
 app.listen(port, () => {

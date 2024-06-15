@@ -7,17 +7,28 @@ import Speaker from "../components/speakers/Speaker";
 import Slider from "../components/slider/Slider";
 import { Aboutus } from "../components/Aboutus/Aboutus";
 import { Hero } from "../components/Hero/Hero";
+
 const Home = () => {
   return (
     <>
-      <Header />
+      <div id="home-section">
+        <Header />
+      </div>
       <Navbar />
       <Hero />
-      <Aboutus />
-      <Courses />
-      <Speaker />
+      <div id="aboutus-section">
+        <Aboutus />
+      </div>
+      <div id="courses-section">
+        <Courses />
+      </div>
+      <div id="speakers-section">
+        <Speaker />
+      </div>
       <Slider />
-      <Footer />
+      <div id="footer-section">
+        <Footer />
+      </div>
     </>
   );
 };

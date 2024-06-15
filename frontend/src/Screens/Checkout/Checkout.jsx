@@ -9,14 +9,14 @@ import "react-phone-number-input/style.css";
 const Checkout = () => {
   const location = useLocation();
   const { courseName, price } = location.state || {};
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("0123456789");
+  const [phone, setPhone] = useState("");
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
   const [couponApplied, setCouponApplied] = useState(false);
   const [invalidCoupon, setInvalidCoupon] = useState(false);
-  const [loading, setLoading] = useState(false); // State to manage loading screen
 
   useEffect(() => {
     const auth = getAuth();
@@ -24,16 +24,14 @@ const Checkout = () => {
       if (user) {
         setEmail(user.email || "");
         setName(user.displayName || "");
-        setPhone(user.phoneNumber || "0123456789");
+        setPhone(user.phoneNumber || "");
       } else {
-        // Handle the case when the user is not logged in
         setEmail("");
         setName("");
         setPhone("0123456789");
       }
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 
@@ -48,7 +46,7 @@ const Checkout = () => {
   const applyCoupon = async () => {
     try {
       const response = await fetch(
-        "https://cal-ai-new.vercel.app/validate-coupon",
+        "https://cal-ai-new-server.vercel.app/validate-coupon",
         {
           method: "POST",
           headers: {
@@ -73,25 +71,22 @@ const Checkout = () => {
     } catch (error) {
       setInvalidCoupon(true);
       setCouponApplied(false);
-      alert("Something Went Wrong Please try after sometime");
-      console.log(error);
+      alert("Something went wrong. Please try again later.");
+      console.error(error);
     }
   };
 
   const handlePayNow = async () => {
-    console.log(price * (1 - discount), courseName);
+    setLoading(true); // Set loading to true immediately
+
     try {
-      setTimeout(() => {
-        setLoading(true);
-      }, 500);
       const response = await fetch(
-        "https://cal-ai-new.vercel.app/create-order",
+        "https://cal-ai-new-server.vercel.app/create-order",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include", // Include credentials in request
           body: JSON.stringify({
             amount: price * (1 - discount),
             program: courseName,
@@ -107,7 +102,6 @@ const Checkout = () => {
         if (approvalURL) {
           window.location.href = approvalURL;
         } else {
-          console.timeLog(response);
           console.error("Approval URL not found in response.");
         }
       } else {
@@ -117,7 +111,7 @@ const Checkout = () => {
       alert("Something went wrong :(");
       console.error("Error initiating payment:", error);
     } finally {
-      setLoading(false);
+      setLoading(false); // Ensure loading is reset
     }
   };
 
@@ -156,7 +150,7 @@ const Checkout = () => {
               className="px-2 border-2 border-gray-400 text-[16px] sm:text-[15px] lg:text-[18px] bg-slate-200 rounded-lg font-light break-words w-full"
             />
             <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
-              Phone:
+              Phone :
             </p>
             <PhoneInput
               international
@@ -191,7 +185,7 @@ const Checkout = () => {
           <div className="coupon-section mt-4 flex flex-col items-center">
             <input
               type="text"
-              placeholder="Enter coupon code (if any)"
+              placeholder="Enter coupon code"
               value={coupon}
               onChange={handleCouponChange}
               className="w-full p-2 mb-2 border rounded bg-gray-200"
@@ -214,20 +208,16 @@ const Checkout = () => {
                 : "Apply Coupon"}
             </button>
           </div>
-          <div className="pay-now flex justify-center mt-6">
+          <div className="pay-now flex justify-center mt-3">
             <button
               onClick={handlePayNow}
-              className={`w-full text-white rounded p-2 ${
+              className={`w-full text-white ${
                 loading
-                  ? "cursor-not-allowed bg-transparent text-sky-500"
-                  : "bg-blue-900 hover:bg-blue-700 "
-              } `}
+                  ? "cursor-not-allowed text-sky-600 bg-transparent"
+                  : "bg-blue-900 hover:bg-blue-700"
+              }rounded p-2 `}
             >
-              {loading ? (
-                <>Hold On !! Making a secure payment...</>
-              ) : (
-                <>PAY NOW</>
-              )}
+              {loading ? <>Processing...</> : <>Pay Now</>}
             </button>
           </div>
         </div>
