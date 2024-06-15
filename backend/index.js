@@ -13,16 +13,14 @@ require("firebase/firestore");
 const cors = require("cors");
 app.use(
   cors({
-    origin: "https://new-cal-ai.vercel.app", // Change this to your client URL
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
+    origin: "https://new-cal-ai.vercel.app", // Change to your client URL
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    credentials: true, // Allow credentials to be included
   })
 );
-// Middleware for parsing JSON and URL-encoded request bodies
-// Middleware for parsing JSON and URL-encoded request bodies
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 let userEmail;
 const port = process.env.PORT || 5000;
