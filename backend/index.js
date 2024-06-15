@@ -10,6 +10,19 @@ require("dotenv").config();
 require("firebase/auth");
 require("firebase/database");
 require("firebase/firestore");
+
+app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://new-cal-ai.vercel.app/"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 // Middleware for parsing JSON and URL-encoded request bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

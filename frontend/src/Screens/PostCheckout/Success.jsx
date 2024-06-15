@@ -27,7 +27,7 @@ const Success = () => {
 
         // Capture the order by sending a POST request to your backend endpoint
         const captureResponse = await fetch(
-          "http://localhost:5000/capture-order",
+          "https://cal-ai-new.vercel.app/capture-order",
           {
             method: "POST",
             headers: {
