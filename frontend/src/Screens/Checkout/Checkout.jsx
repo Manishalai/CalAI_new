@@ -113,6 +113,7 @@ const Checkout = () => {
         console.error("Payment initiation failed.");
       }
     } catch (error) {
+      alert("Something went wrong :(");
       console.error("Error initiating payment:", error);
     } finally {
       setLoading(false);
