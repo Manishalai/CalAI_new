@@ -1,4 +1,5 @@
 import React from "react";
+import Brochure from "../brochure_form/Brochure";
 
 const Navbar = () => {
   const scrollToSection = (sectionId) => {
@@ -37,11 +38,10 @@ const Navbar = () => {
               About Us
             </button>
             <button
-              onClick={() => scrollToSection("footer-section")}
               class="inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent px-1 pb-4 text-[18px] font-medium text-white hover:border-orange-300 hover:text-orange-500
                     aria-current="
             >
-              FAQs
+              <Brochure />
             </button>
             <button
               onClick={() => scrollToSection("footer-section")}

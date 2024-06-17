@@ -19,6 +19,7 @@ import Checkout from "./Screens/Checkout/Checkout.jsx";
 import Profile from "./Screens/Profile/Profile.jsx";
 import Success from "./Screens/PostCheckout/Success.jsx";
 import Cancel from "./Screens/PostCheckout/Cancel.jsx";
+import { ContactUs } from "./components/contact/Contact.js";
 
 const App = () => {
   const [user, setUser] = useState(null);

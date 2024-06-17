@@ -7,6 +7,7 @@ import Speaker from "../components/speakers/Speaker";
 import Slider from "../components/slider/Slider";
 import { Aboutus } from "../components/Aboutus/Aboutus";
 import { Hero } from "../components/Hero/Hero";
+import AIProgramFinder from "../components/Right_program/RightProgram";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       <div id="courses-section">
         <Courses />
       </div>
+      <AIProgramFinder />
       <div id="speakers-section">
         <Speaker />
       </div>
