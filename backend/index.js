@@ -56,11 +56,11 @@ const auth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
 // NODEMAILER CONFIGURATION
 const transporter = nodemailer.createTransport({
   service: "gmail",
-  host: "smtp.gmail.email",
-  port: 587,
+  host: "smtp.gmail.com",
+  port: 465,
   auth: {
     user: "kristin.p@calai.org",
-    pass: "hjve fsze lnvq pivz",
+    pass: "gios tinu doln wbbh",
   },
 });
 
@@ -87,41 +87,25 @@ async function sendWelcomeEmail() {
 }
 
 // SEND Brochure
-const sendBrochure = async (email) => {
-  console.log("Preparing to send email to:", email);
-  try {
-    const filePath = path.join(__dirname, "assets", "brochure.pdf");
-    const fileStream = fs.createReadStream(filePath);
+async function main(email) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
+    to: "bar@example.com, baz@example.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
 
-    // Create email message
-    const mailOptions = {
-      from: "Kristin Parker <kristin.p@calai.org>",
-      to: email,
-      subject: "Your Brochure is here",
-      text: "Please find attached your brochure.",
-      attachments: [
-        {
-          filename: "Cal-AI brochure.pdf",
-          content: fileStream, // Use stream here
-        },
-      ],
-    };
-
-    console.log("Mail options prepared:", mailOptions);
-
-    // Send email
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully:", info.response);
-  } catch (error) {
-    console.error("Error sending email:", error.message);
-  }
-};
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+}
 
 //BROCHURE API
 app.post("/send-brochure", async (req, res) => {
   const { email } = req.body;
   try {
-    await sendBrochure(email);
+    await main(email);
     res
       .status(200)
       .json({ success: true, message: "Brochure Sent Successfully" });

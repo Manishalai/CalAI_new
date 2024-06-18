@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { firestore } from "../../firebase/firebase"; // Ensure this path matches where your firebase.js is located
+import { collection, addDoc } from "firebase/firestore";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) {
+      toast.error("Email cannot be empty.");
+      return;
+    }
+
+    try {
+      await addDoc(collection(firestore, "newsLetter_subscription"), {
+        email: email,
+        timestamp: new Date(),
+      });
+      toast.success("Subscribed successfully!");
+      setEmail("");
+    } catch (err) {
+      console.error("Error adding document: ", err);
+      toast.error("Failed to subscribe. Please try again.");
+    }
+  };
   return (
     <>
       <div id="footer">
@@ -9,6 +34,7 @@ const Footer = () => {
           <div class=" px-6 lg:px-8">
             <div class="flex items-start gap-8 ">
               <div class=" flex justify-around w-full mt-3 md:flex-col md:gap-5 ">
+                {/* FAQS */}
                 <div class="w-[500px] flex flex-col justify-center md:w-full">
                   <h2 class="font-medium text-lg text-gray-900">
                     Frequently Asked Questions
@@ -227,6 +253,7 @@ const Footer = () => {
                     </details>
                   </div>
                 </div>
+                {/* QUICK LINKS */}
                 <div class="flex-col">
                   <p class="font-medium text-lg text-gray-900">Quick Links</p>
 
@@ -270,7 +297,7 @@ const Footer = () => {
                     </li>
                   </ul>
                 </div>
-
+                {/* CERTIFICATION */}
                 <div class="flex-col">
                   <p class="font-medium text-lg text-gray-900">Certification</p>
 
@@ -306,7 +333,7 @@ const Footer = () => {
                     </li>
                   </ul>
                 </div>
-
+                {/* BLOGS */}
                 <div class="flex-col">
                   <p class="font-medium text-lg text-gray-900">Blogs</p>
 
@@ -364,10 +391,33 @@ const Footer = () => {
                       </Link>
                     </li>
                   </ul>
+
+                  {/* Subscribe to Newsletter */}
+                  <div className="mt-8">
+                    <h1 className="font-medium mb-3 text-lg text-gray-900">
+                      Subscribe to Our Newsletter
+                    </h1>
+                    <form className="flex-row px-0">
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        className="w-1/2 flex-grow p-2 border border-gray-400 rounded-l-md text-gray-900"
+                      />
+                      <button
+                        type="submit"
+                        onClick={handleSubmit}
+                        className="py-2 px-4 bg-blue-500 text-white font-medium border border-blue-500 rounded-r-md hover:bg-blue-600 transition"
+                      >
+                        Subscribe
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
-
+            {/* COPYRIGHT */}
             <div class="mt-8 border-t border-gray-100 pt-8">
               <div class="sm:flex sm:justify-between">
                 <p class="text-xs text-gray-500">
@@ -379,6 +429,7 @@ const Footer = () => {
           </div>
         </footer>
       </div>
+      <ToastContainer />
     </>
   );
 };
