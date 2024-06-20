@@ -211,7 +211,7 @@ const Checkout = () => {
           <div className="pay-now flex justify-center mt-3">
             <button
               onClick={handlePayNow}
-              className={`w-full text-white ${
+              className={`w-full text-white rounded-md hover:bg-blue-600 transition ${
                 loading
                   ? "cursor-not-allowed text-sky-600 bg-transparent"
                   : "bg-blue-900 hover:bg-blue-700"

@@ -25,17 +25,18 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <script>
-      window.embeddedChatbotConfig = {
-        chatbotId: "D0h5aZm4jipjCajRjh4jV",
-        domain: "www.chatbase.co",
-      };
+      (function () {
+        var pp = document.createElement("script"),
+          ppr = document.getElementsByTagName("script")[0];
+        stid = "Y1VtRG4yMzE5OW8yWDNnQTJ2R1lVdz09";
+        pp.type = "text/javascript";
+        pp.async = true;
+        pp.src =
+          ("https:" == document.location.protocol ? "https://" : "http://") +
+          "s01.live2support.com/dashboardv2/chatwindow/";
+        ppr.parentNode.insertBefore(pp, ppr);
+      })();
     </script>
-    <script
-      src="https://www.chatbase.co/embed.min.js"
-      chatbotId="D0h5aZm4jipjCajRjh4jV"
-      domain="www.chatbase.co"
-      defer
-    ></script>
     <title>CalAI</title>
   </head>
   <body>

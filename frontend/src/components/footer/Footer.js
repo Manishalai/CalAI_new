@@ -36,6 +36,27 @@ const Footer = () => {
               <div class=" flex justify-around w-full mt-3 md:flex-col md:gap-5 ">
                 {/* FAQS */}
                 <div class="w-[500px] flex flex-col justify-center md:w-full">
+                  <div className="mt-0">
+                    <h1 className="font-medium text-lg text-gray-900">
+                      Subscribe to Our Newsletter
+                    </h1>
+                    <form className="flex-row px-0 my-4">
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        className="w-1/2 flex-grow p-2 border border-gray-400 rounded-l-lg text-gray-900"
+                      />
+                      <button
+                        type="submit"
+                        onClick={handleSubmit}
+                        className="py-2 px-4 bg-blue-500 text-white font-medium border border-blue-500 rounded-r-lg hover:bg-blue-600 transition"
+                      >
+                        Subscribe
+                      </button>
+                    </form>
+                  </div>
                   <h2 class="font-medium text-lg text-gray-900">
                     Frequently Asked Questions
                   </h2>
@@ -393,27 +414,6 @@ const Footer = () => {
                   </ul>
 
                   {/* Subscribe to Newsletter */}
-                  <div className="mt-8">
-                    <h1 className="font-medium mb-3 text-lg text-gray-900">
-                      Subscribe to Our Newsletter
-                    </h1>
-                    <form className="flex-row px-0">
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email"
-                        className="w-1/2 flex-grow p-2 border border-gray-400 rounded-l-md text-gray-900"
-                      />
-                      <button
-                        type="submit"
-                        onClick={handleSubmit}
-                        className="py-2 px-4 bg-blue-500 text-white font-medium border border-blue-500 rounded-r-md hover:bg-blue-600 transition"
-                      >
-                        Subscribe
-                      </button>
-                    </form>
-                  </div>
                 </div>
               </div>
             </div>

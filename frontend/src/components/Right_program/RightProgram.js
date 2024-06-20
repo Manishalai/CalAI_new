@@ -1,7 +1,9 @@
 // src/AIProgramFinder.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AIProgramFinder = () => {
+  const navigate = useNavigate();
   const [qualification, setQualification] = useState("");
   const [experience, setExperience] = useState("");
   const [errors, setErrors] = useState({ qualification: "", experience: "" });
@@ -38,8 +40,9 @@ const AIProgramFinder = () => {
     setErrors(newErrors);
 
     if (valid) {
-      // Handle form submission if valid
-      alert(`Qualification: ${qualification}, Experience: ${experience}`);
+      if (experience === "tech") {
+        navigate("/AI_Developer");
+      } else navigate("/AI_Leader");
     }
   };
 
@@ -92,7 +95,7 @@ const AIProgramFinder = () => {
               className="block text-left text-[18px] sfont-medium text-gray-700 mb-2"
             >
               <strong>
-                Select Your Years of Experience
+                Select Your Working Feild
                 <span className="text-red-600"> *</span>
               </strong>
             </label>
@@ -103,10 +106,8 @@ const AIProgramFinder = () => {
               onChange={handleExperienceChange}
             >
               <option value="">--Select--</option>
-              <option value="0-1">0-1 years</option>
-              <option value="2-5">2-5 years</option>
-              <option value="6-10">6-10 years</option>
-              <option value="10+">10+ years</option>
+              <option value="tech">Technical</option>
+              <option value="mgmnt">Management</option>
             </select>
             {errors.experience && (
               <p className="text-red-500 text-sm mt-2">{errors.experience}</p>

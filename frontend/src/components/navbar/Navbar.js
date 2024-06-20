@@ -1,5 +1,5 @@
 import React from "react";
-import Brochure from "../brochure_form/Brochure";
+import Brochure from "../forms/Brochure";
 
 const Navbar = () => {
   const scrollToSection = (sectionId) => {

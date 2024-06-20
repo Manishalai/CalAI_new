@@ -43,7 +43,7 @@ const Courses = () => {
             alt="CalAI-Best-Online-Certification-in-USA"
           />
           <button className="absolute p-1 h-[28px] text-[18px] rounded-tr-lg right-0 bg-[#CBA135] font-bold">
-            $899
+            $1000
           </button>
           <div className="flex flex-col text-center gap-3 items-center justify-center flex-grow">
             <h1 className="text-[#074D8D] text-[20px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
@@ -91,7 +91,7 @@ const Courses = () => {
             alt="CalAI-Best-Online-Certification-in-USA"
           />
           <button className="absolute p-1 h-[28px] text-[18px] rounded-tr-lg right-0 bg-[#CBA135] font-bold">
-            $999
+            $1200
           </button>
           <div className="flex flex-col text-center items-center justify-center flex-grow">
             <h1 className="text-[#074D8D] text-[20px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">

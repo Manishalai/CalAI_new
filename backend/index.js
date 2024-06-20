@@ -56,11 +56,11 @@ const auth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
 // NODEMAILER CONFIGURATION
 const transporter = nodemailer.createTransport({
   service: "gmail",
-  host: "smtp.gmail.com",
-  port: 465,
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
   auth: {
-    user: "kristin.p@calai.org",
-    pass: "gios tinu doln wbbh",
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
 });
 
@@ -102,16 +102,34 @@ async function main(email) {
 }
 
 //BROCHURE API
-app.post("/send-brochure", async (req, res) => {
+app.get("/download", async (req, res) => {
   const { email } = req.body;
   try {
-    await main(email);
-    res
-      .status(200)
-      .json({ success: true, message: "Brochure Sent Successfully" });
+    res.download("./brochure.pdf");
   } catch (error) {
     console.error("Error sending email to user:", error);
-    res.status(500).json({ success: false, message: "Failed to send email." });
+    res.status(500).json({ success: false, message: "Failed to download" });
+  }
+});
+
+app.post("/send-vedio", async (req, res) => {
+  const { email, country, name } = req.body;
+
+  const videoLink = "https://www.youtube.com/watch?v=HdQ_5TQva_I";
+  const mailOptions = {
+    from: process.env.SMTP_USER,
+    to: email,
+    subject: "Your Requested Video Link",
+    text: `Hi ${name},\n\nHere is your requested video link: ${videoLink}\n\nBest regards,\nYour Company`,
+    html: `<p>Hi ${name},</p><p>Here is your requested video link: <a href=${videoLink}>Click here</a></p><p>Best regards,<br>Your Company</p>`,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Email sent successfully." });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).json({ error: "Failed to send email." });
   }
 });
 

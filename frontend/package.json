@@ -15,6 +15,7 @@
     "axios": "^1.7.2",
     "firebase": "^10.12.2",
     "intl-tel-input": "^23.0.12",
+    "js-file-download": "^0.4.12",
     "postcss": "^8.4.38",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
