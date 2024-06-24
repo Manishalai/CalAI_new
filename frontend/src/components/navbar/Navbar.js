@@ -53,6 +53,40 @@ const Navbar = () => {
           </nav>
         </div>
       </div>
+      <div class="hidden md:block">
+        <div id="mobile navbar" class="bg-blue-600 flex p-1 justify-between ">
+          <img id="hamburger" class="h-[30px]" src="menu-line.svg" alt="" />
+          <button class="bg-white text-red-600 rounded-md p-1 test-[15px]">
+            <Brochure />
+          </button>
+        </div>
+      </div>
+
+      <div id="menu-bar" class="text-center text-blue-700 font-bold hidden ">
+        <ul class="">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="#page3">Certifications</a>
+          </li>
+          <li>
+            <a href="#page2">About Us</a>
+          </li>
+          <li>
+            <a href="#footer">FAQs</a>
+          </li>
+          <li>
+            <a href="Blog.html">Blogs</a>
+          </li>
+          <li>
+            <a href="terms&conditions.html">Terms&Conditions</a>
+          </li>
+          <li>
+            <a href="privact.html">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
     </>
   );
 };

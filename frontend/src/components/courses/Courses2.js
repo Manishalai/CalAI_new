@@ -1,32 +1,10 @@
-// src/components/Courses.jsx
+// src/components/Courses2.jsx
 import React from "react";
-import { useState, useEffect } from "react";
 import badge from "../../images/streamline_star-badge-solid.svg";
 import { useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const Courses = () => {
-  const [currentUser, setCurrentUser] = useState(null);
+const Courses2 = ({ onApplyNow }) => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-    });
-  }, []);
-
-  const handleApplyNowClick = (coursePath, courseName, price) => {
-    if (currentUser) {
-      navigate("/checkout", {
-        state: { courseName, price }, // Pass course details
-      });
-    } else {
-      navigate("/login&signup", {
-        state: { from: `/checkout`, courseName, price },
-      });
-    }
-  };
 
   return (
     <>
@@ -73,10 +51,8 @@ const Courses = () => {
               id="applyNow"
               className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
               onClick={() =>
-                handleApplyNowClick(
-                  "/register",
-                  "Certified Artificial Intelligence Developer (CAID TM)",
-                  899
+                onApplyNow(
+                  "Certified Artificial Intelligence Developer (CAID TM)"
                 )
               }
             >
@@ -121,11 +97,7 @@ const Courses = () => {
               id="applyNow"
               className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
               onClick={() =>
-                handleApplyNowClick(
-                  "/register",
-                  "Certified Artificial Intelligence Leader (CAIL TM)",
-                  999
-                )
+                onApplyNow("Certified Artificial Intelligence Leader (CAIL TM)")
               }
             >
               Apply Now
@@ -169,10 +141,8 @@ const Courses = () => {
               id="applyNow"
               className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
               onClick={() =>
-                handleApplyNowClick(
-                  "/register",
-                  "Certified Artificial Intelligence Manager (CAIM TM)",
-                  499
+                onApplyNow(
+                  "Certified Artificial Intelligence Manager (CAIM TM)"
                 )
               }
             >
@@ -185,4 +155,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default Courses2;

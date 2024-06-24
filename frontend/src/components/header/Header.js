@@ -40,7 +40,9 @@ const Header = () => {
         <a href="/">
           <img className="h-[80px]" src={logo} alt="CalAI-logo" />
         </a>
-        <h1 className="ml-4 text-[#074D8D] text-[25px] font-bold md:text-[14px]">
+        <div className="mr-3 h-[60px] w-[4px] bg-[#074D8D]"></div>{" "}
+        {/* Vertical Line */}
+        <h1 className="text-[#074D8D] text-[25px] font-bold md:text-[14px]">
           <a href="/">California Artificial Intelligence Institute</a>
         </h1>
       </div>
@@ -65,7 +67,7 @@ const Header = () => {
             </button>
             {dropdownVisible && (
               <div
-                className="absolute right-0 w-40 bg-white border border-gray-200 rounded shadow-lg z-10"
+                className="absolute right-0 w-40 bg-white border border-gray-200 rounded shadow-lg z-20"
                 style={{ top: "calc(100% + 10px)" }} // Positioned below the icon
               >
                 <button

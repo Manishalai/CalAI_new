@@ -44,71 +44,83 @@ const SelfVedio = () => {
   return (
     <div>
       <div className="flex justify-center">
-        <button onClick={handleButtonClick}>Get Self-Paced Video</button>
+        <button onClick={handleButtonClick}>Get Self-paced Vedio</button>
       </div>
 
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white w-1/3 p-8 rounded-lg shadow-lg relative md:w-4/5 lg:w-1/3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+          <div className="bg-white w-full max-w-md p-6 rounded-lg shadow-lg relative mx-2 md:w-4/5 lg:w-1/3">
             <button
               onClick={handleCloseForm}
-              className="absolute w-full text-right px-3 top-2 right-2 text-gray-800 hover:text-gray-700"
+              className="absolute w-8 h-8 top-3 right-3 flex items-center justify-center text-gray-500 hover:text-gray-700 focus:outline-none"
             >
-              X
+              &#10005;
             </button>
-            <h2 className="text-xl text-black font-bold mb-4">
-              Get Your self-paced vedio
+            <h2 className="text-xl md:text-[16px] text-black font-bold mb-6 text-center">
+              Get your Self-paced Video
             </h2>
-            <form onSubmit={handleSubmit}>
-              <label
-                htmlFor="email"
-                className="block text-left text-[18px] font-medium text-black mb-2"
-              >
-                Enter your Name:
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="w-full h-8 text-black bg-slate-100 border-2 border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 mb-4"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <label
-                htmlFor="email"
-                className="block text-left text-[18px] font-medium text-gray-700 mb-2"
-              >
-                Enter your country:
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="w-full h-8 text-black bg-slate-100 border-2 border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 mb-4"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                required
-              />
-              <label
-                htmlFor="email"
-                className="block text-left text-[18px] font-medium text-gray-700 mb-2"
-              >
-                Enter your email address:
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full h-8 bg-slate-100 text-black border-2 border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 mb-4"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <button
-                type="submit"
-                className="w-1/2 bg-blue-800 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Submit
-              </button>
-            </form>
+            <div className="space-y-4 w-full">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-[16px] md:text-[14px] text-left font-medium text-gray-800 mb-1"
+                >
+                  Enter your Name:
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full h-10 px-3 text-black bg-slate-100 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring-indigo-500"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter your Name"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="country"
+                  className="block text-[16px] md:text-[14px] text-left font-medium text-gray-800 mb-1"
+                >
+                  Enter your Country:
+                </label>
+                <input
+                  type="text"
+                  id="country"
+                  className="w-full h-10 px-3 text-black bg-slate-100 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring-indigo-500"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  placeholder="Enter your country"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-[16px] text-left md:text-[14px] font-medium text-gray-800 mb-1"
+                >
+                  Enter your Email Address:
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full h-10 px-3 bg-slate-100 text-black border border-gray-300 rounded-md focus:border-indigo-500 focus:ring-indigo-500"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your Email"
+                  required
+                />
+              </div>
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  onClick={handleSubmit}
+                  className="w-full p-4 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

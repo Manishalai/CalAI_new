@@ -8,6 +8,7 @@ import Slider from "../components/slider/Slider";
 import { Aboutus } from "../components/Aboutus/Aboutus";
 import { Hero } from "../components/Hero/Hero";
 import AIProgramFinder from "../components/Right_program/RightProgram";
+import Gallery from "../components/imageGallery/Gallery";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       </div>
       <Navbar />
       <Hero />
+      <Gallery />
       <div id="aboutus-section">
         <Aboutus />
       </div>
@@ -28,6 +30,7 @@ const Home = () => {
         <Speaker />
       </div>
       <Slider />
+
       <div id="footer-section">
         <Footer />
       </div>

@@ -316,6 +316,15 @@ const Footer = () => {
                         Privacy Policy
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                        to="/StartTest"
+                        class="text-gray-700 transition hover:opacity-75"
+                      >
+                        {" "}
+                        CalAI-Test
+                      </Link>
+                    </li>
                   </ul>
                 </div>
                 {/* CERTIFICATION */}

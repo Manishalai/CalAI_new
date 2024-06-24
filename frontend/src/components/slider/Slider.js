@@ -10,7 +10,7 @@ import microsoft from "../../images/microsoft.webp";
 const Slider = () => {
   return (
     <>
-      <h2 class="px-4 text-[36px] font-bold text-[#074D8D] md:text-[20px]">
+      <h2 class="px-4 text-[36px] my-4 font-semibold text-[#074D8D] md:text-[20px]">
         AI Professionals Empowered by CalAI certifications, worked at
       </h2>
       <div id="slider" class="flex w-full whitespace-nowrap overflow-x-hidden ">

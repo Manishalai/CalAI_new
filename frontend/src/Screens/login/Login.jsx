@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
@@ -17,6 +17,8 @@ import { auth } from "../../firebase/firebase";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -51,7 +53,12 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("Signed Up:", user);
-        navigate("/");
+        navigate(from, {
+          state: {
+            courseName: location.state?.courseName,
+            price: location.state?.price,
+          },
+        });
       })
       .catch((error) => {
         console.error("Error Signing Up:", error);
@@ -64,7 +71,12 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("Logged In:", user);
-        navigate("/");
+        navigate(from, {
+          state: {
+            courseName: location.state?.courseName,
+            price: location.state?.price,
+          },
+        });
       })
       .catch((error) => {
         console.error("Error Logging In:", error);
@@ -78,7 +90,12 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log("Google Signed In:", user);
-        navigate("/");
+        navigate(from, {
+          state: {
+            courseName: location.state?.courseName,
+            price: location.state?.price,
+          },
+        });
       })
       .catch((error) => {
         console.error("Error with Google Sign In:", error);

@@ -20,6 +20,8 @@ import Profile from "./Screens/Profile/Profile.jsx";
 import Success from "./Screens/PostCheckout/Success.jsx";
 import Cancel from "./Screens/PostCheckout/Cancel.jsx";
 import { ContactUs } from "./components/contact/Contact.js";
+import StartTest from "./components/calAI_test/StartTest.js";
+import TestPage from "./components/calAI_test/ScholarshipTest.js";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -47,6 +49,8 @@ const App = () => {
         <Route path="/user/Profile" element={<Profile />} />
         <Route path="/Privacy_Policy" element={<PvP />} />
         <Route path="/Terms&Conditions" element={<TNC />} />
+        <Route path="/StartTest" element={<StartTest />} />
+        <Route path="/calAIscholarshipTestPage" element={<TestPage />} />
         <Route path="/Blog/Blog1" element={<Blog_AI />} />
         <Route path="/Blog/Blog2" element={<Blog_ES />} />
         <Route path="/Blog/Blog3" element={<Blog_ML />} />

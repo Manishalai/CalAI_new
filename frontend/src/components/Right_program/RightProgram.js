@@ -1,12 +1,13 @@
 // src/AIProgramFinder.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import SuitableProgram from "../popup/SuitableProgram";
 const AIProgramFinder = () => {
   const navigate = useNavigate();
   const [qualification, setQualification] = useState("");
   const [experience, setExperience] = useState("");
   const [errors, setErrors] = useState({ qualification: "", experience: "" });
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleQualificationChange = (event) => {
     setQualification(event.target.value);
@@ -33,17 +34,20 @@ const AIProgramFinder = () => {
     }
 
     if (!experience) {
-      newErrors.experience = "Please select your years of experience.";
+      newErrors.experience = "Please select your working field.";
       valid = false;
     }
 
     setErrors(newErrors);
 
     if (valid) {
-      if (experience === "tech") {
-        navigate("/AI_Developer");
-      } else navigate("/AI_Leader");
+      setShowPopup(true);
+      // navigate logic can be removed since we are showing a popup
     }
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
   };
 
   return (
@@ -53,12 +57,12 @@ const AIProgramFinder = () => {
       </h1>
       <div className="w-4/5 mx-auto p-6 bg-white rounded-lg">
         <p className="text-gray-700 mb-6 text-[18px]">
-          The California Institute of Artificial Intelligence (Cal-AI) is
-          committed to meeting the global demands of the AI skill gap and the
-          workforce shortage and takes the responsibility of developing the
-          right talent, potential, and abilities to be efficient and
-          well-qualified in Artificial Intelligence. The first step is to
-          identify the right AI program for you.
+          The California Artificial Intelligence Institute (CalAI) is committed
+          to meeting the global demands of the AI skill gap and the workforce
+          shortage and takes the responsibility of developing the right talent,
+          potential, and abilities to be efficient and well-qualified in
+          Artificial Intelligence. The first step is to identify the right AI
+          program for you.
         </p>
         <form onSubmit={handleSubmit} className="py-2">
           <div className="w-1/2 mb-4 md:w-full">
@@ -92,10 +96,10 @@ const AIProgramFinder = () => {
           <div className="w-1/2 mb-4 md:w-full">
             <label
               htmlFor="experience"
-              className="block text-left text-[18px] sfont-medium text-gray-700 mb-2"
+              className="block text-left text-[18px] font-medium text-gray-700 mb-2"
             >
               <strong>
-                Select Your Working Feild
+                Select Your Working Field{" "}
                 <span className="text-red-600"> *</span>
               </strong>
             </label>
@@ -121,6 +125,9 @@ const AIProgramFinder = () => {
           </button>
         </form>
       </div>
+      {showPopup && (
+        <SuitableProgram onClose={handleClosePopup} field={experience} />
+      )}
     </>
   );
 };
