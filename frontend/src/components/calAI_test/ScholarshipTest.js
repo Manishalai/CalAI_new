@@ -6,14 +6,19 @@ const TestPage = () => {
   const formContainerRef = useRef(null);
 
   useEffect(() => {
-    if (formContainerRef.current) {
+    const loadScript = () => {
       // Create a new script element
       const script = document.createElement("script");
-      script.src = "https://form.jotform.com/jsform/240043707195049";
+      script.src = "https://form.jotform.com/jsform/241665060573052";
       script.async = true;
 
       // Append the script to the form container
-      formContainerRef.current.appendChild(script);
+      if (
+        formContainerRef.current &&
+        !formContainerRef.current.querySelector("script")
+      ) {
+        formContainerRef.current.appendChild(script);
+      }
 
       // Clean up the script on component unmount
       return () => {
@@ -21,7 +26,10 @@ const TestPage = () => {
           formContainerRef.current.removeChild(script);
         }
       };
-    }
+    };
+
+    // Execute the script loading function
+    loadScript();
   }, []);
 
   return (
