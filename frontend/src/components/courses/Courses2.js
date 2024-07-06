@@ -1,4 +1,3 @@
-// src/components/Courses2.jsx
 import React from "react";
 import badge from "../../images/streamline_star-badge-solid.svg";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +7,7 @@ const Courses2 = ({ onApplyNow }) => {
 
   return (
     <>
-      <h1 className="text-[36px] text-[#074D8D] font-semibold p-5 lg:text-2xl">
+      <h1 className="text-[36px] text-[#074D8D] text-center font-semibold p-5 lg:text-2xl">
         Our Comprehensive Program
       </h1>
       <div
@@ -36,7 +35,7 @@ const Courses2 = ({ onApplyNow }) => {
           </div>
           <div className="flex text-[14px] justify-evenly mt-4">
             <p>Self Paced Content</p>
-            <p>5-16 Weeks</p>
+            <p>9-16 Weeks</p>
             <p>Technical</p>
           </div>
           <div className="flex mt-4 justify-end">
@@ -49,14 +48,13 @@ const Courses2 = ({ onApplyNow }) => {
             </button>
             <button
               id="applyNow"
-              className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
+              className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
-                onApplyNow(
-                  "Certified Artificial Intelligence Developer (CAID TM)"
-                )
+                onApplyNow("Certified Artificial Intelligence Developer (CAID)")
               }
             >
-              Apply Now
+              <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-[2000ms] ease-in-out transform translate-x-[-150%] group-hover:translate-x-[150%]"></span>
+              <span className="relative z-10">Apply Now</span>
             </button>
           </div>
         </div>
@@ -82,7 +80,7 @@ const Courses2 = ({ onApplyNow }) => {
           </div>
           <div className="flex text-[14px] justify-evenly mt-4">
             <p>Self Paced Content</p>
-            <p>8-24 Weeks</p>
+            <p>9-16 Weeks</p>
             <p>Non-Technical</p>
           </div>
           <div className="flex mt-4 justify-end">
@@ -95,18 +93,19 @@ const Courses2 = ({ onApplyNow }) => {
             </button>
             <button
               id="applyNow"
-              className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
+              className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
-                onApplyNow("Certified Artificial Intelligence Leader (CAIL TM)")
+                onApplyNow("Certified Artificial Intelligence Leader (CAIL)")
               }
             >
-              Apply Now
+              <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-[2000ms] ease-in-out transform translate-x-[-150%] group-hover:translate-x-[150%]"></span>
+              <span className="relative z-10">Apply Now</span>
             </button>
           </div>
         </div>
 
         {/* Course 3 */}
-        <div className="card flex flex-col w-[400px] relative shadow-xl rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-2xl border border-black lg:w-full">
+        {/* <div className="card flex flex-col w-[400px] relative shadow-xl rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-2xl border border-black lg:w-full">
           <img
             className="absolute h-[55px] left-1 top-10"
             src={badge}
@@ -139,17 +138,16 @@ const Courses2 = ({ onApplyNow }) => {
             </button>
             <button
               id="applyNow"
-              className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
+              className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
-                onApplyNow(
-                  "Certified Artificial Intelligence Manager (CAIM TM)"
-                )
+                onApplyNow("Certified Artificial Intelligence Manager (CAIM)")
               }
             >
-              Apply Now
+              <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-[2000ms] ease-in-out transform translate-x-[-150%] group-hover:translate-x-[150%]"></span>
+              <span className="relative z-10">Apply Now</span>
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

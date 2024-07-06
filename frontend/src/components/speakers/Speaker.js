@@ -7,7 +7,7 @@ const Speaker = () => {
   return (
     <>
       <div id="testimonials" class="p-5">
-        <h2 class="text-[36px] text-[#074D8D] font-semibold p-5 lg:text-2xl">
+        <h2 class="text-[36px] text-[#074D8D] font-semibold p-5 pt-2 mt-0 lg:text-2xl">
           Customer Speak
         </h2>
         <div class="flex justify-around md:flex-col md:gap-4">
@@ -19,7 +19,7 @@ const Speaker = () => {
             />
             <div class="flex gap-5 text-[14px] font-bold text-[#074D8D]  md:text-center md:ml-6 ">
               <h2>Joseph Wilson</h2>
-              <h2>AI Lead Program</h2>
+              <h2>Certified AI Leader</h2>
             </div>
             <p class="text-center text-[14px]">
               The CalAI program has been a game-changer, providing a profound
@@ -38,7 +38,7 @@ const Speaker = () => {
             />
             <div class="flex gap-5 text-[14px] font-bold text-[#074D8D] md:text-center  md:ml-8">
               <h2>Aiyana Thomas</h2>
-              <h2>AI Leadership Program</h2>
+              <h2>Certified AI Leader</h2>
             </div>
             <p class="text-center text-[14px]">
               In my 7 years of Data Analytics experience, I was tasked with an
@@ -58,7 +58,7 @@ const Speaker = () => {
             />
             <div class="flex gap-5 text-[14px] font-bold text-[#074D8D]  md:text-center md:ml-8">
               <h2>Mike Williams</h2>
-              <h2>AI Developer Program</h2>
+              <h2>Certified AI Developer</h2>
             </div>
             <p class="text-center text-[14px]">
               The CalAI program provided me with valuable insights into

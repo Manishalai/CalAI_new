@@ -4,8 +4,31 @@ import badge from "../../images/badge.svg";
 import vedios from "../../images/videos.svg";
 import books from "../../images/books.svg";
 import terminal from "../../images/terminal-window-line.svg";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const AIM_content = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+  }, []);
+  const handleApplyNowClick = (coursePath, courseName, price) => {
+    if (currentUser) {
+      navigate("/checkout", {
+        state: { courseName, price }, // Pass course details
+      });
+    } else {
+      navigate("/login&signup", {
+        state: { from: `/checkout`, courseName, price },
+      });
+    }
+  };
   return (
     <>
       <div id="pag2">
@@ -205,18 +228,25 @@ const AIM_content = () => {
 
           <button
             id="applyNow"
-            class="mt-4 ml-7 bg-[#074D8D] text-white p-2 text-lg font-bold hover:bg-blue-500"
+            className="relative overflow-hidden mt-4 ml-7 bg-[#074D8D] text-white p-2 text-lg font-bold group"
+            onClick={() =>
+              handleApplyNowClick(
+                "/register",
+                "Certified Artificial Intelligence Manager (CAIM)",
+                499
+              )
+            }
           >
-            APPLY NOW
+            <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-[1500ms] ease-in-out transform translate-x-[-150%] group-hover:translate-x-[150%]"></span>
+            <span className="relative z-10">APPLY NOW</span>
           </button>
 
           <div class="bg-[#e7e7e7] mx-4 relative mt-4 p-4">
             <h1 class="text-2xl font-bold">
-              Program Fee:$499 Limited Slots available for CalAI Sholarship
-              Program.Hurry up and{" "}
-              <a class="text-blue-700" href="Starttest.html">
-                Apply Now
-              </a>
+              Program Fee: $499. Limited Offer: Apply now to avail a 10% Early
+              bird discount with code{" "}
+              <strong style={{ color: "blue" }}>EarlyBird10</strong> at
+              checkout!
             </h1>
           </div>
 
@@ -238,15 +268,15 @@ const AIM_content = () => {
               </li>
               <li class="flex gap-5">
                 <img class="h-[30px]" src={books} alt="" />
-                Comprehensive e-books covering each module in detail
+                Exclusive Downlodable Study Materials
               </li>
               <li class="flex gap-5">
                 <img class="h-[30px]" src={vedios} alt="" />
                 Self paced videos designed by world renowned AI Experts
               </li>
               <li class="flex gap-5">
-                <img class="h-[30px]" src={badge} alt="" /> Sharable digital
-                Badge
+                <img class="h-[30px]" src={badge} alt="" /> World Class
+                Certification
               </li>
             </ul>
           </div>

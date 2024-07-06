@@ -6,8 +6,34 @@ import books from "../../images/books.svg";
 import terminal from "../../images/terminal-window-line.svg";
 import star from "../../images/Star 1.png";
 import h_star from "../../images/4.8.png";
+import instructor from "../../images/1679927695375.jpg";
+import LinkedInLogo from "../../images/linkedin-2815969.jpg";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const AIL_content = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+  }, []);
+  const handleApplyNowClick = (coursePath, courseName, price) => {
+    if (currentUser) {
+      navigate("/checkout", {
+        state: { courseName, price }, // Pass course details
+      });
+    } else {
+      navigate("/login&signup", {
+        state: { from: `/checkout`, courseName, price },
+      });
+    }
+  };
   return (
     <>
       <div id="pag2">
@@ -499,16 +525,68 @@ const AIL_content = () => {
 
           <button
             id="applyNow"
-            class="mt-4 ml-7 bg-[#074D8D] text-white p-2 text-lg font-bold hover:bg-blue-500"
+            className="relative overflow-hidden mt-4 ml-7 bg-[#074D8D] text-white p-2 text-lg font-bold group"
+            onClick={() =>
+              handleApplyNowClick(
+                "/register",
+                "Certified Artificial Intelligence Leader (CAIL)",
+                1200
+              )
+            }
           >
-            APPLY NOW
+            <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-[1500ms] ease-in-out transform translate-x-[-150%] group-hover:translate-x-[150%]"></span>
+            <span className="relative z-10">APPLY NOW</span>
           </button>
           <div class="bg-[#e7e7e7] mx-4 relative mt-4 p-4">
             <h1 class="text-2xl font-bold">
-              Program Fee:$699. Limited Offer: Apply now to avail a 10% Early
+              Program Fee: $1200. Limited Offer: Apply now to avail a 10% Early
               bird discount with code{" "}
-              <strong style={{ color: "blue" }}>Early10</strong> at checkout!
+              <strong style={{ color: "blue" }}>EarlyBird10</strong> at
+              checkout!
             </h1>
+          </div>
+
+          <div className="bg-slate-100 flex flex-row md:flex-col mx-4 rounded-md shadow-md relative my-4 p-4">
+            <div className="w-1/2 md:w-full flex flex-col p-2 items-center">
+              <img
+                src={instructor} // Replace with the actual URL or import of the instructor's image
+                alt="Instructor"
+                className="w-64 h-64 rounded-full object-cover shadow-lg mb-4"
+              />
+              <Link to="https://www.linkedin.com/in/dr-miquel-noguer-i-alonso-7242345/">
+                <button className="flex items-center justify-between bg-white text-black px-4 py-2 rounded-md shadow-md hover:bg-white/55">
+                  <img
+                    src={LinkedInLogo} // Replace with the actual path to the LinkedIn logo
+                    alt="LinkedIn"
+                    className="w-10 h-10 mr-2"
+                  />
+                  <div className="flex flex-col items-center">
+                    <span className="text-sm font-bold">LinkedIn Activity</span>
+                    <span className="text-xs">40k+ followers</span>{" "}
+                    {/* Replace with actual follower count */}
+                  </div>
+                </button>
+              </Link>
+            </div>
+            <div className="w-full p-4 flex flex-col justify-center">
+              <h2 className="text-xl md:text-xl font-bold mb-1">
+                Meet Your Instructor
+              </h2>
+              <h1 className="text-4xl text-[#074D8D] font-extrabold mb-4">
+                Dr. Miquel Noguer
+              </h1>
+              <p className="text-lg">
+                Dr. Miguel Noguer i Alonso is the Chief Development Officer at
+                Global AI, a Visiting Scholar at NYU Courant Institute, and a
+                Faculty Lecturer at NYU Tandon School of Engineering. He also
+                serves on the ACM Europe Technology Policy Committee and the
+                advisory boards of the FDP Institute and CFA Society New York.
+                Previously, he held roles at UBS as Executive Director and at
+                Andbank as Chief Investment Officer. Additionally, he was an
+                Adjunct Professor at Columbia University and taught at NYU Stern
+                and Imperial Bussiness School.
+              </p>
+            </div>
           </div>
 
           <div class=" mx-4 relative">
@@ -529,15 +607,15 @@ const AIL_content = () => {
               </li>
               <li class="flex gap-5">
                 <img class="h-[30px]" src={books} alt="" />
-                Comprehensive e-books covering each module in detail
+                Exclusive Downlodable Study Materials
               </li>
               <li class="flex gap-5">
                 <img class="h-[30px]" src={vedios} alt="" />
                 Self paced videos designed by world renowned AI Experts
               </li>
               <li class="flex gap-5">
-                <img class="h-[30px]" src={badge} alt="" /> Sharable digital
-                Badge
+                <img class="h-[30px]" src={badge} alt="" /> World Class
+                Certification
               </li>
             </ul>
           </div>

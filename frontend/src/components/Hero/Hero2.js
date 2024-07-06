@@ -1,30 +1,46 @@
 import React from "react";
-import banner from "../../images/Main_Banner_.svg";
+import banner from "../../images/Main_banner.jpg";
 import Brochure from "../forms/Brochure";
 
 export const Hero2 = () => {
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
+  const scrollTodiv = (divId) => {
+    const element = document.getElementById(divId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
   return (
-    <div>
-      <section
-        className="relative w-full bg-cover bg-center bg-no-repeat md:h-[150px]"
-        style={{ backgroundImage: `url(${banner})` }}
-      >
-        <div className="relative mx-auto max-w-screen-xl py-6 md:hidden">
-          <div className="relative mt-[45vh] pl-[58vw] 3xl:pl-[68vw] w-full flex flex-col gap-6">
-            <div className="flex gap-4 text-center mx-1 justify-around">
-              <button className="block w-[280px] rounded bg-white px-12 py-3 text-lg font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500">
-                <Brochure />
-              </button>
-            </div>
-          </div>
+    <div
+      className="relative w-full bg-cover bg-center bg-no-repeat h-[500px] md:h-[400px] lg:h-[600px]"
+      style={{ backgroundImage: `url(${banner})` }}
+    >
+      {/* Text container */}
+      <div className="absolute inset-0 flex flex-col items-start justify-center text-left p-4 bg-black bg-opacity-20">
+        <div className="text-white max-w-5xl flex flex-col items-start ml-4 md:ml-4 lg:ml-12">
+          <h1 className="text-6xl md:text-3xl p-4 lg:text-5xl font-bold mb-4">
+            Elevate Your Knowledge with{" "}
+            <span className="block md:inline py-4">
+              Our
+              <span className="text-red-500"> Cutting-Edge</span>
+            </span>{" "}
+            <p className="block md:inline">
+              <span className="text-yellow-500 py-2">AI</span> Courses!
+            </p>
+          </h1>
+          {/* Button */}
+          <button
+            onClick={() => {
+              scrollTodiv("courses-section");
+            }}
+            className="relative overflow-hidden border border-red-500 bg-red-500 text-white font-bold py-2 px-4 mt-2 ml-20 rounded text-lg md:text-lg group"
+          >
+            <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-[1000ms] ease-in-out transform translate-x-[-150%] group-hover:translate-x-[150%] group-hover:animate-shine"></span>
+            <span className="relative z-10">
+              <Brochure />
+            </span>
+          </button>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

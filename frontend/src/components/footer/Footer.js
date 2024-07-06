@@ -4,6 +4,8 @@ import { firestore } from "../../firebase/firebase"; // Ensure this path matches
 import { collection, addDoc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { handleSuccess } from "../../notifications/notify";
+import axios from "axios";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -15,18 +17,84 @@ const Footer = () => {
       return;
     }
 
+    const apiKey = process.env.REACT_APP_BREVO_API_KEY;
+    const listId = 96;
+
     try {
+      // Check if the email is already in the list
+      const checkResponse = await axios.get(
+        `https://api.brevo.com/v3/contacts/${email}`,
+        {
+          headers: {
+            "api-key": apiKey,
+          },
+        }
+      );
+      console.log(checkResponse);
+      if (checkResponse.data) {
+        // Delete the existing contact
+        await axios.delete(`https://api.brevo.com/v3/contacts/${email}`, {
+          headers: {
+            "api-key": apiKey,
+          },
+        });
+      }
+
+      // Add the contact back
+      const response = await axios.post(
+        "https://api.brevo.com/v3/contacts",
+        {
+          email: email,
+          listIds: [listId],
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "api-key": apiKey,
+          },
+        }
+      );
+      console.log(JSON.parse(response.config.data).listIds[0]);
+      handleSuccess(response);
       await addDoc(collection(firestore, "newsLetter_subscription"), {
         email: email,
         timestamp: new Date(),
+        brevo_id: response.data.id,
       });
-      toast.success("Subscribed successfully!");
-      setEmail("");
+
+      setEmail(""); // Clear the input after success
     } catch (err) {
-      console.error("Error adding document: ", err);
-      toast.error("Failed to subscribe. Please try again.");
+      if (err.response.status === 404) {
+        // Add the contact back
+        const response = await axios.post(
+          "https://api.brevo.com/v3/contacts",
+          {
+            email: email,
+            listIds: [listId],
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "api-key": apiKey,
+            },
+          }
+        );
+        console.log(response);
+        handleSuccess(response);
+        await addDoc(collection(firestore, "newsLetter_subscription"), {
+          email: email,
+          timestamp: new Date(),
+          brevo_id: response.data.id,
+        });
+
+        setEmail(""); // Clear the input after success
+      } else {
+        console.error("Error subscribing to Brevo: ", err);
+        toast.error("An unexpected error occured");
+      }
     }
   };
+
   return (
     <>
       <div id="footer">
@@ -274,30 +342,55 @@ const Footer = () => {
                     </details>
                   </div>
                 </div>
+                {/* PAYMENTS LINKS */}
+                <div class="flex-col">
+                  <p class="font-medium text-lg text-gray-900">
+                    Payments Links
+                  </p>
+                  <ul class="mt-6 space-y-4 text-sm">
+                    <li>
+                      <Link
+                        to="/ExpressCheckout"
+                        class="text-gray-700 transition hover:opacity-75"
+                      >
+                        {" "}
+                        Express-Checkout
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/PayPal/270"
+                        class="text-gray-700 transition hover:opacity-75"
+                      >
+                        {" "}
+                        PayPal-270
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/PayPal/400"
+                        class="text-gray-700 transition hover:opacity-75"
+                      >
+                        {" "}
+                        PayPal-400
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/PayPal/480"
+                        class="text-gray-700 transition hover:opacity-75"
+                      >
+                        {" "}
+                        PayPal-480
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
                 {/* QUICK LINKS */}
                 <div class="flex-col">
                   <p class="font-medium text-lg text-gray-900">Quick Links</p>
 
                   <ul class="mt-6 space-y-4 text-sm">
-                    <li>
-                      <a
-                        href="AIDpayment.html"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {" "}
-                        Registration Fee CAID{" "}
-                      </a>
-                    </li>
-
-                    <li>
-                      <a
-                        href="AILpayement.html"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {" "}
-                        Registration Fee CAIL
-                      </a>
-                    </li>
                     <li>
                       <Link
                         to="/Terms&Conditions"
@@ -323,6 +416,24 @@ const Footer = () => {
                       >
                         {" "}
                         CalAI-Test
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/IntrestForm"
+                        class="text-gray-700 transition hover:opacity-75"
+                      >
+                        {" "}
+                        Intrest-Form
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/partnerWithUs"
+                        class="text-gray-700 transition hover:opacity-75"
+                      >
+                        {" "}
+                        Partner With Us
                       </Link>
                     </li>
                   </ul>
@@ -429,9 +540,9 @@ const Footer = () => {
             {/* COPYRIGHT */}
             <div class="mt-8 border-t border-gray-100 pt-8">
               <div class="sm:flex sm:justify-between">
-                <p class="text-xs text-gray-500">
-                  &copy; 2022. California Artifical Intelligence Institute.All
-                  Rights Reserved
+                <p class="text-xs text-center text-gray-800">
+                  &copy; 2022-2024. California Artifical Intelligence Institute.
+                  All Rights Reserved
                 </p>
               </div>
             </div>

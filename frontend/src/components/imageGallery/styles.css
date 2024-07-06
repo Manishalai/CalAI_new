@@ -1,0 +1,10 @@
+/* styles.css */
+.grayscale-icon {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease-in-out, transform 0.1s ease-in-out;
+  }
+  
+  .grayscale-icon:hover {
+    filter: none;
+  }
+  

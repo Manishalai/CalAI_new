@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { firestore } from "../../firebase/firebase"; // Ensure this path matches where your firebase.js is located
 import { collection, addDoc } from "firebase/firestore";
+import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
+import { handleSuccess } from "../../notifications/notify";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
-const url = "https://new-cal-ai.vercel.app/brochure.pdf";
 const SelfVedio = () => {
   const [showForm, setShowForm] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [country, setCountry] = useState("");
+  const [phone, setPhone] = useState("");
 
   const handleButtonClick = () => {
     setShowForm(true);
@@ -19,49 +22,104 @@ const SelfVedio = () => {
     setShowForm(false);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handlePhoneChange = (value, phone) => {
+    setPhone(value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !name || !phone) {
+      toast.error("All fields required");
+      return;
+    }
+
+    const apiKey = process.env.REACT_APP_BREVO_API_KEY;
+    const listId = 98;
 
     try {
+      // Check if the email is already in the list
+      const checkResponse = await axios.get(
+        `https://api.brevo.com/v3/contacts/${email}`,
+        {
+          headers: {
+            "api-key": apiKey,
+          },
+        }
+      );
+      console.log(checkResponse);
+      if (checkResponse.data) {
+        // Delete the existing contact
+        await axios.delete(`https://api.brevo.com/v3/contacts/${email}`, {
+          headers: {
+            "api-key": apiKey,
+          },
+        });
+      }
+
+      const response = await axios.post(
+        "https://api.brevo.com/v3/contacts",
+        {
+          email: email,
+          attributes: {
+            FIRSTNAME: name,
+            PHONE: phone,
+          },
+          listIds: [listId],
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "api-key": apiKey,
+          },
+        }
+      );
+
+      handleSuccess(response);
       await addDoc(collection(firestore, "brochure_download"), {
         email: email,
         name: name,
-        country: country,
+        phone: phone,
         timestamp: new Date(),
+        brevo_id: response.data.id,
       });
-      initiateDownload(url);
-      toast.success("Brochure started downloading");
       setEmail("");
       setName("");
-      setCountry("");
-    } catch (err) {
-      console.error("Error Do: ", err);
-      toast.error("Failed to download Brochure. Please try again.");
+      setPhone("");
+    } catch (error) {
+      console.log("Error", error);
+      if (error.response.status === 404) {
+        const response = await axios.post(
+          "https://api.brevo.com/v3/contacts",
+          {
+            email: email,
+            attributes: {
+              FIRSTNAME: name,
+              PHONE: phone,
+            },
+            listIds: [listId],
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "api-key": apiKey,
+            },
+          }
+        );
+
+        handleSuccess(response);
+        await addDoc(collection(firestore, "brochure_download"), {
+          email: email,
+          name: name,
+          phone: phone,
+          timestamp: new Date(),
+          brevo_id: response.data.id,
+        });
+        setEmail("");
+        setName("");
+        setPhone("");
+      } else toast.error("An unexpected error occured.");
     }
     setShowForm(false);
-  };
-
-  const initiateDownload = (url) => {
-    // Extract the filename from the URL
-    const fileName = url.split("/").pop();
-
-    // Create an anchor element
-    const aTag = document.createElement("a");
-
-    // Set the href attribute to the file URL
-    aTag.href = url;
-
-    // Set the download attribute with the filename
-    aTag.setAttribute("download", fileName);
-
-    // Append the anchor to the body
-    document.body.appendChild(aTag);
-
-    // Trigger a click on the anchor to start the download
-    aTag.click();
-
-    // Remove the anchor from the DOM
-    document.body.removeChild(aTag);
   };
 
   return (
@@ -102,21 +160,19 @@ const SelfVedio = () => {
               </div>
               <div>
                 <label
-                  htmlFor="country"
+                  htmlFor="phoneNumber"
                   className="block text-[16px] md:text-[14px] text-left font-medium text-gray-800 mb-1"
                 >
-                  Enter your Country:
+                  Phone Number <span className="text-red-600">*</span> :
                 </label>
-                <input
-                  type="text"
-                  id="country"
+                <PhoneInput
+                  international
+                  defaultCountry="US"
+                  value={phone}
+                  onChange={handlePhoneChange}
                   className="w-full h-10 px-3 text-black bg-slate-100 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring-indigo-500"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                  placeholder="Enter your country"
-                  required
                 />
-              </div>
+              </div>{" "}
               <div>
                 <label
                   htmlFor="email"
@@ -147,7 +203,6 @@ const SelfVedio = () => {
           </div>
         </div>
       )}
-      <ToastContainer />
     </div>
   );
 };

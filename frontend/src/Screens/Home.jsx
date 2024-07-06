@@ -19,11 +19,11 @@ const Home = () => {
       <Navbar />
       <Hero />
       <Gallery />
-      <div id="aboutus-section">
-        <Aboutus />
-      </div>
       <div id="courses-section">
         <Courses />
+      </div>
+      <div id="aboutus-section">
+        <Aboutus />
       </div>
       <AIProgramFinder />
       <div id="speakers-section">

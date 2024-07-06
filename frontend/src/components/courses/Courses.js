@@ -47,9 +47,9 @@ const Courses = () => {
           <button className="absolute p-1 h-[28px] text-[18px] rounded-tr-lg right-0 bg-[#CBA135] font-bold">
             $1000
           </button>
-          <div className="flex flex-col text-center gap-3 items-center justify-center flex-grow">
-            <h1 className="text-[#074D8D] text-[20px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
-              Certified Artificial Intelligence Developer (CAID <sup>TM</sup>)
+          <div className="flex flex-col text-center items-center justify-center flex-grow">
+            <h1 className="text-[#074D8D] text-[18px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
+              Certified Artificial Intelligence Developer (CAID<sup>TM</sup>)
             </h1>
             <p className="px-12 ml-6">
               Enhance AI expertise with cutting-edge modules validated by top
@@ -58,7 +58,7 @@ const Courses = () => {
           </div>
           <div className="flex text-[14px] justify-evenly mt-4">
             <p>Self Paced Content</p>
-            <p>5-16 Weeks</p>
+            <p>9-24 Weeks</p>
             <p>Technical</p>
           </div>
           <div className="flex mt-4 justify-end">
@@ -71,16 +71,17 @@ const Courses = () => {
             </button>
             <button
               id="applyNow"
-              className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
+              className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
                 handleApplyNowClick(
                   "/register",
-                  "Certified Artificial Intelligence Developer (CAID TM)",
-                  899
+                  "Certified Artificial Intelligence Developer (CAID)",
+                  1000
                 )
               }
             >
-              Apply Now
+              <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-[1200ms] ease-in-out transform translate-x-[-150%] group-hover:translate-x-[150%] group-hover:animate-shine"></span>
+              <span className="relative z-10">Apply Now</span>
             </button>
           </div>
         </div>
@@ -96,17 +97,17 @@ const Courses = () => {
             $1200
           </button>
           <div className="flex flex-col text-center items-center justify-center flex-grow">
-            <h1 className="text-[#074D8D] text-[20px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
+            <h1 className="text-[#074D8D] text-[18px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
               Certified Artificial Intelligence Leader (CAIL<sup>TM</sup>)
             </h1>
-            <p className="px-12 ml-4">
+            <p className="px-12 ml-6">
               An emerging leadership program offering a holistic, strategic
               implementation of AI across sectors
             </p>
           </div>
           <div className="flex text-[14px] justify-evenly mt-4">
             <p>Self Paced Content</p>
-            <p>8-24 Weeks</p>
+            <p>9-16 Weeks</p>
             <p>Non-Technical</p>
           </div>
           <div className="flex mt-4 justify-end">
@@ -119,16 +120,17 @@ const Courses = () => {
             </button>
             <button
               id="applyNow"
-              className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
+              className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
                 handleApplyNowClick(
                   "/register",
-                  "Certified Artificial Intelligence Leader (CAIL TM)",
-                  999
+                  "Certified Artificial Intelligence Leader (CAIL)",
+                  1200
                 )
               }
             >
-              Apply Now
+              <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-[1200ms] ease-in-out transform translate-x-[-150%] group-hover:translate-x-[150%] group-hover:animate-shine"></span>
+              <span className="relative z-10">Apply Now</span>
             </button>
           </div>
         </div>
@@ -144,7 +146,7 @@ const Courses = () => {
             $499
           </button>
           <div className="flex flex-col text-center items-center justify-center flex-grow">
-            <h1 className="text-[#074D8D] text-[20px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
+            <h1 className="text-[#074D8D] text-[18px] w-[300px] font-semibold lg:text-[17px] lg:text-center lg:w-[200px]">
               Certified Artificial Intelligence Manager (CAIM <sup>TM</sup>)
             </h1>
             <p className="px-12 ml-6">
@@ -154,7 +156,7 @@ const Courses = () => {
           </div>
           <div className="flex text-[14px] justify-evenly mt-4">
             <p>Self Paced Content</p>
-            <p>8-24 Weeks</p>
+            <p>9-16 Weeks</p>
             <p>Non-Technical</p>
           </div>
           <div className="flex mt-4 justify-end">
@@ -167,16 +169,17 @@ const Courses = () => {
             </button>
             <button
               id="applyNow"
-              className="w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px]"
+              className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
                 handleApplyNowClick(
                   "/register",
-                  "Certified Artificial Intelligence Manager (CAIM TM)",
+                  "Certified Artificial Intelligence Manager (CAIM)",
                   499
                 )
               }
             >
-              Apply Now
+              <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-[1200ms] ease-in-out transform translate-x-[-150%] group-hover:translate-x-[150%] group-hover:animate-shine"></span>
+              <span className="relative z-10">Apply Now</span>
             </button>
           </div>
         </div>
@@ -184,5 +187,4 @@ const Courses = () => {
     </>
   );
 };
-
 export default Courses;

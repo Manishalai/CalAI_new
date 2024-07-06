@@ -22,6 +22,14 @@ import Cancel from "./Screens/PostCheckout/Cancel.jsx";
 import { ContactUs } from "./components/contact/Contact.js";
 import StartTest from "./components/calAI_test/StartTest.js";
 import TestPage from "./components/calAI_test/ScholarshipTest.js";
+import IntrestForm from "./components/calAI_test/IntrestForm.js";
+import PartnerWithUs from "./Screens/Partner/partner.js";
+import AboutUs from "./Screens/AboutUs/AboutUs.js";
+import CertificationPage from "./Screens/Certifications/Certifications.js";
+import ExpressCheckout from "./Screens/Checkout/Express_Checkout.jsx";
+import PayPal270 from "./Screens/Checkout/PayPal270.jsx";
+import PayPal400 from "./Screens/Checkout/PayPal400.jsx";
+import PayPal480 from "./Screens/Checkout/PayPal480.jsx";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -50,6 +58,7 @@ const App = () => {
         <Route path="/Privacy_Policy" element={<PvP />} />
         <Route path="/Terms&Conditions" element={<TNC />} />
         <Route path="/StartTest" element={<StartTest />} />
+        <Route path="/IntrestForm" element={<IntrestForm />} />
         <Route path="/calAIscholarshipTestPage" element={<TestPage />} />
         <Route path="/Blog/Blog1" element={<Blog_AI />} />
         <Route path="/Blog/Blog2" element={<Blog_ES />} />
@@ -57,6 +66,13 @@ const App = () => {
         <Route path="/Blog/Blog4" element={<Blog_MP />} />
         <Route path="/Blog/Blog5" element={<Blog_PF />} />
         <Route path="/Blog/Blog6" element={<Blog_UC />} />
+        <Route path="/partnerWithUs" element={<PartnerWithUs />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/Certifications" element={<CertificationPage />} />
+        <Route path="/ExpressCheckout" element={<ExpressCheckout />} />
+        <Route path="/PayPal/270" element={<PayPal270 />} />
+        <Route path="/PayPal/400" element={<PayPal400 />} />
+        <Route path="/PayPal/480" element={<PayPal480 />} />
       </Routes>
     </Router>
   );
