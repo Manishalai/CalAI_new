@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.163626cb.css",
+    "main.js": "/static/js/main.c08ea966.js",
+    "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
+    "static/media/banner.svg": "/static/media/banner.4fb6d7d98a669587e9147d3567290e7b.svg",
+    "static/media/Rectangle 23.svg": "/static/media/Rectangle 23.302e4389a8c38be50b383e3916c726af.svg",
+    "static/media/login.svg": "/static/media/login.c2cec7d9ebb99fba8b0c49e054e0de41.svg",
+    "static/media/register.svg": "/static/media/register.e32cd599fa83924f0c3e2a11e14e94f4.svg",
+    "static/media/Email support.png": "/static/media/Email support.a30e62a3a1c4296f5252.png",
+    "static/media/1689046864317.avif": "/static/media/1689046864317.72490812233bfee493aa.avif",
+    "static/media/Rectangle 21.svg": "/static/media/Rectangle 21.c06f945bc32a57c135eb97b27ec35a5e.svg",
+    "static/media/icon1 1 1.svg": "/static/media/icon1 1 1.3f52487b8c225730c59efebcab2ea5c9.svg",
+    "static/media/Cal_ai_orign-removebg-preview [MConverter.eu].avif": "/static/media/Cal_ai_orign-removebg-preview [MConverter.eu].7443fbfb37683e526e78.avif",
+    "static/media/Mask group 2 1.svg": "/static/media/Mask group 2 1.e0e2b2dc84f55e20ce8e96d2597d2e5b.svg",
+    "static/media/codebright.webp": "/static/media/codebright.d94cc98e08838da6c2d1.webp",
+    "static/media/certificate.svg": "/static/media/certificate.17516f0f0aae4149b55e4d69d9d9fd86.svg",
+    "static/media/streamline_star-badge-solid.svg": "/static/media/streamline_star-badge-solid.dd5022ac51021ae55393a7ad0617baaf.svg",
+    "static/media/xerox.webp": "/static/media/xerox.324530c31799c476a579.webp",
+    "static/media/brain.svg": "/static/media/brain.f6937f2ff9dc9e188577d9737c4a6264.svg",
+    "static/media/sap.webp": "/static/media/sap.94823eecf539bca5d797.webp",
+    "static/media/books.svg": "/static/media/books.a47e09e6808ce5785494420b1b2f95d2.svg",
+    "static/media/techmahindra.webp": "/static/media/techmahindra.af2dbd61a46360b21872.webp",
+    "static/media/google.webp": "/static/media/google.57cd43761418e6a292e8.webp",
+    "static/media/intuit.webp": "/static/media/intuit.f18d3eb909406f1ef052.webp",
+    "static/media/microsoft.webp": "/static/media/microsoft.20f6c3a1d9a1f9fd2367.webp",
+    "static/media/case-study.svg": "/static/media/case-study.b861c2f73407d4569ffb19e80f9a4abf.svg",
+    "static/media/videos.svg": "/static/media/videos.6fc56f5df1e109d63e9f325bf1c0b1c1.svg",
+    "static/media/badge.svg": "/static/media/badge.acc57fa17a28ee84933a920b919ddc95.svg",
+    "index.html": "/index.html",
+    "static/media/terminal-window-line.svg": "/static/media/terminal-window-line.6efd798f34975c24118d9b79c86bb81c.svg",
+    "main.163626cb.css.map": "/static/css/main.163626cb.css.map",
+    "main.c08ea966.js.map": "/static/js/main.c08ea966.js.map",
+    "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.163626cb.css",
+    "static/js/main.c08ea966.js"
+  ]
+}
