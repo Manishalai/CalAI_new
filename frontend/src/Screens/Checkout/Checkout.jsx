@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { firestore } from "../../firebase/firebase";
+import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-toastify";
 import Aiyana from "../../images/Rectangle 23.svg";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import axios from "axios";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,6 +23,7 @@ const Checkout = () => {
   const [discount, setDiscount] = useState(0);
   const [couponApplied, setCouponApplied] = useState(false);
   const [invalidCoupon, setInvalidCoupon] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -93,6 +97,10 @@ const Checkout = () => {
       toast.error("Phone number is required.");
       return false;
     }
+    if (!termsAccepted) {
+      toast.error("Please accept our terms and conditions");
+      return false;
+    }
     return true;
   };
 
@@ -102,28 +110,52 @@ const Checkout = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
+      const response = await axios.post(
         "https://cal-ai-new-server.vercel.app/create-order",
         {
-          method: "POST",
+          amount: price * (1 - discount),
+          program: courseName,
+          email: email,
+        },
+        {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            amount: price * (1 - discount),
-            program: courseName,
-          }),
         }
       );
 
-      if (response.ok) {
-        const data = await response.json();
+      if (response.status === 200) {
+        const data = response.data;
         const approvalURL = data.approvalUrl;
 
         if (approvalURL) {
+          // Construct the transaction data
+          const transactionData = {
+            name: name,
+            email: email,
+            courseName: courseName,
+            price: price,
+            coupon: coupon,
+            phone: phone,
+            timestamp: new Date().toLocaleString("en-US", {
+              timeZone: "Asia/Kolkata",
+            }),
+          };
+
+          const docRef = doc(firestore, "before_transaction", email);
+          await setDoc(docRef, {
+            timestamp: serverTimestamp(),
+          });
+          // Construct the correct Firestore references
+          const doccollRef = doc(firestore, `before_transaction/${email}`);
+          const transactionRef = doc(collection(doccollRef, "transactions"));
+
+          await setDoc(transactionRef, transactionData);
+
           window.location.href = approvalURL;
         } else {
           console.error("Approval URL not found in response.");
+          toast.error("Approval URL not found.");
         }
       } else {
         console.error("Payment initiation failed.");
@@ -142,19 +174,19 @@ const Checkout = () => {
       <Header />
       <div className="checkout-container p-5 bg-gray-100 flex items-center justify-center">
         {/* parent container */}
-        <div className="bg-white flex p-2 flex-row md:flex-col rounded-md shadow-lg items-stretch justify-between">
+        <div className="bg-white flex flex-row md:flex-col rounded-md shadow-lg items-stretch justify-between w-full max-w-5xl">
           {/* checkout card */}
-          <div className="checkout-card flex flex-col items-center mx-auto max-w-md p-6 bg-white rounded-lg">
+          <div className="checkout-card flex flex-col items-center mx-auto w-full md:max-w-md p-6 bg-white rounded-lg">
             <h1 className="text-[24px] text-[#074D8D] font-semibold mb-4 text-center">
               Checkout
             </h1>
             <hr className="col-span-2 w-full border-t mb-5 border-gray-600" />
-            <div className="checkout-details mb-1 flex flex-col md:flex-row md:flex-wrap gap-3 text-left">
+            <div className="checkout-details mb-1 flex flex-col gap-3 text-left w-full">
               <div className="mb-1 flex flex-col w-full">
                 <p className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium">
                   Course Name:
                 </p>
-                <p className="text-[18px] mt-1 px-2 sm:text-[16px] lg:text-[18px] font-light break-words w-full">
+                <p className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200">
                   {courseName}
                 </p>
               </div>
@@ -166,7 +198,7 @@ const Checkout = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border-2 mt-1 px-2 border-gray-400 w-full p-2 rounded bg-gray-200"
+                  className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200"
                 />
               </div>
               <div className="mb-1 flex flex-col w-full">
@@ -178,7 +210,7 @@ const Checkout = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your Name"
-                  className="border-2 mt-1 px-2 border-gray-400 w-full p-2 rounded bg-gray-200"
+                  className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200"
                 />
               </div>
               <div className="mb-1 flex flex-col w-full">
@@ -190,7 +222,7 @@ const Checkout = () => {
                   defaultCountry="US"
                   value={phone}
                   onChange={handlePhoneChange}
-                  className="mt-1 px-2 border-2 border-gray-400 w-full p-2 rounded bg-gray-200 break-words"
+                  className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200 break-words"
                 />
               </div>
               <hr className="col-span-2 border-t border-gray-600" />
@@ -249,22 +281,45 @@ const Checkout = () => {
                   : "Apply"}
               </button>
             </div>
+            <hr className="col-span-2 w-full border-t border-gray-600 mb-4" />
+            <div className="flex items-center text-sm mb-2">
+              <input
+                type="checkbox"
+                id="terms"
+                checked={termsAccepted}
+                onChange={() => setTermsAccepted(!termsAccepted)}
+                className="mr-2"
+              />
+              <label htmlFor="terms">
+                I accept the{" "}
+                <Link
+                  to="/Terms&Conditions"
+                  className="text-blue-500 hover:underline"
+                >
+                  terms and conditions
+                </Link>{" "}
+                and the{" "}
+                <Link
+                  to="/Privacy_Policy"
+                  className="text-blue-500 hover:underline"
+                >
+                  privacy policy
+                </Link>
+                .
+              </label>
+            </div>
             <div className="w-1/2 pay-now flex justify-center mt-3">
               <button
                 onClick={handlePayNow}
-                className={`w-full text-white rounded-md hover:bg-blue-600 transition ${
-                  loading
-                    ? "cursor-not-allowed text-sky-600 bg-transparent"
-                    : "bg-blue-900 hover:bg-blue-700"
-                } p-2`}
+                className="w-full px-4 py-2 bg-[#074D8D] text-white rounded"
               >
-                {loading ? "Processing..." : "Pay Now"}
+                Pay Now
               </button>
             </div>
           </div>
 
           {/* Testimonial Card */}
-          <div className="testimonial-card flex flex-col items-center mx-auto max-w-sm p-6 bg-white rounded-lg md:ml-4">
+          <div className="testimonial-card flex flex-col items-center mx-auto w-full md:max-w-md p-6 bg-white rounded-lg mt-4">
             <p className="text-gray-700 w-6/7 font-bold mb-1text-center">
               Here is what our Client says:
             </p>

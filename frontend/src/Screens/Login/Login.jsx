@@ -13,7 +13,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { auth, firestore } from "../../firebase/firebase";
+import { collection, setDoc, doc } from "firebase/firestore";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -47,59 +48,93 @@ const Login = () => {
     };
   }, []);
 
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log("Signed Up:", user);
-        navigate(from, {
-          state: {
-            courseName: location.state?.courseName,
-            price: location.state?.price,
-          },
+  const saveEmailIfCheckout = async (email, from) => {
+    if (email) {
+      const collectionName =
+        from === "/checkout" ? "apply_before_login" : "login_before_apply";
+      try {
+        const docRef = doc(firestore, collectionName, email); // Create a reference with the email as the document ID
+        await setDoc(docRef, {
+          email: email,
+          timestamp: new Date(),
         });
-      })
-      .catch((error) => {
-        console.error("Error Signing Up:", error);
-      });
+        console.log("Email saved with ID: ", email);
+      } catch (error) {
+        console.error("Error saving email: ", error);
+      }
+    }
   };
 
-  const handleLogin = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log("Logged In:", user);
-        navigate(from, {
-          state: {
-            courseName: location.state?.courseName,
-            price: location.state?.price,
-          },
-        });
-      })
-      .catch((error) => {
-        console.error("Error Logging In:", error);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      console.log("Signed Up:", user);
+
+      // Call saveEmailIfCheckout function
+      await saveEmailIfCheckout(email, from);
+
+      navigate(from, {
+        state: {
+          courseName: location.state?.courseName,
+          price: location.state?.price,
+        },
       });
+    } catch (error) {
+      console.error("Error Signing Up:", error);
+    }
   };
 
-  const handleGoogleSignIn = () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      console.log("Logged In:", user);
+
+      // Call saveEmailIfCheckout function
+      await saveEmailIfCheckout(email, from);
+
+      navigate(from, {
+        state: {
+          courseName: location.state?.courseName,
+          price: location.state?.price,
+        },
+      });
+    } catch (error) {
+      console.error("Error Logging In:", error);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
     console.log("creating user");
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        console.log("Google Signed In:", user);
-        navigate(from, {
-          state: {
-            courseName: location.state?.courseName,
-            price: location.state?.price,
-          },
-        });
-      })
-      .catch((error) => {
-        console.error("Error with Google Sign In:", error);
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("Google Signed In:", user);
+
+      // Call saveEmailIfCheckout function
+      await saveEmailIfCheckout(user.email, from);
+
+      navigate(from, {
+        state: {
+          courseName: location.state?.courseName,
+          price: location.state?.price,
+        },
       });
+    } catch (error) {
+      console.error("Error with Google Sign In:", error);
+    }
   };
 
   return (

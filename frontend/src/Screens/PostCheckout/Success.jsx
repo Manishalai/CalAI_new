@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { firestore } from "../../firebase/firebase";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 const Success = () => {
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
@@ -14,7 +17,6 @@ const Success = () => {
     const captureOrder = async () => {
       try {
         // Get the orderId and certification from the URL query parameters
-        console.log("error");
         const urlParams = new URLSearchParams(window.location.search);
         const orderId = urlParams.get("token");
         const certification = urlParams.get("certification");
@@ -25,24 +27,49 @@ const Success = () => {
           return;
         }
 
-        // Capture the order by sending a POST request to your backend endpoint
-        const captureResponse = await fetch(
+        // Capture the order using Axios
+        const captureResponse = await axios.post(
           "https://cal-ai-new-server.vercel.app/capture-order",
           {
-            method: "POST",
+            orderId: orderId,
+            program: certification,
+          },
+          {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              orderId: orderId,
-              program: certification,
-            }),
           }
         );
-
-        if (captureResponse.ok) {
-          const responseData = await captureResponse.json();
+        if (captureResponse.status === 200) {
+          const responseData = captureResponse.data;
           console.log(responseData);
+
+          // Get user email from query params
+          const email = urlParams.get("email");
+          if (!email) {
+            console.error("Email not found in URL.");
+            setError(true); // Set error state if email is missing
+            return;
+          }
+
+          // Construct the data for 'after_transaction' collection
+          const transactionData = {
+            transactionId: responseData.transactionId,
+            transactionData: responseData.transactionData,
+            certification: certification,
+            timestamp: new Date().toLocaleString("en-US", {
+              timeZone: "Asia/Kolkata",
+            }),
+          };
+
+          // Set document in 'after_transaction' collection
+          const docRef = doc(firestore, "after_transaction", email);
+          await setDoc(docRef, {});
+          // Construct the correct Firestore references
+          const doccollRef = doc(firestore, `after_transaction/${email}`);
+          const transactionRef = doc(collection(doccollRef, "transactions"));
+          await setDoc(transactionRef, transactionData);
+
           setTransactionId(responseData.transactionId);
           setPaymentConfirmed(true);
         } else {

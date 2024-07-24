@@ -27,6 +27,9 @@ const Home = () => {
       </div>
       <AIProgramFinder />
       <div id="speakers-section">
+        <h2 class="text-[36px] text-[#074D8D] font-semibold p-5 pt-2 mt-0 lg:text-2xl">
+          Customer Speak
+        </h2>
         <Speaker />
       </div>
       <Slider />

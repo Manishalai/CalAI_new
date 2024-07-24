@@ -7,6 +7,7 @@ import Footer from "../../components/footer/Footer";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const ExpressCheckout = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +20,7 @@ const ExpressCheckout = () => {
   const [invalidCoupon, setInvalidCoupon] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("");
   const [coursePrice, setCoursePrice] = useState(0);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -97,6 +99,10 @@ const ExpressCheckout = () => {
       toast.error("Please select a course.");
       return false;
     }
+    if (!termsAccepted) {
+      toast.error("Please accept our terms and conditions");
+      return false;
+    }
     return true;
   };
 
@@ -156,6 +162,9 @@ const ExpressCheckout = () => {
       case "AI_Manager":
         setCoursePrice(499); // Example price
         break;
+      case "AI_Combo":
+        setCoursePrice(2200); // Example price
+        break;
       default:
         setCoursePrice(0);
         break;
@@ -166,18 +175,18 @@ const ExpressCheckout = () => {
     <>
       <Header />
       <div className="checkout-container p-5 bg-gray-100 flex items-center justify-center">
-        <div className="bg-white flex p-2 flex-row md:flex-col rounded-md shadow-lg items-stretch justify-between">
+        <div className="bg-white flex flex-row md:flex-col rounded-md shadow-lg items-stretch justify-between w-full max-w-5xl">
           {/* Checkout card */}
-          <div className="checkout-card flex flex-col items-center mx-auto max-w-md p-6 bg-white rounded-lg">
-            <h1 className="text-[24px] text-[#074D8D] font-semibold mb-4 text-center">
+          <div className="checkout-card flex flex-col items-center mx-auto w-full md:max-w-md p-6 bg-white rounded-lg">
+            <h1 className="text-2xl text-[#074D8D] font-semibold mb-4 text-center">
               Express Checkout
             </h1>
-            <hr className="col-span-2 border-t mb-5 border-gray-600" />
-            <div className="checkout-details mb-1 flex flex-col md:flex-row md:flex-wrap gap-3 text-left">
+            <hr className="border-t mb-5 border-gray-600" />
+            <div className="checkout-details mb-1 flex flex-col gap-3 text-left w-full">
               <div className="mb-3 flex flex-col w-full">
                 <label
                   htmlFor="courseName"
-                  className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium mb-1"
+                  className="text-lg font-medium mb-1"
                 >
                   Course Name:
                 </label>
@@ -194,16 +203,11 @@ const ExpressCheckout = () => {
                   <option value="AI_Developer">
                     Certified Artificial Intelligence Developer (CAID)
                   </option>
-                  <option value="AI_Manager">
-                    Certified Artificial Intelligence Manager (CAIM)
-                  </option>
+                  <option value="AI_Combo">Combo program (CAID + CAIL)</option>
                 </select>
               </div>
-              <div className="mb-3 flex flex-col md:w-full">
-                <label
-                  htmlFor="name"
-                  className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium mb-1"
-                >
+              <div className="mb-3 flex flex-col w-full">
+                <label htmlFor="name" className="text-lg font-medium mb-1">
                   Name:
                 </label>
                 <input
@@ -215,11 +219,8 @@ const ExpressCheckout = () => {
                   className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200"
                 />
               </div>
-              <div className="mb-3 flex flex-col md:w-full">
-                <label
-                  htmlFor="email"
-                  className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium mb-1"
-                >
+              <div className="mb-3 flex flex-col w-full">
+                <label htmlFor="email" className="text-lg font-medium mb-1">
                   Email:
                 </label>
                 <input
@@ -231,11 +232,8 @@ const ExpressCheckout = () => {
                   className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200"
                 />
               </div>
-              <div className="mb-3 flex flex-col md:w-full">
-                <label
-                  htmlFor="phone"
-                  className="text-[18px] sm:text-[16px] lg:text-[18px] font-medium mb-1"
-                >
+              <div className="mb-3 flex flex-col w-full">
+                <label htmlFor="phone" className="text-lg font-medium mb-1">
                   Phone:
                 </label>
                 <PhoneInput
@@ -247,13 +245,10 @@ const ExpressCheckout = () => {
                   className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200"
                 />
               </div>
-              <hr className="w-full border-t border-gray-600" />
+              <hr className="col-span-2 border-t border-gray-600" />
               <div className="w-full flex flex-row md:flex-row justify-between">
                 <div className="w-1/2 flex justify-end mr-2">
-                  <label
-                    htmlFor="totalFees"
-                    className="text-[18px] sm:text-[16px] font-medium"
-                  >
+                  <label htmlFor="totalFees" className="text-lg font-medium">
                     Total Fees:
                   </label>
                 </div>
@@ -302,25 +297,48 @@ const ExpressCheckout = () => {
                   : "Apply"}
               </button>
             </div>
+            <hr className="col-span-2 w-full border-t border-gray-600 mb-4" />
+            <div className="flex items-center text-sm mb-2">
+              <input
+                type="checkbox"
+                id="terms"
+                checked={termsAccepted}
+                onChange={() => setTermsAccepted(!termsAccepted)}
+                className="mr-2"
+              />
+              <label htmlFor="terms">
+                I accept the{" "}
+                <Link
+                  to="/Terms&Conditions"
+                  className="text-blue-500 hover:underline"
+                >
+                  terms and conditions
+                </Link>{" "}
+                and the{" "}
+                <Link
+                  to="/Privacy_Policy"
+                  className="text-blue-500 hover:underline"
+                >
+                  privacy policy
+                </Link>
+                .
+              </label>
+            </div>
             <div className="w-1/2 pay-now flex justify-center mt-3">
               <button
                 onClick={handlePayNow}
-                className={`w-full text-white rounded-md hover:bg-blue-600 transition ${
-                  loading
-                    ? "cursor-not-allowed text-sky-600 bg-transparent"
-                    : "bg-blue-900 hover:bg-blue-700"
-                } p-2`}
+                className="w-full px-4 py-2 bg-[#074D8D] text-white rounded"
               >
-                {loading ? "Processing..." : "Pay Now"}
+                Pay Now
               </button>
             </div>
           </div>
           {/* Testimonial Card */}
-          <div className="testimonial-card flex flex-col items-center mx-auto max-w-sm p-6 bg-white rounded-lg md:ml-4">
-            <p className="text-gray-700 w-6/7 font-bold mb-1text-center">
+          <div className="testimonial-card flex flex-col items-center mx-auto w-full md:max-w-md p-6 bg-white rounded-lg mt-4">
+            <p className="text-gray-700 w-full font-bold mb-1 text-center">
               Here is what our Client says:
             </p>
-            <p className="text-gray-700 w-6/7 text-sm text-center mb-2">
+            <p className="text-gray-700 w-full text-sm text-center mb-2">
               "CalAI provided me with essential AI skills for my Data Analytics
               career. It's affordable and highly effective. I recommend it for
               professional growth."
