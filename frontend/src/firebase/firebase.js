@@ -17,7 +17,7 @@ const firebaseConfig = {
   storageBucket: "calaisite.appspot.com",
   messagingSenderId: "137219193547",
   appId: "1:137219193547:web:6961a289776640ea47794e",
-  measurementId: "G-M0B2Q3JX9V",
+  measurementId: "G-CY4YK6JNEX",
 };
 
 // Initialize Firebase
