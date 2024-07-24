@@ -30,6 +30,10 @@ import ExpressCheckout from "./Screens/Checkout/Express_Checkout.jsx";
 import PayPal270 from "./Screens/Checkout/PayPal270.jsx";
 import PayPal400 from "./Screens/Checkout/PayPal400.jsx";
 import PayPal480 from "./Screens/Checkout/PayPal480.jsx";
+import PayPal250 from "./Screens/Checkout/PayPal250.jsx";
+import PayPal880 from "./Screens/Checkout/PayPal880.jsx";
+import Razorpay300 from "./Screens/Checkout/RaorPay300.jsx";
+import Razorpay360 from "./Screens/Checkout/RazorPay360.jsx";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -69,10 +73,16 @@ const App = () => {
         <Route path="/partnerWithUs" element={<PartnerWithUs />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Certifications" element={<CertificationPage />} />
-        <Route path="/ExpressCheckout" element={<ExpressCheckout />} />
-        <Route path="/PayPal/270" element={<PayPal270 />} />
-        <Route path="/PayPal/400" element={<PayPal400 />} />
-        <Route path="/PayPal/480" element={<PayPal480 />} />
+        <Route
+          path="/register_form/register.html"
+          element={<ExpressCheckout />}
+        />
+        <Route path="/PayPal/270" element={<Razorpay360 />} />
+        <Route path="/AIDpayment.html" element={<PayPal400 />} />
+        <Route path="/AILpayement.html" element={<PayPal480 />} />
+        <Route path="/CalAI_CAIL.html" element={<PayPal880 />} />
+        <Route path="/cal_AI_pay.html" element={<Razorpay300 />} />
+        <Route path="/cal_AI_pay2.html" element={<Razorpay360 />} />
       </Routes>
     </Router>
   );
