@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Slider from "../slider/Slider";
-import Courses from "../courses/Courses";
+import Courses2 from "../courses/Courses2";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Header from "../header/Header";
@@ -10,12 +10,21 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { firestore } from "../../firebase/firebase";
 import { collection, addDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const StartTest = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+  }, []);
 
   const handlePhoneChange = (value) => {
     setPhone(value);
@@ -44,6 +53,30 @@ const StartTest = () => {
       console.error("Error adding document: ", error);
     }
   };
+
+  const handleApplyNow = (courseName) => {
+    if (courseName === "Certified Artificial Intelligence Developer (CAID)") {
+      if (currentUser) {
+        navigate("/checkout", {
+          state: { courseName, price: "1000" }, // Pass course details
+        });
+      } else {
+        navigate("/login&signup", {
+          state: { from: `/checkout`, courseName, price: "1000" },
+        });
+      }
+    } else {
+      if (currentUser) {
+        navigate("/checkout", {
+          state: { courseName, price: "1200" }, // Pass course details
+        });
+      } else {
+        navigate("/login&signup", {
+          state: { from: `/checkout`, courseName, price: "1200" },
+        });
+      }
+    }
+  };
   return (
     <>
       <Header />
@@ -66,7 +99,7 @@ const StartTest = () => {
                 </ul>
               </div>
             </div>
-            <Courses />
+            <Courses2 onApplyNow={handleApplyNow} />
             <Slider />
           </div>
           <div class="flex flex-col items-center h-screen px-6 py-8 bg-slate-300 z-10 w-full max-w-md mx-auto">

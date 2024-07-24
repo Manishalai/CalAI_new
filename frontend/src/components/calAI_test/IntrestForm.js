@@ -69,6 +69,12 @@ const IntrestForm = () => {
     setIsInterestForm(true);
   };
 
+  const courseOptions = [
+    { key: "/ai_leader", value: `${courseName}` },
+    { key: "/ai_developer", value: `${courseName}s` },
+    // Add more course options as needed
+  ];
+
   return (
     <>
       <Header />
@@ -155,13 +161,18 @@ const IntrestForm = () => {
                   >
                     Course Name <span className="text-red-600">*</span> :
                   </label>
-                  <input
+                  <select
                     id="courseName"
                     className="text-sm border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    type="text"
                     value={courseName}
-                    readOnly
-                  />
+                    onChange={(e) => setCourseName(e.target.value)}
+                  >
+                    {courseOptions.map((course) => (
+                      <option key={course.key} value={course.value}>
+                        {course.value}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               )}
             </div>

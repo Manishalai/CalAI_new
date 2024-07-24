@@ -146,7 +146,7 @@ const SelfVedio = () => {
                   htmlFor="name"
                   className="block text-[16px] md:text-[14px] text-left font-medium text-gray-800 mb-1"
                 >
-                  Enter your Name:
+                  Enter your Name <span className="text-red-600">*</span> :
                 </label>
                 <input
                   type="text"
@@ -178,7 +178,8 @@ const SelfVedio = () => {
                   htmlFor="email"
                   className="block text-[16px] text-left md:text-[14px] font-medium text-gray-800 mb-1"
                 >
-                  Enter your Email Address:
+                  Enter your Email Address{" "}
+                  <strong className="text-red-600">*</strong>:
                 </label>
                 <input
                   type="email"

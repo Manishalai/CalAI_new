@@ -54,7 +54,6 @@ const Footer = () => {
           },
         }
       );
-      console.log(JSON.parse(response.config.data).listIds[0]);
       handleSuccess(response);
       await addDoc(collection(firestore, "newsLetter_subscription"), {
         email: email,
@@ -117,6 +116,7 @@ const Footer = () => {
                         className="w-1/2 flex-grow p-2 border border-gray-400 rounded-l-lg text-gray-900"
                       />
                       <button
+                        id="newsLetter_subs"
                         type="submit"
                         onClick={handleSubmit}
                         className="py-2 px-4 bg-blue-500 text-white font-medium border border-blue-500 rounded-r-lg hover:bg-blue-600 transition"
@@ -307,27 +307,6 @@ const Footer = () => {
                           </p>
                           <br />
                           <li>
-                            <span class="font-bold">Online Community:</span>
-                          </li>
-                          <p>
-                            - Engage with a vibrant online community, connect
-                            with fellow AI enthusiasts, and participate in
-                            intellectually stimulating discussions.
-                          </p>
-                          <br />
-                          <li>
-                            <span class="font-bold">
-                              Doubt Solving Support:
-                            </span>
-                          </li>
-                          <p>
-                            - Access a 24*7 online forum to post queries and
-                            receive prompt responses, including text-based and
-                            on-call support.
-                          </p>
-
-                          <br />
-                          <li>
                             <span class="font-bold">
                               Free Lifetime Newsletter Subscription:
                             </span>
@@ -350,7 +329,7 @@ const Footer = () => {
                   <ul class="mt-6 space-y-4 text-sm">
                     <li>
                       <Link
-                        to="/ExpressCheckout"
+                        to="/register_form/register.html"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
@@ -368,7 +347,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        to="/PayPal/400"
+                        to="/AIDpayment.html"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}
@@ -377,7 +356,25 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        to="/PayPal/480"
+                        to="/CalAI_CAIL.html"
+                        class="text-gray-700 transition hover:opacity-75"
+                      >
+                        {" "}
+                        PayPal-250
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/calAI_CAIL.html"
+                        class="text-gray-700 transition hover:opacity-75"
+                      >
+                        {" "}
+                        PayPal-880
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/AILpayement.html"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {" "}

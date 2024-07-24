@@ -29,6 +29,7 @@ export const CAIL_Hero = () => {
           </h1>
           {/* Button */}
           <button
+            id="CAIL-brochure"
             onClick={() => {
               scrollTodiv("courses-section");
             }}

@@ -81,7 +81,10 @@ const Navbar = () => {
                 About Us
               </button>
             </Link>
-            <button className="inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent px-1 pb-4 text-[18px] font-medium text-white hover:border-orange-300 hover:text-orange-500">
+            <button
+              id="brochure-navbar"
+              className="inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent px-1 pb-4 text-[18px] font-medium text-white hover:border-orange-300 hover:text-orange-500"
+            >
               <Brochure />
             </button>
             <button
@@ -104,7 +107,10 @@ const Navbar = () => {
           <span>Call Us:</span>
           <strong className="ml-1">+1 334-432-8116</strong>
         </span>
-        <button className="bg-white rounded p-2 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-semibold text-sm flex-shrink-0">
+        <button
+          id="brochure-navbar-mobile"
+          className="bg-white rounded p-2 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-semibold text-sm flex-shrink-0"
+        >
           <Brochure />
         </button>
       </div>

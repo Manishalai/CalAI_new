@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Brochure from "../forms/Brochure";
 import { Link } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -11,7 +10,6 @@ const Navbar2 = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -96,13 +94,18 @@ const Navbar2 = () => {
         <span onClick={toggleMenu} className="cursor-pointer flex-shrink-0">
           <MenuIcon className="text-white" fontSize="large" />
         </span>
-        <span className="text-white text-[10px] flex items-center space-x-1 mx-2 flex-grow justify-center">
+        <span className="text-white text-[10px] flex items-end space-x-1 mx-2 flex-grow justify-center">
           <CallIcon fontSize="small" />
           <span>Call Us:</span>
           <strong className="ml-1">+1 334-432-8116</strong>
         </span>
-        <button className="bg-white rounded p-2 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-semibold text-sm flex-shrink-0">
-          <Brochure />
+        <button
+          onClick={() => {
+            scrollToSection("program-details");
+          }}
+          className="bg-white rounded p-2 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-semibold text-sm flex-shrink-0"
+        >
+          Explore Now
         </button>
       </div>
 

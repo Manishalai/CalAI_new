@@ -1733,56 +1733,6 @@ const AID_content = () => {
               </li>
             </ul>
           </div>
-
-          <div
-            id="ratings"
-            class="flex flex-col gap-2 mx-6 md:w-full md:p-5 md:mx-0"
-          >
-            <h2 class="text-[1.5rem] text-[#074D8D] font-bold">
-              Ratings and Reviews
-            </h2>
-            <div class="flex flex-row gap-2 md:flex-col">
-              <div class="flex flex-row gap-2">
-                <img class="md:h-[30px]" src={star} alt="" />
-                <img class="md:h-[30px]" src={star} alt="" />
-                <img class="md:h-[30px]" src={star} alt="" />
-                <img class="md:h-[30px]" src={star} alt="" />
-                <img class="md:h-[30px]" src={h_star} alt="" />
-                <p class="text-[#D6C107] text-[1.5rem] font-bold">4.8</p>
-              </div>
-              <p class="text-[1.2rem] mt-1 md:mt-0 md:text-[1rem]">
-                (1.4K + Users)
-              </p>
-            </div>
-            <div class="flex flex-col gap-4 mt-4">
-              <p>
-                "The AI courses offered by CalAI completely transformed my
-                understanding of artificial intelligence. The content is
-                comprehensive, yet easy to grasp, and the interactive exercises
-                made learning engaging and fun. I highly recommend it to anyone
-                looking to delve into the world of AI." -{" "}
-                <span class="font-bold">Shannon Zock, Adobe</span>{" "}
-              </p>
-              <p>
-                “"I've tried several online platforms for learning AI, but CalAI
-                stands out for its exceptional quality. The instructors are
-                experts in the field, and the course materials are constantly
-                updated to reflect the latest trends and technologies in AI.
-                Thanks to this platform, I've been able to advance my career in
-                tech with confidence." -{" "}
-                <span class="font-bold">Fatima Al-Hamdi, Atlassian</span>{" "}
-              </p>
-              <p>
-                “Enrolling in AI courses on CalAI was one of the best decisions
-                I've made for my professional development. The lessons are
-                well-structured, allowing me to progress at my own pace, and the
-                practical projects helped me apply theoretical concepts in
-                real-world scenarios. I'm now equipped with the skills needed to
-                tackle complex AI projects in my job." -{" "}
-                <span class="font-bold">Luna Sterling, Microsoft Research</span>{" "}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </>

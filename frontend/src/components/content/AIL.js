@@ -12,9 +12,11 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Speaker from "../speakers/Speaker";
 
 const AIL_content = () => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [showVideo, setShowVideo] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -545,29 +547,48 @@ const AIL_content = () => {
               checkout!
             </h1>
           </div>
-
+          {/* Instructor Section */}
           <div className="bg-slate-100 flex flex-row md:flex-col mx-4 rounded-md shadow-md relative my-4 p-4">
-            <div className="w-1/2 md:w-full flex flex-col p-2 items-center">
-              <img
-                src={instructor} // Replace with the actual URL or import of the instructor's image
-                alt="Instructor"
-                className="w-64 h-64 rounded-full object-cover shadow-lg mb-4"
-              />
-              <Link to="https://www.linkedin.com/in/dr-miquel-noguer-i-alonso-7242345/">
-                <button className="flex items-center justify-between bg-white text-black px-4 py-2 rounded-md shadow-md hover:bg-white/55">
-                  <img
-                    src={LinkedInLogo} // Replace with the actual path to the LinkedIn logo
-                    alt="LinkedIn"
-                    className="w-10 h-10 mr-2"
-                  />
-                  <div className="flex flex-col items-center">
-                    <span className="text-sm font-bold">LinkedIn Activity</span>
-                    <span className="text-xs">40k+ followers</span>{" "}
-                    {/* Replace with actual follower count */}
-                  </div>
-                </button>
-              </Link>
-            </div>
+            {!showVideo ? (
+              <div
+                className="w-1/2 md:w-full flex flex-col p-2 items-center"
+                onClick={() => setShowVideo(true)}
+              >
+                <img
+                  src={instructor} // Replace with the actual URL or import of the instructor's image
+                  alt="Instructor"
+                  className="w-64 h-64 rounded-full object-cover shadow-lg mb-4"
+                />
+                <Link to="https://www.linkedin.com/in/dr-miquel-noguer-i-alonso-7242345/">
+                  <button className="flex items-center justify-between bg-white text-black px-4 py-2 rounded-md shadow-md hover:bg-white/55">
+                    <img
+                      src={LinkedInLogo} // Replace with the actual path to the LinkedIn logo
+                      alt="LinkedIn"
+                      className="w-10 h-10 mr-2"
+                    />
+                    <div className="flex flex-col items-center">
+                      <span className="text-sm font-bold">
+                        LinkedIn Activity
+                      </span>
+                      <span className="text-xs">40k+ followers</span>{" "}
+                      {/* Replace with actual follower count */}
+                    </div>
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div className="w-1/2 md:w-full flex flex-col p-2 items-center">
+                <div className="bg-white shadow-lg rounded-lg overflow-hidden w-3/4 md:w-full">
+                  <iframe
+                    title="Calai"
+                    className="w-full h-64 md:h-96"
+                    src="https://www.youtube.com/embed/CZ7sASs6oJE"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+            )}
             <div className="w-full p-4 flex flex-col justify-center">
               <h2 className="text-xl md:text-xl font-bold mb-1">
                 Meet Your Instructor
@@ -586,6 +607,12 @@ const AIL_content = () => {
                 Adjunct Professor at Columbia University and taught at NYU Stern
                 and Imperial Bussiness School.
               </p>
+              <button
+                className="mt-4 mx-auto bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600"
+                onClick={() => setShowVideo(!showVideo)}
+              >
+                {showVideo ? "Hide Intro" : "Show Intro"}
+              </button>
             </div>
           </div>
 
@@ -618,67 +645,6 @@ const AIL_content = () => {
                 Certification
               </li>
             </ul>
-          </div>
-          <div
-            id="ratings"
-            class="flex flex-col gap-2 mx-6 md:w-full md:p-5 md:mx-0"
-          >
-            <h2 class="text-[1.5rem] text-[#074D8D] font-bold">
-              Ratings and Reviews
-            </h2>
-            <div class="flex flex-row gap-2 md:flex-col">
-              <div class="flex flex-row gap-2">
-                <img class="md:h-[30px]" src={star} alt="" />
-                <img class="md:h-[30px]" src={star} alt="" />
-                <img class="md:h-[30px]" src={star} alt="" />
-                <img class="md:h-[30px]" src={star} alt="" />
-                <img class="md:h-[30px]" src={h_star} alt="" />
-                <p class="text-[#D6C107] text-[1.5rem] font-bold">4.6</p>
-              </div>
-              <p class="text-[1.2rem] mt-1 md:mt-0 md:text-[1rem]">
-                (1.2K + Users)
-              </p>
-            </div>
-            <div class="flex flex-col gap-4 mt-4">
-              <p>
-                "The AI Leadership Program by CalAI has been a game-changer for
-                our startup. As a CEO, I found the self-paced learning approach
-                incredibly convenient, allowing me to balance my hectic schedule
-                while delving deep into AI strategies. The insights gained from
-                this program have empowered us to make data-driven decisions,
-                propelling our growth in the competitive market. Highly
-                recommended!" -{" "}
-                <span class="font-bold">
-                  Emily Chen, CEO, TechSavvy Solutions.
-                </span>{" "}
-              </p>
-              <p>
-                "I've always believed in the potential of AI but lacked the
-                expertise to implement it effectively. The AI Leadership Program
-                provided me with the tools and knowledge needed to drive AI
-                initiatives within our organization. The self-paced learning
-                format was perfect for my role as a VP, allowing me to learn at
-                my own pace and apply concepts directly to our business
-                challenges. Thanks to CalAI, we're now leveraging AI to optimize
-                processes and drive innovation." -
-                <span class="font-bold">
-                  Mark Johnson, VP of Operations, BrightTech Innovations.
-                </span>{" "}
-              </p>
-              <p>
-                "CalAI's AI Leadership Program exceeded my expectations. As a
-                small startup CEO, I needed a program that would equip me with
-                practical AI skills without disrupting our daily operations. The
-                self-paced learning mode allowed me to access high-quality
-                content anytime, anywhere, fitting seamlessly into my busy
-                schedule. Now, armed with AI insights, we're revolutionizing our
-                products and services, thanks to the invaluable lessons learned
-                from CalAI."-
-                <span class="font-bold">
-                  Alex Smith, CEO, Nexus Dynamics.
-                </span>{" "}
-              </p>
-            </div>
           </div>
         </div>
       </div>

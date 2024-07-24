@@ -63,14 +63,14 @@ const Courses = () => {
           </div>
           <div className="flex mt-4 justify-end">
             <button
-              id="knowMore"
+              id="knowMore-CAID"
               className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
               onClick={() => navigate("/AI_Developer")}
             >
               Know More
             </button>
             <button
-              id="applyNow"
+              id="applyNow-CAID"
               className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
                 handleApplyNowClick(
@@ -112,14 +112,14 @@ const Courses = () => {
           </div>
           <div className="flex mt-4 justify-end">
             <button
-              id="knowMore"
+              id="knowMore-CAIL"
               className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
               onClick={() => navigate("/AI_Leader")}
             >
               Know More
             </button>
             <button
-              id="applyNow"
+              id="applyNow-CAIL"
               className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
                 handleApplyNowClick(
@@ -161,14 +161,14 @@ const Courses = () => {
           </div>
           <div className="flex mt-4 justify-end">
             <button
-              id="knowMore"
+              id="knowMore-CAIM"
               className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
               onClick={() => navigate("/AI_Manager")}
             >
               Know More
             </button>
             <button
-              id="applyNow"
+              id="applyNow-CAIM"
               className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
                 handleApplyNowClick(

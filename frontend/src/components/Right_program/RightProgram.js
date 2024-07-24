@@ -124,6 +124,7 @@ const AIProgramFinder = () => {
                 )}
               </div>
               <button
+                id="find-right-program"
                 type="submit"
                 className="w-1/5 h-12 text-[20px] font-semibold bg-blue-800 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 md:w-1/2"
               >

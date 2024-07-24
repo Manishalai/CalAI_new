@@ -29,6 +29,7 @@ export const CAID_Hero = () => {
           </h1>
           {/* Button */}
           <button
+            id="CAID-brochure"
             onClick={() => {
               scrollTodiv("courses-section");
             }}

@@ -28,6 +28,7 @@ export const Hero = () => {
           </h1>
           {/* Button */}
           <button
+            id="Explore-now"
             onClick={() => {
               scrollTodiv("courses-section");
             }}

@@ -40,14 +40,14 @@ const Courses2 = ({ onApplyNow }) => {
           </div>
           <div className="flex mt-4 justify-end">
             <button
-              id="knowMore"
+              id="knowMore-CAID"
               className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
               onClick={() => navigate("/AI_Developer")}
             >
               Know More
             </button>
             <button
-              id="applyNow"
+              id="applyNow-CAID"
               className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
                 onApplyNow("Certified Artificial Intelligence Developer (CAID)")
@@ -85,14 +85,14 @@ const Courses2 = ({ onApplyNow }) => {
           </div>
           <div className="flex mt-4 justify-end">
             <button
-              id="knowMore"
+              id="knowMore-CAID"
               className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
               onClick={() => navigate("/AI_Leader")}
             >
               Know More
             </button>
             <button
-              id="applyNow"
+              id="applyNow-CAID"
               className="relative overflow-hidden w-[225px] bg-blue-800 text-white rounded-br-lg font-bold p-2 lg:w-[480px] group"
               onClick={() =>
                 onApplyNow("Certified Artificial Intelligence Leader (CAIL)")

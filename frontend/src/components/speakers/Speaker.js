@@ -1,77 +1,177 @@
 import React from "react";
-import Joshep from "../../images/1689046864317.avif";
-import Aiyana from "../../images/Rectangle 23.svg";
-import Mike from "../../images/Rectangle 21.svg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import manab from "../../images/manab.jpeg";
+import Sulabh from "../../images/sulabh.jpeg";
+import Dhiraj from "../../images/dhiraj.jpeg";
+import Pankaj from "../../images/pk.jpeg";
+import Atul from "../../images/atul.jpeg";
+import Amitesh from "../../images/amitesh.jpeg";
+import LinkedIn_logo from "../../images/linkedin-2815969.jpg";
+
+const testimonials = [
+  {
+    name: "Manab Majumdar",
+    position: "Management Consultant @ Accenture",
+    image: manab,
+    linkedin:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7216303129766580224/",
+    text: `Being selected for the CAIL™ Programme by CalAI is a pivotal step
+              forward in my management consulting career. The self-paced nature
+              of the program allows me to tailor my learning around my
+              professional commitments, ensuring I can apply AI leadership
+              principles directly to my consulting practice. Already, I'm
+              impressed by the comprehensive curriculum, which seamlessly
+              integrates theory with practical insights crucial for navigating
+              today's AI landscape.`,
+    country: "UAE",
+    certification: "Certified Artificial Intelligence Leader (CAIL™)",
+    exCompany: "Ex-Deloitte, Oracle Top-Voice",
+  },
+  {
+    name: "Pankaj Kumar",
+    position: "Tech Team Lead @ PropertyGuru Group",
+    image: Pankaj,
+    linkedin:
+      "https://www.linkedin.com/posts/pankajkumarverma_calai-california-artificial-intelligence-activity-7219924065426268160-ms4J/?utm_source=share&utm_medium=member_desktop",
+    text: `This certification is unparalleled in its scope and depth, making it the premier choice for those looking to transition into the AI field.
+
+          The curriculum is exceptional, providing a comprehensive understanding of AI development and its strategic applications. It is a transformative journey, equipping me with the tools to lead AI initiatives and drive innovation in AI development.`,
+    country: "INDIA",
+    certification: "Certified Artificial Intelligence Developer (CAID™)",
+    exCompany: "Ex-HSBC, Ex-Cognizant",
+  },
+  {
+    name: "Atul Naik",
+    position: "Associate Vice President @ Barclays",
+    image: Atul,
+    linkedin:
+      "https://www.linkedin.com/posts/atulnaik_aidevelopment-innovation-certifiedaideveloper-activity-7219732006429949952-vVKk/?utm_source=share&utm_medium=member_android",
+    text: `This certification is a game-changer for those wanting to transition into AI development.
+
+The curriculum stands out for its depth and practical relevance, offering everything needed to implement AI effectively. The knowledge and skills gained are instrumental in fostering innovation and driving success in AI projects. Proud to be a part of this elite program and highly recommend it to all aspiring AI developers.`,
+    country: "INDIA",
+    certification: "Certified Artificial Intelligence Developer (CAID™)",
+    exCompany: "Ex-HSBC GLT",
+  },
+  {
+    name: "Sulabh Bhanti",
+    position: "Director APAC - JLL Technologies",
+    image: Sulabh,
+    linkedin:
+      "https://www.linkedin.com/posts/sulabhbhanti_artificialintelligence-leadership-innovation-activity-7220424702341627904-vEcu/?utm_source=share&utm_medium=member_android",
+    text: `This certification is unparalleled in its scope and depth, making it the premier choice for leaders who want to harness AI's potential.
+
+The curriculum is exceptional, providing a comprehensive understanding of AI and its strategic applications. It is a transformative journey, equipping me with the tools to lead AI initiatives and drive innovation in my organization. I highly recommend this program to any leader aiming to excel with AI.`,
+    country: "USA",
+    certification: "Certified Artificial Intelligence Leader (CAIL™)",
+    exCompany: "Ex-Transit Link Pte Ltd",
+  },
+  {
+    name: "Amitesh Jain",
+    position: "Assistant Vice President @ Credit Suisse",
+    image: Amitesh,
+    linkedin:
+      "https://www.linkedin.com/posts/amitesh-jain-aa4b6732_calai-aileadership-cailprogramme-activity-7220388903671783424-xi1o/?utm_source=share&utm_medium=member_ios",
+    text: `This certification is a game-changer for those wanting to transition into AI development.
+
+The curriculum stands out for its depth and practical relevance, offering everything needed to implement AI effectively. The knowledge and skills gained are instrumental in fostering innovation and driving success in AI projects. Proud to be a part of this elite program and highly recommend it to all aspiring AI developers.`,
+    country: "INDIA",
+    certification: "Certified Artificial Intelligence Leader (CAIL™)",
+    exCompany: "Ex-Barclays, Ex-Bentley Systems",
+  },
+  {
+    name: "Dhiraj Saxena",
+    position: "AVP @ Barclays",
+    image: Dhiraj,
+    linkedin:
+      "https://www.linkedin.com/posts/dhiraj-saxena-0182ba14_cail-calai-artificialintelligence-activity-7220703511628369920-fS2K/?utm_source=share&utm_medium=member_android",
+    text: `This exceptional program has been pivotal in advancing my AI leadership skills. After thorough research, I chose this program, which has proven to be the best decision for my career.
+The comprehensive knowledge and strategies I've gained drive innovation and significantly enhance my leadership effectiveness. The program's emphasis on ethical AI practices and future trends has been particularly enlightening, ensuring we lead with integrity and foresight.`,
+    country: "INDIA",
+    certification: "Certified Artificial Intelligence Leader (CAIL™)",
+    exCompany: "Ex-Coforge",
+  },
+];
 
 const Speaker = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    autoplay: true, // Enable auto sliding
+    autoplaySpeed: 5000, // Slide change interval (in milliseconds)
+    swipe: true, // Enable swipe functionality (usually enabled by default)
+    responsive: [
+      {
+        breakpoint: 1000, // mobile breakpoint
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <>
-      <div id="testimonials" class="p-5">
-        <h2 class="text-[36px] text-[#074D8D] font-semibold p-5 pt-2 mt-0 lg:text-2xl">
-          Customer Speak
-        </h2>
-        <div class="flex justify-around md:flex-col md:gap-4">
-          <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-black transition-transform transform hover:-translate-y-1 hover:shadow-lg gap-5 md:w-full">
-            <img
-              class="h-[150px] rounded-full"
-              src={Joshep}
-              alt="Joseph-Wilson-CalAI-Best-AI-Certification-Institute-in-USA"
-            />
-            <div class="flex gap-5 text-[14px] font-bold text-[#074D8D]  md:text-center md:ml-6 ">
-              <h2>Joseph Wilson</h2>
-              <h2>Certified AI Leader</h2>
+    <div className="flex items-center justify-center bg-gray-300">
+      <div className="mx-8 my-6 w-full px-9">
+        <Slider {...settings}>
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="p-6 md:p-0 bg-white border-gray-500 border-2 rounded-lg"
+            >
+              <div className="flex flex-col">
+                <div className="flex flex-row md:flex-col items-center">
+                  <div className="flex md:w-full">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-24 h-24 md:w-full md:h-full object-cover m-4 md:m-0"
+                    />
+                  </div>
+                  <div className="flex flex-col text-left md:w-full p-2">
+                    <div className="flex flex-row">
+                      <div className="w-full">
+                        <h3 className="text-xl font-semibold text-blue-900 md:text-lg">
+                          {testimonial.name}
+                        </h3>
+                      </div>
+                      <div>
+                        <a href={`${testimonial.linkedin}`}>
+                          <img
+                            src={LinkedIn_logo}
+                            className="w-8 h-8 md:w-6 md:h-6"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                    <p className="text-gray-600 md:text-sm">
+                      {testimonial.position}
+                    </p>
+                    <hr className="w-full border-t my-1 border-gray-400" />
+                    <p className="text-gray-600 md:text-sm">
+                      {testimonial.certification}
+                    </p>
+                    <hr className="w-full border-t my-1 border-gray-400" />
+                    <p className="text-gray-600 md:text-sm">
+                      {testimonial.exCompany}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 p-2">
+                  <p className="text-gray-700 md:text-sm">{testimonial.text}</p>
+                </div>
+              </div>
             </div>
-            <p class="text-center text-[14px]">
-              The CalAI program has been a game-changer, providing a profound
-              understanding of AI concepts in a well-structured course.
-              Instructors' expertise and support were exceptional, enabling me
-              to confidently apply these skills in my professional journey. I
-              highly recommend this course for anyone seeking a comprehensive
-              introduction to artificial intelligence
-            </p>
-          </div>
-          <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-black transition-transform transform hover:-translate-y-1 hover:shadow-lg gap-5  md:w-full">
-            <img
-              class="h-[150px] rounded-full"
-              src={Aiyana}
-              alt="Aiyana-ThomasCalAI-Best-AI-Certification-Institute-in-USA"
-            />
-            <div class="flex gap-5 text-[14px] font-bold text-[#074D8D] md:text-center  md:ml-8">
-              <h2>Aiyana Thomas</h2>
-              <h2>Certified AI Leader</h2>
-            </div>
-            <p class="text-center text-[14px]">
-              In my 7 years of Data Analytics experience, I was tasked with an
-              AI-based project in my current role. Despite a basic understanding
-              of the domain, I aimed for excellence. I discovered CalAI, an
-              advanced AI program, which empowered me with up-to-date content
-              and skills. Unlike costlier alternatives, CalAI was
-              budget-friendly. I highly recommend it for AI education and skills
-              development.
-            </p>
-          </div>
-          <div class="w-[420px]  p-2 flex flex-col justify-center items-center border-2 rounded-[10px] border-black transition-transform transform hover:-translate-y-1 hover:shadow-lg gap-5 md:w-full">
-            <img
-              class="h-[150px] rounded-full"
-              src={Mike}
-              alt="Mike-Williams-CalAI-Best-AI-Certification-Institute-in-USA"
-            />
-            <div class="flex gap-5 text-[14px] font-bold text-[#074D8D]  md:text-center md:ml-8">
-              <h2>Mike Williams</h2>
-              <h2>Certified AI Developer</h2>
-            </div>
-            <p class="text-center text-[14px]">
-              The CalAI program provided me with valuable insights into
-              effectively managing intricate AI projects and modules. The AI
-              literature covered in the program is exceptionally thorough and
-              comprehensive, making the time invested in completing it truly
-              worthwhile. I believe I have successfully attained my desired
-              goals through CalAI.
-            </p>
-          </div>
-        </div>
+          ))}
+        </Slider>
       </div>
-    </>
+    </div>
   );
 };
 
