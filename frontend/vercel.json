@@ -1,19 +1,21 @@
+
 {
-  "version": 2,
-  "routes": [
-    {
-      "src": "/checkout",
-      "status": 301,
-      "headers": { "Location": "http://localhost:3000/checkout" }
-    },
-    {
-      "src": "https://calai.org/register_form/register.html",
-      "status": 301,
-      "headers": { "Location": "https://www.calai.org/ExpressCheckout" }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
-}
+    "version": 2,
+    "routes": [
+      {
+        "src": "/terms&conditions.html",
+        "status": 301,
+        "headers": { "Location": "https://www.calai.org/Terms&Conditions" }
+      },
+      {
+        "src": "https://calai.org/register_form/register.html",
+        "status": 301,
+        "headers": { "Location": "https://www.calai.org/ExpressCheckout" }
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/$1"
+      }
+    ]
+  }
+  

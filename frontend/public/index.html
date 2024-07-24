@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PNRGDZ5D");
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Calrity code start -->
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "n4k0ci82v1");
+    </script>
+    <!-- Clarity code ends -->
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/Calaiorign.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,32 +59,30 @@
       async
     ></script>
     <title>CalAI</title>
-    <!-- Google Tag Manager -->
+    <!-- Trackdesk tracker begin -->
+    <script async src="//cdn.trackdesk.com/tracking.js"></script>
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-NR99W4Q4");
+      (function (t, d, k) {
+        (t[k] = t[k] || []).push(d);
+        t[d] =
+          t[d] ||
+          t[k].f ||
+          function () {
+            (t[d].q = t[d].q || []).push(arguments);
+          };
+      })(window, "trackdesk", "TrackdeskObject");
+      trackdesk("calai", "conversion", {
+        conversionType: "freetrial",
+      });
+      trackdesk("calai", "conversion", {
+        conversionType: "lead",
+      });
+
+      trackdesk("calai", "click");
     </script>
-    <!-- End Google Tag Manager -->
+    <!-- Trackdesk tracker end -->
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-NR99W4Q4"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
