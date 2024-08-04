@@ -84,7 +84,7 @@ const Login = () => {
   };
 
   const handleGoogleSignIn = () => {
-    console.log("creating user");
+    console.log("Creating user");
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {

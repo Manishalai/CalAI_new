@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Brochure from "../forms/Brochure";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -18,6 +19,14 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const handleAboutUsClick = () => {
+    navigate('/');
+    setTimeout(() => {
+      scrollToSection('aboutus-section');
+    }, 100); 
+  };
+
   return (
     <>
       {/* DESKTOP */}
@@ -78,7 +87,7 @@ const Navbar = () => {
             </div>
             {/* <Link to="/AboutUs"> */}
               <button 
-              onClick={() => scrollToSection("aboutus-section")}
+              onClick={handleAboutUsClick}
               className="inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent px-1 pb-4 text-[18px] font-medium text-white hover:border-orange-300 hover:text-orange-500">
                 About Us
               </button>
@@ -147,11 +156,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/AboutUs">
-              <button className="inline-flex m-1 shrink-0 items-center border-transparent text-[18px] font-medium hover:border-orange-300 hover:text-orange-500">
+            {/* <Link to="/AboutUs"> */}
+              <button 
+              onClick={handleAboutUsClick}
+              className="inline-flex m-1 shrink-0 items-center border-transparent text-[18px] font-medium hover:border-orange-300 hover:text-orange-500">
                 About Us
               </button>
-            </Link>
+            {/* </Link> */}
           </li>
           <li>
             <button
