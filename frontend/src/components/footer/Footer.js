@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { firestore } from "../../firebase/firebase"; // Ensure this path matches where your firebase.js is located
-import { collection, addDoc } from "firebase/firestore";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { handleSuccess } from "../../notifications/notify";
-import axios from "axios";
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { firestore } from '../../firebase/firebase'; // Ensure this path matches where your firebase.js is located
+import { collection, addDoc } from 'firebase/firestore';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { handleSuccess } from '../../notifications/notify';
+import axios from 'axios';
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) {
-      toast.error("Email cannot be empty.");
+      toast.error('Email cannot be empty.');
       return;
     }
 
@@ -26,70 +27,70 @@ const Footer = () => {
         `https://api.brevo.com/v3/contacts/${email}`,
         {
           headers: {
-            "api-key": apiKey,
+            'api-key': apiKey,
           },
-        }
+        },
       );
       console.log(checkResponse);
       if (checkResponse.data) {
         // Delete the existing contact
         await axios.delete(`https://api.brevo.com/v3/contacts/${email}`, {
           headers: {
-            "api-key": apiKey,
+            'api-key': apiKey,
           },
         });
       }
 
       // Add the contact back
       const response = await axios.post(
-        "https://api.brevo.com/v3/contacts",
+        'https://api.brevo.com/v3/contacts',
         {
           email: email,
           listIds: [listId],
         },
         {
           headers: {
-            "Content-Type": "application/json",
-            "api-key": apiKey,
+            'Content-Type': 'application/json',
+            'api-key': apiKey,
           },
-        }
+        },
       );
       handleSuccess(response);
-      await addDoc(collection(firestore, "newsLetter_subscription"), {
+      await addDoc(collection(firestore, 'newsLetter_subscription'), {
         email: email,
         timestamp: new Date(),
         brevo_id: response.data.id,
       });
 
-      setEmail(""); // Clear the input after success
+      setEmail(''); // Clear the input after success
     } catch (err) {
       if (err.response.status === 404) {
         // Add the contact back
         const response = await axios.post(
-          "https://api.brevo.com/v3/contacts",
+          'https://api.brevo.com/v3/contacts',
           {
             email: email,
             listIds: [listId],
           },
           {
             headers: {
-              "Content-Type": "application/json",
-              "api-key": apiKey,
+              'Content-Type': 'application/json',
+              'api-key': apiKey,
             },
-          }
+          },
         );
         console.log(response);
         handleSuccess(response);
-        await addDoc(collection(firestore, "newsLetter_subscription"), {
+        await addDoc(collection(firestore, 'newsLetter_subscription'), {
           email: email,
           timestamp: new Date(),
           brevo_id: response.data.id,
         });
 
-        setEmail(""); // Clear the input after success
+        setEmail(''); // Clear the input after success
       } else {
-        console.error("Error subscribing to Brevo: ", err);
-        toast.error("An unexpected error occured");
+        console.error('Error subscribing to Brevo: ', err);
+        toast.error('An unexpected error occured');
       }
     }
   };
@@ -98,9 +99,9 @@ const Footer = () => {
     <>
       <div id="footer">
         <footer class="bg-gray-200">
-          <div class=" px-6 lg:px-8">
+          <div class=" px-6 lg:px-8 py-16">
             <div class="flex items-start gap-8 ">
-              <div class=" flex justify-around w-full mt-3 md:flex-col md:gap-5 ">
+              <div class=" flex justify-around w-full mt-3 md:flex-col gap-8 ">
                 {/* FAQS */}
                 <div class="w-[500px] flex flex-col justify-center md:w-full">
                   <div className="mt-0">
@@ -139,7 +140,7 @@ const Footer = () => {
                           <li>
                             <span class="font-bold">Apply Now:</span>Click on
                             the 'Apply Now' button located on the prominent
-                            orange strip at the top{" "}
+                            orange strip at the top{' '}
                           </li>
                           <li>
                             <span class="font-bold">Personal Details:</span>Fill
@@ -186,14 +187,14 @@ const Footer = () => {
                           <li>
                             <span class="font-bold">
                               Comprehensive Knowledge:
-                            </span>{" "}
+                            </span>{' '}
                             Gain expertise in Industry Practices and Functional
                             capabilities of AI with a focus on modern tools and
                             techniques.
                           </li>
                           <br />
                           <li>
-                            <span class="font-bold">Hands-on Experience:</span>{" "}
+                            <span class="font-bold">Hands-on Experience:</span>{' '}
                             Develop models for NLP-based and robotics-based
                             projects, directly applicable to organizational
                             needs.
@@ -202,20 +203,20 @@ const Footer = () => {
                           <li>
                             <span class="font-bold">
                               Excellence in Advanced AI:
-                            </span>{" "}
+                            </span>{' '}
                             Acquire superior knowledge in advanced AI,
                             Consulting approaches, and strategic AI and
                             management ecosystems.
                           </li>
                           <br />
                           <li>
-                            <span class="font-bold">Career Advancement:</span>{" "}
+                            <span class="font-bold">Career Advancement:</span>{' '}
                             Increase chances of landing dream jobs or projects
                             with a specialized AI certification.
                           </li>
                           <br />
                           <li>
-                            <span class="font-bold">Salary Growth:</span>{" "}
+                            <span class="font-bold">Salary Growth:</span>{' '}
                             Experience an exponential salary hike, reflecting
                             the value brought to the organization.
                           </li>
@@ -223,13 +224,13 @@ const Footer = () => {
                           <li>
                             <span class="font-bold">
                               Distinguished Credential:
-                            </span>{" "}
+                            </span>{' '}
                             Earn a recognized credential exclusive for
                             Techno-Strategic careers.
                           </li>
                           <br />
                           <li>
-                            <span class="font-bold">Digital Badge:</span>{" "}
+                            <span class="font-bold">Digital Badge:</span>{' '}
                             Receive a world-class digital badge with lifelong
                             validity, showcasing your expertise throughout
                             your career journey.
@@ -260,7 +261,7 @@ const Footer = () => {
                     </details>
                     <details>
                       <summary class="py-2 outline-none cursor-pointer focus:underline">
-                        {" "}
+                        {' '}
                         What resources will I get on enrolling for a CalAI
                         program?
                       </summary>
@@ -272,7 +273,7 @@ const Footer = () => {
                             </span>
                           </li>
                           <p>
-                            {" "}
+                            {' '}
                             - Comprehensive study guides and materials available
                             for download.
                           </p>
@@ -281,7 +282,7 @@ const Footer = () => {
                             <span class="font-bold">Recorded Videos:</span>
                           </li>
                           <p>
-                            {" "}
+                            {' '}
                             - Access to a library of recorded instructional
                             videos for flexible, self-paced learning.
                           </p>
@@ -322,67 +323,69 @@ const Footer = () => {
                   </div>
                 </div>
                 {/* PAYMENTS LINKS */}
-                <div class="flex-col">
-                  <p class="font-medium text-lg text-gray-900">
-                    Payments Links
-                  </p>
-                  <ul class="mt-6 space-y-4 text-sm">
-                    <li>
-                      <Link
-                        to="/register_form/register.html"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {" "}
-                        Express-Checkout
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/PayPal/270"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {" "}
-                        PayPal-270
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/AIDpayment.html"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {" "}
-                        PayPal-400
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/CalAI_CAIL.html"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {" "}
-                        PayPal-250
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/calAI_CAIL.html"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {" "}
-                        PayPal-880
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/AILpayement.html"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {" "}
-                        PayPal-480
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+                {location.pathname !== '/' && (
+                  <div class="flex-col">
+                    <p class="font-medium text-lg text-gray-900">
+                      Payments Links
+                    </p>
+                    <ul class="mt-6 space-y-4 text-sm">
+                      <li>
+                        <Link
+                          to="/register_form/register.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          Express-Checkout
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/PayPal/270"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-270
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/AIDpayment.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-400
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/CalAI_CAIL.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-250
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/calAI_CAIL.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-880
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/AILpayement.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-480
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
                 {/* QUICK LINKS */}
                 <div class="flex-col">
                   <p class="font-medium text-lg text-gray-900">Quick Links</p>
@@ -393,7 +396,7 @@ const Footer = () => {
                         to="/Terms&Conditions"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
+                        {' '}
                         Terms & Conditions
                       </Link>
                     </li>
@@ -402,7 +405,7 @@ const Footer = () => {
                         to="/Privacy_Policy"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
+                        {' '}
                         Privacy Policy
                       </Link>
                     </li>
@@ -411,7 +414,7 @@ const Footer = () => {
                         to="/StartTest"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
+                        {' '}
                         CalAI-Test
                       </Link>
                     </li>
@@ -420,7 +423,7 @@ const Footer = () => {
                         to="/IntrestForm"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
+                        {' '}
                         Intrest-Form
                       </Link>
                     </li>
@@ -429,7 +432,7 @@ const Footer = () => {
                         to="/partnerWithUs"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
+                        {' '}
                         Partner With Us
                       </Link>
                     </li>
@@ -445,8 +448,8 @@ const Footer = () => {
                         to="/AI_Developer"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
-                        Certified Artificial Intelligence Developer{" "}
+                        {' '}
+                        Certified Artificial Intelligence Developer{' '}
                       </Link>
                     </li>
 
@@ -455,7 +458,7 @@ const Footer = () => {
                         to="/AI_Manager"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
+                        {' '}
                         Certified Artificial Intelligence Manager
                       </Link>
                     </li>
@@ -465,8 +468,8 @@ const Footer = () => {
                         to="/AI_Leader"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
-                        Certified Artificial Intelligence Leader{" "}
+                        {' '}
+                        Certified Artificial Intelligence Leader{' '}
                       </Link>
                     </li>
                   </ul>
@@ -481,8 +484,8 @@ const Footer = () => {
                         to="/Blog/Blog5"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
-                        The Present and Future of AI: Shaping Our Lives{" "}
+                        {' '}
+                        The Present and Future of AI: Shaping Our Lives{' '}
                       </Link>
                     </li>
 
@@ -491,8 +494,8 @@ const Footer = () => {
                         to="/Blog/Blog2"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
-                        Enhancing Software Development with Generative AI{" "}
+                        {' '}
+                        Enhancing Software Development with Generative AI{' '}
                       </Link>
                     </li>
                     <li>
@@ -500,7 +503,7 @@ const Footer = () => {
                         to="/Blog/Blog6"
                         class="text-gray-700 transition hover:opacity-75"
                       >
-                        {" "}
+                        {' '}
                         Unlocking Creativity: ChatGPT's Role in Content Writing
                       </Link>
                     </li>
