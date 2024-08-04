@@ -76,11 +76,13 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            <Link to="/AboutUs">
-              <button className="inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent px-1 pb-4 text-[18px] font-medium text-white hover:border-orange-300 hover:text-orange-500">
+            {/* <Link to="/AboutUs"> */}
+              <button 
+              onClick={() => scrollToSection("aboutus-section")}
+              className="inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent px-1 pb-4 text-[18px] font-medium text-white hover:border-orange-300 hover:text-orange-500">
                 About Us
               </button>
-            </Link>
+            {/* </Link> */}
             <button
               id="brochure-navbar"
               className="inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent px-1 pb-4 text-[18px] font-medium text-white hover:border-orange-300 hover:text-orange-500"
