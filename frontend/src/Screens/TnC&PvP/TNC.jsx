@@ -95,6 +95,30 @@ const TNC = () => {
           America and the State of California, without regard to conflicts
           of law principles.
         </p>
+        <h3 class="text-[25px] font-bold text-[#074D8D] ml-4">
+        NON-REFUNDABLE REGISTRATION FEE:
+        </h3>
+        <p class="text-[18px] p-4">
+        The registration fee component of the course fees is non-refundable. This fee covers payment gateway charges (e.g., PayPal), LMS account creation charges, and application fees.
+        </p>
+        <h3 class="text-[25px] font-bold text-[#074D8D] ml-4">
+        REFUND POLICY:
+        </h3>
+        <p class="text-[18px] p-4">
+          Refunds can only be processed within 24 hours of receiving LMS credentials. After this period, the registration fee and course fees are non-refundable.
+        </p>
+        <h3 class="text-[25px] font-bold text-[#074D8D] ml-4">
+        PAYMENT AND CREDENTIAL DELIVERY:
+        </h3>
+        <p class="text-[18px] p-4">
+        Upon successful payment, Learning Management System (LMS) credentials will be delivered to your registered email address. Once you receive the credentials, you can begin your journey in the program.
+        </p>
+        <h3 class="text-[25px] font-bold text-[#074D8D] ml-4">
+        COURSE DELIVERY METHOD:
+        </h3>
+        <p class="text-[18px] p-4">
+        The course will be delivered using a drip-feed method. In this method, new modules will be released gradually, typically on a weekly basis. You will gain access to each subsequent module only after completing the previous one. This structured approach ensures optimal learning progression and allows for focused attention on each module's content.
+        </p>
       </div>
       <Footer />
     </>
