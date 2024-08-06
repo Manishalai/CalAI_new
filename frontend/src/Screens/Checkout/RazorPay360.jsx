@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-import Navbar from "../../components/navbar/Navbar";
 
 const Razorpay360 = () => {
   const [sdkLoaded, setSdkLoaded] = useState(false);
@@ -30,7 +28,7 @@ const Razorpay360 = () => {
       rzpPaymentForm.style.pointerEvents = "auto";
       rzpPaymentForm.style.opacity = 1;
     } else {
-      rzpPaymentForm.style.pointerEvents = "none";
+      rzpPaymentForm.style.pointerEvents = "auto";
       rzpPaymentForm.style.opacity = 0.5;
     }
   }, [sdkLoaded, termsAccepted]);
@@ -38,7 +36,6 @@ const Razorpay360 = () => {
   return (
     <>
       <Header />
-      <Navbar />
       <div className="flex flex-col justify-center items-center gap-5 mt-4 md:p-4">
         <h2 className="text-[2rem] font-semibold">
           Complete Your Registration!
@@ -55,6 +52,7 @@ const Razorpay360 = () => {
         <form
           id="rzp_payment_form"
           className="w-full max-w-lg text-center"
+          
         ></form>
         <div className="w-full max-w-lg text-center p-4">
           <div id="terms-container">
@@ -78,7 +76,6 @@ const Razorpay360 = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
