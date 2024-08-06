@@ -33,7 +33,6 @@ const Home = () => {
         <Speaker />
       </div>
       <Slider />
-
       <div id="footer-section">
         <Footer />
       </div>

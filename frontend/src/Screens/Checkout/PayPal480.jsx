@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-import Navbar from "../../components/navbar/Navbar";
 import { Link } from "react-router-dom";
 
 const PayPal480 = () => {
@@ -70,7 +68,6 @@ const PayPal480 = () => {
   return (
     <>
       <Header />
-      <Navbar />
       <div className="flex flex-col justify-center items-center gap-5 mt-4 md:p-4">
         <div className="text-center">
           <h2 className="text-2xl font-semibold">
@@ -107,7 +104,6 @@ const PayPal480 = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

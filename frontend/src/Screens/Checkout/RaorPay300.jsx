@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-import Navbar from "../../components/navbar/Navbar";
 
 const Razorpay300 = () => {
   const [sdkLoaded, setSdkLoaded] = useState(false);
@@ -38,8 +36,7 @@ const Razorpay300 = () => {
   return (
     <>
       <Header />
-      <Navbar />
-      <div className="flex flex-col justify-center items-center gap-5 mt-4 md:p-4">
+      <div className="flex flex-col justify-center items-center gap-5 mt-4 md:p-4 border-2 rounded-md">
         <h2 className="text-[2rem] font-semibold">
           Complete Your Registration!
         </h2>
@@ -80,7 +77,6 @@ const Razorpay300 = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
