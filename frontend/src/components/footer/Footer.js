@@ -99,11 +99,10 @@ const Footer = () => {
     <>
       <div id="footer">
         <footer class="bg-gray-200">
-          <div class=" px-6 lg:px-8 py-16">
-            <div class="flex items-start gap-8 ">
-              <div class=" flex justify-around w-full mt-3 md:flex-col gap-8 ">
-                {/* FAQS */}
-                <div class="w-[500px] flex flex-col justify-center md:w-full">
+          <div class=" px-6 lg:px-8 pt-8">
+            <div class="flex items-start ">
+              <div class=" flex justify-around items-start w-full mt-3 md:flex-col gap-8 ">
+                <div class="w-4/12 flex flex-col justify-center md:w-full">
                   <div className="mt-0">
                     <h1 className="font-medium text-lg text-gray-900">
                       Subscribe to Our Newsletter
@@ -126,10 +125,172 @@ const Footer = () => {
                       </button>
                     </form>
                   </div>
+                  <div className="flex flex-row justify-between gap-3">
+                    {/* CERTIFICATION */}
+                    <div class="flex-col">
+                      <p class="font-medium text-lg text-gray-900">
+                        Certification
+                      </p>
+
+                      <ul class="mt-6 space-y-4 text-sm ">
+                        <li>
+                          <Link
+                            to="/AI_Developer"
+                            class="text-gray-700 transition hover:opacity-75"
+                          >
+                            {' '}
+                            Certified Artificial Intelligence Developer{' '}
+                          </Link>
+                        </li>
+
+                        <li>
+                          <Link
+                            to="/AI_Manager"
+                            class="text-gray-700 transition hover:opacity-75"
+                          >
+                            {' '}
+                            Certified Artificial Intelligence Manager
+                          </Link>
+                        </li>
+
+                        <li>
+                          <Link
+                            to="/AI_Leader"
+                            class="text-gray-700 transition hover:opacity-75"
+                          >
+                            {' '}
+                            Certified Artificial Intelligence Leader{' '}
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                    {/* QUICK LINKS */}
+                    <div class="flex-col">
+                      <p class="font-medium text-lg text-gray-900">
+                        Quick Links
+                      </p>
+
+                      <ul class="mt-6 space-y-4 text-sm">
+                        <li>
+                          <Link
+                            to="/Terms&Conditions"
+                            class="text-gray-700 transition hover:opacity-75"
+                          >
+                            {' '}
+                            Terms & Conditions
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/Privacy_Policy"
+                            class="text-gray-700 transition hover:opacity-75"
+                          >
+                            {' '}
+                            Privacy Policy
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/StartTest"
+                            class="text-gray-700 transition hover:opacity-75"
+                          >
+                            {' '}
+                            CalAI-Test
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/IntrestForm"
+                            class="text-gray-700 transition hover:opacity-75"
+                          >
+                            {' '}
+                            Intrest-Form
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/partnerWithUs"
+                            class="text-gray-700 transition hover:opacity-75"
+                          >
+                            {' '}
+                            Partner With Us
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                {/* PAYMENTS LINKS */}
+                {location.pathname !== '/' && (
+                  <div class="flex-col">
+                    <p class="font-medium text-lg text-gray-900">
+                      Payments Links
+                    </p>
+                    <ul class="mt-6 space-y-4 text-sm">
+                      <li>
+                        <Link
+                          to="/register_form/register.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          Express-Checkout
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/PayPal/270"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-270
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/AIDpayment.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-400
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/CalAI_CAIL.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-250
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/calAI_CAIL.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-880
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/AILpayement.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          PayPal-480
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+
+                {/* FAQS */}
+                <div class="w-96 flex flex-col">
                   <h2 class="font-medium text-lg text-gray-900">
                     Frequently Asked Questions
                   </h2>
-                  <div class="flex flex-col divide-y  divide-gray-700">
+                  <div class="w-full flex flex-col divide-y divide-gray-700">
                     <details>
                       <summary class="py-2 outline-none cursor-pointer focus:underline">
                         What is CalAI Scholarship Test and how can it benefit
@@ -322,158 +483,6 @@ const Footer = () => {
                     </details>
                   </div>
                 </div>
-                {/* PAYMENTS LINKS */}
-                {location.pathname !== '/' && (
-                  <div class="flex-col">
-                    <p class="font-medium text-lg text-gray-900">
-                      Payments Links
-                    </p>
-                    <ul class="mt-6 space-y-4 text-sm">
-                      <li>
-                        <Link
-                          to="/register_form/register.html"
-                          class="text-gray-700 transition hover:opacity-75"
-                        >
-                          {' '}
-                          Express-Checkout
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/PayPal/270"
-                          class="text-gray-700 transition hover:opacity-75"
-                        >
-                          {' '}
-                          PayPal-270
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/AIDpayment.html"
-                          class="text-gray-700 transition hover:opacity-75"
-                        >
-                          {' '}
-                          PayPal-400
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/CalAI_CAIL.html"
-                          class="text-gray-700 transition hover:opacity-75"
-                        >
-                          {' '}
-                          PayPal-250
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/calAI_CAIL.html"
-                          class="text-gray-700 transition hover:opacity-75"
-                        >
-                          {' '}
-                          PayPal-880
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/AILpayement.html"
-                          class="text-gray-700 transition hover:opacity-75"
-                        >
-                          {' '}
-                          PayPal-480
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-                {/* QUICK LINKS */}
-                <div class="flex-col">
-                  <p class="font-medium text-lg text-gray-900">Quick Links</p>
-
-                  <ul class="mt-6 space-y-4 text-sm">
-                    <li>
-                      <Link
-                        to="/Terms&Conditions"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Terms & Conditions
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/Privacy_Policy"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Privacy Policy
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/StartTest"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        CalAI-Test
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/IntrestForm"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Intrest-Form
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/partnerWithUs"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Partner With Us
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                {/* CERTIFICATION */}
-                <div class="flex-col">
-                  <p class="font-medium text-lg text-gray-900">Certification</p>
-
-                  <ul class="mt-6 space-y-4 text-sm ">
-                    <li>
-                      <Link
-                        to="/AI_Developer"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Certified Artificial Intelligence Developer{' '}
-                      </Link>
-                    </li>
-
-                    <li>
-                      <Link
-                        to="/AI_Manager"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Certified Artificial Intelligence Manager
-                      </Link>
-                    </li>
-
-                    <li>
-                      <Link
-                        to="/AI_Leader"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Certified Artificial Intelligence Leader{' '}
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
                 {/* BLOGS */}
                 <div class="flex-col">
                   <p class="font-medium text-lg text-gray-900">Blogs</p>
@@ -538,11 +547,11 @@ const Footer = () => {
               </div>
             </div>
             {/* COPYRIGHT */}
-            <div class="mt-8 border-t border-gray-100 pt-8">
+            <div class="mt-2 border-t border-gray-100 pt-4">
               <div class="sm:flex sm:justify-between">
                 <p class="text-xs text-center text-gray-800">
-                  &copy; 2022-2024. California Artifical Intelligence Institute.
-                  All Rights Reserved
+                  &copy; 2024. California Artifical Intelligence Institute. All
+                  Rights Reserved
                 </p>
               </div>
             </div>
