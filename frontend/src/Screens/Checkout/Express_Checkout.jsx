@@ -3,7 +3,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { toast } from "react-toastify";
 import Aiyana from "../../images/Rectangle 23.svg";
 import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -358,7 +357,6 @@ const ExpressCheckout = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
