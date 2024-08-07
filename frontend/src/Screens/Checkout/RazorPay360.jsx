@@ -37,18 +37,23 @@ const Razorpay360 = () => {
     <>
       <Header />
       <div className="flex flex-col justify-center items-center gap-5 mt-4 md:p-4">
-        <h2 className="text-[2rem] font-semibold">
+        <div>
+        <h2 className="text-[2rem] font-semibold text-center">
           Complete Your Registration!
         </h2>
-        <p>
+        <p className=" text-center py-2">
           Complete your CalAI® registration to personalize your AI journey with
           tailored content.
         </p>
-        <p>
-          Certified Artificial Intelligence Leader (CAIL<sup>TM</sup>)
+        </div>
+        <p className="text-center flex flex-col">
+          <span className="text-2xl font-bold pb-2">Combo Pack</span>
+          <span>Certified Artificial Intelligence Developer (CAID<sup>TM</sup>)</span> 
+          <span>&</span>
+          <span>Certified Artificial Intelligence Leader (CAIL<sup>TM</sup>)</span>
         </p>
-        <h3 class="text-[2rem] font-semibold">35,438 INR</h3>
-        <p class="font-semibold">Total: 35,438 INR (Inclusive of 18% GST)</p>
+        <h3 class="text-[2rem] font-semibold">78,475 INR</h3>
+        <p class="font-semibold">Total: 78,475 INR (Inclusive of 18% GST)</p>
         <form
           id="rzp_payment_form"
           className="w-full max-w-lg text-center"
