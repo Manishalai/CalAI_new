@@ -28,7 +28,7 @@ const Razorpay360 = () => {
       rzpPaymentForm.style.pointerEvents = "auto";
       rzpPaymentForm.style.opacity = 1;
     } else {
-      rzpPaymentForm.style.pointerEvents = "auto";
+      rzpPaymentForm.style.pointerEvents = "none";
       rzpPaymentForm.style.opacity = 0.5;
     }
   }, [sdkLoaded, termsAccepted]);
