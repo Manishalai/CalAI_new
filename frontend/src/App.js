@@ -77,7 +77,8 @@ const App = () => {
           path="/register_form/register.html"
           element={<ExpressCheckout />}
         />
-        <Route path="/PayPal/270" element={<Razorpay360 />} />
+        {/* <Route path="/PayPal/270" element={<Razorpay360 />} /> */}
+        <Route path="/payments/razorpay" element={<Razorpay360 />} />
         <Route path="/AIDpayment.html" element={<PayPal400 />} />
         <Route path="/AILpayement.html" element={<PayPal480 />} />
         <Route path="/CalAI_CAIL.html" element={<PayPal880 />} />
