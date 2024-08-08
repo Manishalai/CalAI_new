@@ -90,10 +90,7 @@ const TNC = () => {
           GOVERNING LAW:
         </h3>
         <p class="text-[18px] p-4">
-          All disputes arising from the use of this website shall be governed by
-          and construed in accordance with the laws of the United States of
-          America and the State of California, without regard to conflicts
-          of law principles.
+        All disputes arising from the use of this website shall be governed by and construed in accordance with applicable laws, without regard to conflicts of law principles.
         </p>
         <h3 class="text-[25px] font-bold text-[#074D8D] ml-4">
         NON-REFUNDABLE REGISTRATION FEE:
@@ -105,7 +102,7 @@ const TNC = () => {
         REFUND POLICY:
         </h3>
         <p class="text-[18px] p-4">
-          Refunds can only be processed within 24 hours of receiving LMS credentials. After this period, the registration fee and course fees are non-refundable.
+        Refunds can only be processed within 24 hours of receiving LMS credentials. If a refund is initiated within this 24-hour window, a processing charge of $200 USD will be deducted from the refunded amount. After 24 hours, the registration fee and course fees are non-refundable. To initiate a refund, please email us at info@calai.org.
         </p>
         <h3 class="text-[25px] font-bold text-[#074D8D] ml-4">
         PAYMENT AND CREDENTIAL DELIVERY:

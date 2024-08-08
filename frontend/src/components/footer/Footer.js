@@ -349,7 +349,7 @@ const Footer = () => {
                       </li>
                       <li>
                         <Link
-                          to="/PayPal/270"
+                          to="/payments/razorpay"
                           class="text-gray-700 transition hover:opacity-75"
                         >
                           {' '}
