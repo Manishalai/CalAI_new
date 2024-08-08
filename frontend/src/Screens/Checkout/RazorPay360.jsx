@@ -52,8 +52,8 @@ const Razorpay360 = () => {
           <span>&</span>
           <span>Certified Artificial Intelligence Leader (CAIL<sup>TM</sup>)</span>
         </p>
-        <h3 class="text-[2rem] font-semibold">78,475 INR</h3>
-        <p class="font-semibold">Total: 78,475 INR (Inclusive of 18% GST)</p>
+        <h3 class="text-[2rem] font-semibold">66,504 INR</h3>
+        <p class="font-semibold">Total: 66,504 INR (Inclusive of 18% GST)</p>
         <form
           id="rzp_payment_form"
           className="w-full max-w-lg text-center"
