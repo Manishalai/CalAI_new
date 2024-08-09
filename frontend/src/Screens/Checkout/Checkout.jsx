@@ -1,40 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { firestore } from "../../firebase/firebase";
-import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
-import { toast } from "react-toastify";
-import Aiyana from "../../images/Rectangle 23.svg";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-import axios from "axios";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { firestore } from '../../firebase/firebase';
+import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { toast } from 'react-toastify';
+import Aiyana from '../../images/Rectangle 23.svg';
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
+import axios from 'axios';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Checkout = () => {
   const location = useLocation();
   const { courseName, price } = location.state || {};
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [coupon, setCoupon] = useState("");
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [coupon, setCoupon] = useState('');
   const [discount, setDiscount] = useState(0);
   const [couponApplied, setCouponApplied] = useState(false);
   const [invalidCoupon, setInvalidCoupon] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setEmail(user.email || "");
-        setPhone(user.phoneNumber || "");
+        setEmail(user.email || '');
+        setPhone(user.phoneNumber || '');
       } else {
-        setEmail("");
-        setName("");
-        setPhone("");
+        setEmail('');
+        setName('');
+        setPhone('');
       }
     });
 
@@ -52,14 +55,14 @@ const Checkout = () => {
   const applyCoupon = async () => {
     try {
       const response = await fetch(
-        "https://cal-ai-new-server.vercel.app/validate-coupon",
+        `${process.env.REACT_APP_SERVER_URL}/validate-coupon`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({ scholarshipCode: coupon }),
-        }
+        },
       );
       console.log(response);
       if (response.ok) {
@@ -67,11 +70,11 @@ const Checkout = () => {
         setDiscount(data.discount / 100);
         setCouponApplied(true);
         setInvalidCoupon(false);
-        toast.success("Coupon applied successfully!");
+        toast.success('Coupon applied successfully!');
       } else {
         setDiscount(0);
         setInvalidCoupon(true);
-        toast.error("Invalid coupon code.");
+        toast.error('Invalid coupon code.');
         setTimeout(() => {
           setInvalidCoupon(false);
         }, 1000);
@@ -79,26 +82,26 @@ const Checkout = () => {
     } catch (error) {
       setInvalidCoupon(true);
       setCouponApplied(false);
-      toast.error("Something went wrong. Please try again later.");
+      toast.error('Something went wrong. Please try again later.');
       console.error(error);
     }
   };
 
   const validateInputs = () => {
     if (!email) {
-      toast.error("Email is required.");
+      toast.error('Email is required.');
       return false;
     }
     if (!name) {
-      toast.error("Name is required.");
+      toast.error('Name is required.');
       return false;
     }
     if (!phone) {
-      toast.error("Phone number is required.");
+      toast.error('Phone number is required.');
       return false;
     }
     if (!termsAccepted) {
-      toast.error("Please accept our terms and conditions");
+      toast.error('Please accept our terms and conditions');
       return false;
     }
     return true;
@@ -107,63 +110,172 @@ const Checkout = () => {
   const handlePayNow = async () => {
     if (!validateInputs()) return;
 
+    // Check if phone number includes a country code
+    if (!phone.startsWith('+')) {
+      toast.error('Please select a country code before proceeding.');
+      return;
+    }
+
+    const exchangeRate = `${process.env.REACT_APP_EXCHANGE_RATE}`;
+    const priceInINR = price * exchangeRate; // Convert USD to INR
+    const totalPrice = priceInINR * (1 - discount) * 100; // Convert INR to paise.
+
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "https://cal-ai-new-server.vercel.app/create-order",
-        {
-          amount: price * (1 - discount),
-          program: courseName,
-          email: email,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
+      if (phone.startsWith('+91')) {
+        // ** INDIAN USER (razorpay)**//
+
+        const response = await axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/create-razorpay-order`,
+          {
+            amount: totalPrice,
+            program: courseName,
+            email: email,
           },
-        }
-      );
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          },
+        );
 
-      if (response.status === 200) {
-        const data = response.data;
-        const approvalURL = data.approvalUrl;
+        console.log('create order res:', response);
 
-        if (approvalURL) {
-          // Construct the transaction data
+        if (response.status === 200) {
+          const data = response.data;
+          const razorpayOrderId = data.orderId;
+
+          // Save transaction data to Firestore before redirecting to payment gateway
           const transactionData = {
             name: name,
             email: email,
             courseName: courseName,
-            price: price,
+            price: `Rs ${totalPrice/100}`,// paisa to ruppes.
             coupon: coupon,
             phone: phone,
-            timestamp: new Date().toLocaleString("en-US", {
-              timeZone: "Asia/Kolkata",
+            timestamp: new Date().toLocaleString('en-US', {
+              timeZone: 'Asia/Kolkata',
             }),
           };
 
-          const docRef = doc(firestore, "before_transaction", email);
+          const docRef = doc(firestore, 'before_transaction', email);
           await setDoc(docRef, {
             timestamp: serverTimestamp(),
           });
-          // Construct the correct Firestore references
           const doccollRef = doc(firestore, `before_transaction/${email}`);
-          const transactionRef = doc(collection(doccollRef, "transactions"));
-
+          const transactionRef = doc(collection(doccollRef, 'transactions'));
           await setDoc(transactionRef, transactionData);
 
-          window.location.href = approvalURL;
+          // Redirect to Razorpay payment page
+          const options = {
+            key: `${process.env.REACT_APP_RAZORPAY_KEY_ID}`, // Replace with your Razorpay key ID
+            amount: totalPrice,
+            currency: 'INR',
+            name: 'CalAI',
+            description: courseName,
+            order_id: razorpayOrderId,
+            handler: async function (response) {
+              console.log('Razorpay response:', response);
+              // Capture payment on backend
+              try {
+                const captureResponse = await axios.post(
+                  `${process.env.REACT_APP_SERVER_URL}/raz-capture-payment`,
+                  {
+                    paymentId: response.razorpay_payment_id,
+                    amount: totalPrice,
+                  },
+                );
+
+                console.log('Front captureResponse:', captureResponse);
+
+                if (captureResponse.status === 200) {
+                  // setTransactionId(response.razorpay_payment_id);
+                  setPaymentConfirmed(true);
+                  navigate("/")
+                } else {
+                  console.error('Failed to capture order');
+                  navigate("/cancel")
+                }
+              } catch (error) {
+                console.error('Error capturing payment:', error);
+              }
+            },
+            prefill: {
+              name: name,
+              email: email,
+              contact: phone,
+            },
+            notes: {
+              address: 'CalAI Corporate Office',
+            },
+            theme: {
+              color: '#F37254',
+            },
+          };
+          const rzp = new window.Razorpay(options);
+          rzp.open();
         } else {
-          console.error("Approval URL not found in response.");
-          toast.error("Approval URL not found.");
+          console.error('Payment initiation failed.');
+          toast.error('Payment initiation failed.');
         }
-      } else {
-        console.error("Payment initiation failed.");
-        toast.error("Payment initiation failed.");
+      } //** NON INDIAN USER (paypal)**/
+      else {
+        const response = await axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/create-order`,
+          {
+            amount: price * (1 - discount),
+            program: courseName,
+            email: email,
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        if (response.status === 200) {
+          const data = response.data;
+          const approvalURL = data.approvalUrl;
+
+          if (approvalURL) {
+            // Construct the transaction data
+            const transactionData = {
+              name: name,
+              email: email,
+              courseName: courseName,
+              price: price,
+              coupon: coupon,
+              phone: phone,
+              timestamp: new Date().toLocaleString('en-US', {
+                timeZone: 'Asia/Kolkata',
+              }),
+            };
+
+            const docRef = doc(firestore, 'before_transaction', email);
+            await setDoc(docRef, {
+              timestamp: serverTimestamp(),
+            });
+            // Construct the correct Firestore references
+            const doccollRef = doc(firestore, `before_transaction/${email}`);
+            const transactionRef = doc(collection(doccollRef, 'transactions'));
+
+            await setDoc(transactionRef, transactionData);
+
+            window.location.href = approvalURL;
+          } else {
+            console.error('Approval URL not found in response.');
+            toast.error('Approval URL not found.');
+          }
+        } else {
+          console.error('Payment initiation failed.');
+          toast.error('Payment initiation failed.');
+        }
       }
     } catch (error) {
-      toast.error("Something went wrong. Please try again later.");
-      console.error("Error initiating payment:", error);
+      toast.error('Something went wrong. Please try again later.');
+      console.error('Error initiating payment:', error);
     } finally {
       setLoading(false);
     }
@@ -223,6 +335,11 @@ const Checkout = () => {
                   value={phone}
                   onChange={handlePhoneChange}
                   className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200 break-words"
+                  error={
+                    phone && !phone.startsWith('+')
+                      ? 'Country code is required'
+                      : ''
+                  }
                 />
               </div>
               <hr className="col-span-2 border-t border-gray-600" />
@@ -244,8 +361,8 @@ const Checkout = () => {
                   <span
                     className={
                       discount > 0
-                        ? "text-green-600 font-semibold"
-                        : "font-semibold"
+                        ? 'text-green-600 font-semibold'
+                        : 'font-semibold'
                     }
                   >
                     ${(price * (1 - discount)).toFixed(2)}
@@ -267,18 +384,18 @@ const Checkout = () => {
                 onClick={applyCoupon}
                 className={`p-2 ${
                   couponApplied
-                    ? "cursor-not-allowed text-green-600 w-full"
+                    ? 'cursor-not-allowed text-green-600 w-full'
                     : invalidCoupon
-                    ? "cursor-not-allowed text-red-600 w-full"
-                    : "cursor-pointer text-blue-700 w-1/2"
+                    ? 'cursor-not-allowed text-red-600 w-full'
+                    : 'cursor-pointer text-blue-700 w-1/2'
                 } rounded font-semibold`}
                 disabled={couponApplied}
               >
                 {couponApplied
-                  ? "Coupon Applied"
+                  ? 'Coupon Applied'
                   : invalidCoupon
-                  ? "Invalid Coupon"
-                  : "Apply"}
+                  ? 'Invalid Coupon'
+                  : 'Apply'}
               </button>
             </div>
             <hr className="col-span-2 w-full border-t border-gray-600 mb-4" />
@@ -291,14 +408,14 @@ const Checkout = () => {
                 className="mr-2"
               />
               <label htmlFor="terms">
-                I accept the{" "}
+                I accept the{' '}
                 <Link
                   to="/Terms&Conditions"
                   className="text-blue-500 hover:underline"
                 >
                   terms and conditions
-                </Link>{" "}
-                and the{" "}
+                </Link>{' '}
+                and the{' '}
                 <Link
                   to="/Privacy_Policy"
                   className="text-blue-500 hover:underline"
@@ -312,8 +429,9 @@ const Checkout = () => {
               <button
                 onClick={handlePayNow}
                 className="w-full px-4 py-2 bg-[#074D8D] text-white rounded"
+                disabled={loading}
               >
-                Pay Now
+                {loading ? 'Redirecting...' : 'Pay Now'}
               </button>
             </div>
           </div>
