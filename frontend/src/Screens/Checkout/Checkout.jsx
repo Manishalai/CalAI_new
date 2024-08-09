@@ -118,8 +118,7 @@ const Checkout = () => {
 
     const exchangeRate = `${process.env.REACT_APP_EXCHANGE_RATE}`;
     const priceInINR = price * exchangeRate; // Convert USD to INR
-    // const totalPrice = priceInINR * (1 - discount) * 100; // Convert INR to paise.
-    const totalPrice = 100;
+    const totalPrice = priceInINR * (1 - discount) * 100; // Convert INR to paise.
 
     setLoading(true);
 
