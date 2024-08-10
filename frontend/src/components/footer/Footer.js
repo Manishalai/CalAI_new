@@ -397,39 +397,54 @@ const Footer = () => {
                 )}
 
                 {/* CERTIFICATION */}
-                <div class="flex-col items-center">
-                  <p className="font-medium text-lg text-gray-900">Certification</p>
-                  <ul className="mt-6 space-y-4 text-sm ">
-                    <li>
-                      <Link
-                        to="/AI_Developer"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Certified Artificial Intelligence Developer{' '}
-                      </Link>
-                    </li>
+                <div className="flex flex-col gap-4">
+                  <div class="flex-col items-center">
+                    <p className="font-medium text-lg text-gray-900">
+                      Certification
+                    </p>
+                    <ul className="mt-6 space-y-4 text-sm ">
+                      <li>
+                        <Link
+                          to="/AI_Developer"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          Certified Artificial Intelligence Developer{' '}
+                        </Link>
+                      </li>
 
-                    <li>
-                      <Link
-                        to="/AI_Manager"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Certified Artificial Intelligence Manager
-                      </Link>
-                    </li>
+                      <li>
+                        <Link
+                          to="/AI_Manager"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          Certified Artificial Intelligence Manager
+                        </Link>
+                      </li>
 
-                    <li>
-                      <Link
-                        to="/AI_Leader"
-                        class="text-gray-700 transition hover:opacity-75"
-                      >
-                        {' '}
-                        Certified Artificial Intelligence Leader{' '}
-                      </Link>
-                    </li>
-                  </ul>
+                      <li>
+                        <Link
+                          to="/AI_Leader"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          Certified Artificial Intelligence Leader{' '}
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {location.pathname === '/partnerWithUs' && (
+                    <div>
+                      <p className="font-medium text-lg text-gray-900">
+                        Registered address:
+                      </p>
+                      <p className="text-gray-700 transition text-sm mt-2">
+                        Hno.438, pocket-4, sector-22, rohini, New Delhi
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 {/* QUICK LINKS */}
