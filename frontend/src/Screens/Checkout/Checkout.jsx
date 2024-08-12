@@ -119,8 +119,7 @@ const Checkout = () => {
 
     const exchangeRate = `${process.env.REACT_APP_EXCHANGE_RATE}`;
     const priceInINR = price * exchangeRate; // Convert USD to INR
-    // let totalPrice = priceInINR * (1 - discount) * 100; // Convert INR to paise.
-      let totalPrice = 100;
+    let totalPrice = priceInINR * (1 - discount) * 100; // Convert INR to paise.
     if (phone.startsWith('+92')) {
       let total = price * (1 - discount) * 100; // Convert in to doller to cent.
       // console.log('TotalCeil:', total);
