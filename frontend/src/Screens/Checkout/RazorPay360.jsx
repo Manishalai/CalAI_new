@@ -12,7 +12,8 @@ const Razorpay360 = () => {
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/payment-button.js";
       script.async = true;
-      script.dataset.payment_button_id = "pl_ORUN1Qs2HzETM2"; // Replace with your actual payment button ID
+      // script.dataset.payment_button_id = "pl_ORUN1Qs2HzETM2"; // Replace with your actual payment button ID
+      script.dataset.payment_button_id = "pl_OjyppIMus47fQ7"; // Replace with your actual payment button ID (880)
       script.onload = () => setSdkLoaded(true);
       script.onerror = (error) => {
         console.error("Razorpay script loading error:", error);
@@ -52,8 +53,8 @@ const Razorpay360 = () => {
           <span>&</span>
           <span>Certified Artificial Intelligence Leader (CAIL<sup>TM</sup>)</span>
         </p>
-        <h3 class="text-[2rem] font-semibold">66,504 INR</h3>
-        <p class="font-semibold">Total: 66,504 INR (Inclusive of 18% GST)</p>
+        <h3 class="text-[2rem] font-semibold">$ 880</h3>
+        <p class="font-semibold">Total: $ 880 </p>
         <form
           id="rzp_payment_form"
           className="w-full max-w-lg text-center"

@@ -24,7 +24,8 @@ const Checkout = () => {
   const [couponApplied, setCouponApplied] = useState(false);
   const [invalidCoupon, setInvalidCoupon] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
-  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+  const [paymentConfirmed, setPaymentConfirmed] = useState(true);
+  const [transactionId,setTransactionId] = useState("");
 
   const navigate = useNavigate();
 
@@ -118,14 +119,19 @@ const Checkout = () => {
 
     const exchangeRate = `${process.env.REACT_APP_EXCHANGE_RATE}`;
     const priceInINR = price * exchangeRate; // Convert USD to INR
-    const totalPrice = priceInINR * (1 - discount) * 100; // Convert INR to paise.
+    let totalPrice = priceInINR * (1 - discount) * 100; // Convert INR to paise.
+    if (phone.startsWith('+92')) {
+      let total = price * (1 - discount) * 100; // Convert in to doller to cent.
+      // console.log('TotalCeil:', total);
+      totalPrice = Math.ceil(total);
+      // console.log('totalPrice:', totalPrice);
+    }
 
     setLoading(true);
 
     try {
+      // ** INDIAN USER (razorpay)**//
       if (phone.startsWith('+91')) {
-        // ** INDIAN USER (razorpay)**//
-
         const response = await axios.post(
           `${process.env.REACT_APP_SERVER_URL}/create-razorpay-order`,
           {
@@ -151,7 +157,7 @@ const Checkout = () => {
             name: name,
             email: email,
             courseName: courseName,
-            price: `Rs ${totalPrice/100}`,// paisa to ruppes.
+            price: `Rs ${totalPrice / 100}`, // paisa to ruppes.
             coupon: coupon,
             phone: phone,
             timestamp: new Date().toLocaleString('en-US', {
@@ -192,10 +198,111 @@ const Checkout = () => {
                 if (captureResponse.status === 200) {
                   // setTransactionId(response.razorpay_payment_id);
                   setPaymentConfirmed(true);
-                  navigate("/")
+                  navigate('/');
                 } else {
                   console.error('Failed to capture order');
-                  navigate("/cancel")
+                  navigate('/cancel');
+                }
+              } catch (error) {
+                console.error('Error capturing payment:', error);
+              }
+            },
+            prefill: {
+              name: name,
+              email: email,
+              contact: phone,
+            },
+            notes: {
+              address: 'CalAI Corporate Office',
+            },
+            theme: {
+              color: '#F37254',
+            },
+          };
+          const rzp = new window.Razorpay(options);
+          rzp.open();
+        } else {
+          console.error('Payment initiation failed.');
+          toast.error('Payment initiation failed.');
+        }
+      } //** PAKISTAN USER (Razorpay)**/
+      else if (phone.startsWith('+92')) {
+        // console.log('pak');
+        // console.log('tp:', typeof totalPrice);
+        const response = await axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/create-razorpay-int-order`,
+          {
+            amount: totalPrice,
+            program: courseName,
+            email: email,
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        console.log('create order res:', response);
+
+        if (response.status === 200) {
+          const data = response.data;
+          const razorpayOrderId = data.orderId;
+
+          // Save transaction data to Firestore before redirecting to payment gateway
+          const transactionData = {
+            name: name,
+            email: email,
+            courseName: courseName,
+            price: `$ ${totalPrice / 100}`, // cent to doller.
+            coupon: coupon,
+            phone: phone,
+            timestamp: new Date().toLocaleString('en-US', {
+              timeZone: 'Asia/Kolkata',
+            }),
+          };
+
+          const docRef = doc(firestore, 'before_transaction', email);
+          await setDoc(docRef, {
+            timestamp: serverTimestamp(),
+          });
+          const doccollRef = doc(firestore, `before_transaction/${email}`);
+          const transactionRef = doc(collection(doccollRef, 'transactions'));
+          await setDoc(transactionRef, transactionData);
+
+          // Redirect to Razorpay payment page
+          const options = {
+            key: `${process.env.REACT_APP_RAZORPAY_KEY_ID}`, // Replace with your Razorpay key ID
+            amount: totalPrice,
+            currency: 'USD',
+            name: 'CalAI',
+            description: courseName,
+            order_id: razorpayOrderId,
+            handler: async function (response) {
+              // console.log('Razorpay response:', response);
+              // Capture payment on backend
+              try {
+                const captureResponse = await axios.post(
+                  `${process.env.REACT_APP_SERVER_URL}/raz-capture-int-payment`,
+                  {
+                    paymentId: response.razorpay_payment_id,
+                    amount: totalPrice,
+                  },
+                );
+
+                // console.log('Front captureResponse:', captureResponse);
+
+                if (captureResponse.status === 200) {
+                  // setTransactionId(response.razorpay_payment_id);
+                  setTransactionId(captureResponse.data.transactionId)
+                  setPaymentConfirmed(true);
+                  toast.success("Payment successfull")
+                  // console.log("tid:",captureResponse.data.transactionId)
+                  // alert("TransactionId:", captureResponse.data.transactionId)
+                  navigate('/');
+                } else {
+                  console.error('Failed to capture order');
+                  navigate('/cancel');
                 }
               } catch (error) {
                 console.error('Error capturing payment:', error);
@@ -275,7 +382,7 @@ const Checkout = () => {
       }
     } catch (error) {
       toast.error('Something went wrong. Please try again later.');
-      console.error('Error initiating payment:', error);
+      console.error('Error initiating payment PAYPAL:', error);
     } finally {
       setLoading(false);
     }
