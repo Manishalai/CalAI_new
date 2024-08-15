@@ -316,8 +316,10 @@ const ExpressCheckout = () => {
   //** RAZORPAY INTERNATIONAL **/
   const payWithRazorPayInternational = async () => {
     setRazLoading(true);
-    const totalPrice = coursePrice * (1 - discount) * 100; // Convert in to doller to cent.
-    // console.log('TotalPrice:', totalPrice);
+    const totalAmount = coursePrice * (1 - discount) * 100; // Convert in to doller to cent.
+    console.log('TotalPrice:', totalAmount);
+    const totalPrice = Math.ceil(totalAmount);
+    console.log('TotalPrice:', totalPrice);
 
     try {
       const response = await axios.post(

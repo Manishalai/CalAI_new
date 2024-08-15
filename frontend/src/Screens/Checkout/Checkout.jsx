@@ -251,9 +251,11 @@ const Checkout = () => {
   //** RAZORPAY INTERNATIONAL **/
   const payWithRazorPayInternational = async () => {
     setRazLoading(true);
-    const totalPrice = price * (1 - discount) * 100; // Convert in to doller to cent.
-    // console.log('TotalPrice:', totalPrice);
-
+    const totalAmount = price * (1 - discount) * 100; // Convert in to doller to cent.
+    console.log('TotalPrice:', totalAmount);
+    const totalPrice = Math.ceil(totalAmount);
+    console.log('TotalPrice:', totalPrice);
+    
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/create-razorpay-int-order`,
