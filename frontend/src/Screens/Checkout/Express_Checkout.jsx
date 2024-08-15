@@ -389,7 +389,6 @@ const ExpressCheckout = () => {
                 // setTransactionId(response.razorpay_payment_id);
                 setTransactionId(captureResponse.data.transactionId);
                 setIsPaymentConfirmed(true);
-                navigate('/');
               } else {
                 console.error('Failed to capture order');
                 toast.error('Payment capturing failed.');
