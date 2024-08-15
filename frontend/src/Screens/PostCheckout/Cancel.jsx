@@ -5,7 +5,7 @@ const Cancel = () => {
   const navigate = useNavigate();
 
   const handleGoHome = () => {
-    navigate("/");
+    navigate("/register_form/register.html");
   };
 
   return (
@@ -21,7 +21,7 @@ const Cancel = () => {
           onClick={handleGoHome}
           className="mt-8 px-6 py-3 bg-red-500 text-white text-lg rounded-md shadow-md hover:bg-red-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300"
         >
-          Go Back to Home Screen
+          Go Back to Checkout Page.
         </button>
       </div>
     </div>
