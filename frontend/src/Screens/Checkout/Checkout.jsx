@@ -674,7 +674,7 @@ const Checkout = () => {
               {transactionId.length > 0 && (
                 <div className="w-full mt-5 flex sm:flex-col md:flex-row items-center justify-center">
                   <p className="sm:text-sm md:text-base text-gray-600 mr-1">
-                    <span className="font-semibold">Invoice Number :</span>
+                    <span className="font-semibold">Transaction Id :</span>
                   </p>
                   <div className="flex flex-row items-center sm:mt-2 ">
                     <span className="py-1 px-1 border rounded-md">
