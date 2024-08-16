@@ -133,7 +133,6 @@ const ExpressCheckout = () => {
     } else {
       payWithRazorPayInternational();
     }
-
   };
 
   //** HNDLE COURSE CHANGE */
@@ -222,11 +221,12 @@ const ExpressCheckout = () => {
           description: `${selectedCourse}`, // Mention GST in the description
           order_id: razorpayOrderId,
           notes: {
-            gstIncluded: `₹${gstInr} GST included in the total amount`,
-            basePrice: `₹${priceInINR} Base Price`,
+            gstIncluded: `${gstInr} `,
+            basePrice: `${priceInINR}`,
           },
           handler: async function (response) {
             // console.log('Razorpay response:', response);
+            setRazLoading(true);
             // Capture payment on backend
             try {
               const captureResponse = await axios.post(
@@ -242,12 +242,16 @@ const ExpressCheckout = () => {
               if (captureResponse.status === 200) {
                 // setTransactionId(response.razorpay_payment_id);
                 setTransactionId(captureResponse.data.transactionId);
+                setRazLoading(false);
                 setIsPaymentConfirmed(true);
               } else {
+                setRazLoading(false);
+                toast.error('Payment capturing failed.');
                 console.error('Failed to capture order');
                 navigate('/cancel');
               }
             } catch (error) {
+              setRazLoading(false);
               console.error('Error capturing payment:', error);
             }
           },
@@ -272,6 +276,7 @@ const ExpressCheckout = () => {
       setLoading(false);
     } finally {
       setLoading(false);
+      setRazLoading(false);
     }
   };
 
@@ -335,6 +340,7 @@ const ExpressCheckout = () => {
           order_id: razorpayOrderId,
           handler: async function (response) {
             // console.log('Razorpay response:', response);
+            setRazLoading(true);
             // Capture payment on backend
             try {
               const captureResponse = await axios.post(
@@ -350,13 +356,16 @@ const ExpressCheckout = () => {
               if (captureResponse.status === 200) {
                 // setTransactionId(response.razorpay_payment_id);
                 setTransactionId(captureResponse.data.transactionId);
+                setRazLoading(false);
                 setIsPaymentConfirmed(true);
               } else {
+                setRazLoading(false);
                 console.error('Failed to capture order');
                 toast.error('Payment capturing failed.');
                 navigate('/cancel');
               }
             } catch (error) {
+              setRazLoading(false);
               console.error('Error capturing payment:', error);
               toast.error('Something went wrong. Please try again later1');
             }
@@ -385,6 +394,7 @@ const ExpressCheckout = () => {
       setLoading(false);
     } finally {
       setLoading(false);
+      setRazLoading(false);
     }
   };
 
@@ -635,7 +645,7 @@ const ExpressCheckout = () => {
           {/* Testimonial Card */}
           <div className="testimonial-card flex flex-col items-center mx-auto w-full md:max-w-md p-6 bg-white rounded-lg mt-4">
             <p className="text-gray-700 w-full font-bold mb-1 text-center">
-            Here’s what our students say
+              Here’s what our students say
             </p>
             <p className="text-gray-700 w-full text-sm text-center mb-2">
               "CalAI provided me with essential AI skills for my Data Analytics
@@ -689,50 +699,82 @@ const ExpressCheckout = () => {
         )} */}
 
         {/* SUCCESS POPUP */}
-        {isPaymentConfirmed && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50 px-0 sm:px-4">
-            <div className="bg-white p-6 rounded-lg shadow-lg space-y-4 max-w-md w-full flex flex-col justify-center items-center relative">
-              <div>
-                <img
-                  src={successImg}
-                  alt="success"
-                  className="w-20 h-20 animate-scale-animation"
-                />
-              </div>
-              <div className="w-full flex flex-col items-center justify-center">
-                <p className="text-xl font-semibold text-gray-700">
-                  Payment successfull!
-                </p>
-                <p className="text-xl font-semibold text-gray-700">
-                  Thank you for your purchase!
-                </p>
-                {transactionId.length > 0 && (
-                  <div className="w-full mt-5 flex sm:flex-col md:flex-row items-center justify-center">
-                    <p className="sm:text-sm md:text-base text-gray-600 mr-1">
-                      <span className="font-semibold">Transaction Id :</span>
-                    </p>
-                    <div className="flex flex-row items-center sm:mt-2 ">
-                      <span className="py-1 px-1 border rounded-md">
-                        {transactionId}
-                      </span>
-                      <button
-                        onClick={handleCopyTransactionId}
-                        className="ml-2 p-1 rounded-md shadow-md hover:bg-gray-200 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300 flex items-center"
-                      >
-                        <MdOutlineFileCopy className="text-lg" />
-                      </button>
-                    </div>
-                  </div>
-                )}
-                <button
-                  onClick={handleGoHome}
-                  className="mt-8 px-4 py-2 bg-blue-500 text-white text-md rounded-md shadow-md hover:bg-blue-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-300"
+        {razLoading ? (
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg space-y-4 max-w-md w-full flex flex-col justify-center items-center">
+              <div className="">
+                <svg
+                  className="animate-spin h-12 w-12 text-blue-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
                 >
-                  Go Back to Home Screen
-                </button>
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
               </div>
+              <p className="text-xl font-semibold text-gray-700">
+                Processing Payment...
+              </p>
             </div>
           </div>
+        ) : (
+          isPaymentConfirmed && (
+            <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50 px-0 sm:px-4">
+              <div className="bg-white p-6 rounded-lg shadow-lg space-y-4 max-w-md w-full flex flex-col justify-center items-center relative">
+                <div>
+                  <img
+                    src={successImg}
+                    alt="success"
+                    className="w-20 h-20 animate-scale-animation"
+                  />
+                </div>
+                <div className="w-full flex flex-col items-center justify-center">
+                  <p className="text-xl font-semibold text-gray-700">
+                    Payment successfull!
+                  </p>
+                  <p className="text-xl font-semibold text-gray-700">
+                    Thank you for your purchase!
+                  </p>
+                  {transactionId.length > 0 && (
+                    <div className="w-full mt-5 flex sm:flex-col md:flex-row items-center justify-center">
+                      <p className="sm:text-sm md:text-base text-gray-600 mr-1">
+                        <span className="font-semibold">Transaction Id :</span>
+                      </p>
+                      <div className="flex flex-row items-center sm:mt-2 ">
+                        <span className="py-1 px-1 border rounded-md">
+                          {transactionId}
+                        </span>
+                        <button
+                          onClick={handleCopyTransactionId}
+                          className="ml-2 p-1 rounded-md shadow-md hover:bg-gray-200 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300 flex items-center"
+                        >
+                          <MdOutlineFileCopy className="text-lg" />
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  <button
+                    onClick={handleGoHome}
+                    className="mt-8 px-4 py-2 bg-blue-500 text-white text-md rounded-md shadow-md hover:bg-blue-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-300"
+                  >
+                    Go Back to Home Screen
+                  </button>
+                </div>
+              </div>
+            </div>
+          )
         )}
 
         <ToastContainer />
