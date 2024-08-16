@@ -443,6 +443,9 @@ const Footer = () => {
                       <p className="text-gray-700 transition text-sm mt-2">
                         Hno.438, pocket-4, sector-22, rohini, New Delhi
                       </p>
+                      <p className="text-gray-700 transition text-sm mt-2">
+                        Palpreneur web agreegator private limited
+                        </p>
                     </div>
                   )}
                 </div>
