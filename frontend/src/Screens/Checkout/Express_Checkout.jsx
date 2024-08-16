@@ -128,51 +128,12 @@ const ExpressCheckout = () => {
       return;
     }
 
-    setLoading(true);
     if (phone.startsWith('+91')) {
       payWithRazorPay();
     } else {
-      setShowPayPopUp(true);
-      setLoading(false);
+      payWithRazorPayInternational();
     }
 
-    // try {
-
-    //     const response = await fetch(
-    //       `${process.env.REACT_APP_SERVER_URL}/create-order`,
-    //       {
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //           amount: coursePrice * (1 - discount),
-    //           program: selectedCourse,
-    //         }),
-    //       },
-    //     );
-
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       const approvalURL = data.approvalUrl;
-
-    //       if (approvalURL) {
-    //         window.location.href = approvalURL;
-    //       } else {
-    //         console.error('Approval URL not found in response.');
-    //       }
-    //     } else {
-    //       console.error('Payment initiation failed.');
-    //       toast.error('Payment initiation failed.');
-    //     }
-
-    // } catch (error) {
-    //   toast.error('Something went wrong. Please try again later.');
-    //   console.error('Error initiating payment:', error);
-    //   setLoading(false);
-    // } finally {
-    //   setLoading(false);
-    // }
   };
 
   //** HNDLE COURSE CHANGE */
@@ -202,6 +163,7 @@ const ExpressCheckout = () => {
 
   // ** INDIAN USER (razorpay)**//
   const payWithRazorPay = async () => {
+    setLoading(true);
     const exchangeRate = `${process.env.REACT_APP_EXCHANGE_RATE}`;
     let priceInINR = coursePrice * exchangeRate; // Convert USD to INR
 
@@ -257,7 +219,7 @@ const ExpressCheckout = () => {
           amount: totalPrice,
           currency: 'INR',
           name: 'CalAI',
-          description: `${selectedCourse} (18% GST included)`, // Mention GST in the description
+          description: `${selectedCourse}`, // Mention GST in the description
           order_id: razorpayOrderId,
           notes: {
             gstIncluded: `₹${gstInr} GST included in the total amount`,
@@ -315,11 +277,11 @@ const ExpressCheckout = () => {
 
   //** RAZORPAY INTERNATIONAL **/
   const payWithRazorPayInternational = async () => {
-    setRazLoading(true);
+    setLoading(true);
     const totalAmount = coursePrice * (1 - discount) * 100; // Convert in to doller to cent.
-    console.log('TotalPrice:', totalAmount);
+    // console.log('TotalPrice:', totalAmount);
     const totalPrice = Math.ceil(totalAmount);
-    console.log('TotalPrice:', totalPrice);
+    // console.log('TotalPrice:', totalPrice);
 
     try {
       const response = await axios.post(
@@ -420,75 +382,75 @@ const ExpressCheckout = () => {
     } catch (error) {
       toast.error('Something went wrong. Please try again later.');
       console.error('Error initiating payment razorpay international:', error);
-      setRazLoading(false);
+      setLoading(false);
     } finally {
-      setRazLoading(false);
+      setLoading(false);
     }
   };
 
   //** PAYPAL INTERNATIONAL PAYMENT **/
-  const payWithPayPal = async () => {
-    setPayPalLoading(true);
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/create-order`,
-        {
-          amount: coursePrice * (1 - discount),
-          program: selectedCourse,
-          email: email,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      );
+  // const payWithPayPal = async () => {
+  //   setPayPalLoading(true);
+  //   try {
+  //     const response = await axios.post(
+  //       `${process.env.REACT_APP_SERVER_URL}/create-order`,
+  //       {
+  //         amount: coursePrice * (1 - discount),
+  //         program: selectedCourse,
+  //         email: email,
+  //       },
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //       },
+  //     );
 
-      if (response.status === 200) {
-        const data = response.data;
-        const approvalURL = data.approvalUrl;
+  //     if (response.status === 200) {
+  //       const data = response.data;
+  //       const approvalURL = data.approvalUrl;
 
-        if (approvalURL) {
-          // Construct the transaction data
-          const transactionData = {
-            name: name,
-            email: email,
-            courseName: selectedCourse,
-            price: coursePrice,
-            coupon: coupon,
-            phone: phone,
-            timestamp: new Date().toLocaleString('en-US', {
-              timeZone: 'Asia/Kolkata',
-            }),
-          };
+  //       if (approvalURL) {
+  //         // Construct the transaction data
+  //         const transactionData = {
+  //           name: name,
+  //           email: email,
+  //           courseName: selectedCourse,
+  //           price: coursePrice,
+  //           coupon: coupon,
+  //           phone: phone,
+  //           timestamp: new Date().toLocaleString('en-US', {
+  //             timeZone: 'Asia/Kolkata',
+  //           }),
+  //         };
 
-          const docRef = doc(firestore, 'before_transaction', email);
-          await setDoc(docRef, {
-            timestamp: serverTimestamp(),
-          });
-          // Construct the correct Firestore references
-          const doccollRef = doc(firestore, `before_transaction/${email}`);
-          const transactionRef = doc(collection(doccollRef, 'transactions'));
+  //         const docRef = doc(firestore, 'before_transaction', email);
+  //         await setDoc(docRef, {
+  //           timestamp: serverTimestamp(),
+  //         });
+  //         // Construct the correct Firestore references
+  //         const doccollRef = doc(firestore, `before_transaction/${email}`);
+  //         const transactionRef = doc(collection(doccollRef, 'transactions'));
 
-          await setDoc(transactionRef, transactionData);
+  //         await setDoc(transactionRef, transactionData);
 
-          window.location.href = approvalURL;
-        } else {
-          console.error('Approval URL not found in response.');
-          toast.error('Approval URL not found.');
-        }
-      } else {
-        console.error('Payment initiation failed.');
-        toast.error('Payment initiation failed.');
-      }
-    } catch (error) {
-      toast.error('Something went wrong. Please try again later.');
-      console.error('Error initiating payment paypal:', error);
-      setPayPalLoading(false);
-    } finally {
-      setPayPalLoading(false);
-    }
-  };
+  //         window.location.href = approvalURL;
+  //       } else {
+  //         console.error('Approval URL not found in response.');
+  //         toast.error('Approval URL not found.');
+  //       }
+  //     } else {
+  //       console.error('Payment initiation failed.');
+  //       toast.error('Payment initiation failed.');
+  //     }
+  //   } catch (error) {
+  //     toast.error('Something went wrong. Please try again later.');
+  //     console.error('Error initiating payment paypal:', error);
+  //     setPayPalLoading(false);
+  //   } finally {
+  //     setPayPalLoading(false);
+  //   }
+  // };
 
   const handleGoHome = () => {
     setIsPaymentConfirmed(false);
@@ -696,7 +658,7 @@ const ExpressCheckout = () => {
         </div>
 
         {/* PAYMENT POPUP */}
-        {showPayPopUp && (
+        {/* {showPayPopUp && (
           <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50 px-0 sm:px-4">
             <div className="bg-white p-6 rounded-lg shadow-lg space-y-4 max-w-md w-full text-center relative">
               <h2 className="text-xl font-semibold text-gray-800">
@@ -724,7 +686,7 @@ const ExpressCheckout = () => {
               </button>
             </div>
           </div>
-        )}
+        )} */}
 
         {/* SUCCESS POPUP */}
         {isPaymentConfirmed && (
