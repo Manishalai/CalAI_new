@@ -143,8 +143,7 @@ const Checkout = () => {
 
     const gstInr = priceInINR * 0.18;
 
-    // let totalPrice = (priceInINR + gstInr) * (1 - discount) * 100; // Convert INR to paise.
-    let totalPrice = 100;
+    let totalPrice = (priceInINR + gstInr) * (1 - discount) * 100; // Convert INR to paise.
 
     try {
       const response = await axios.post(
