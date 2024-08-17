@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Aiyana from '../../images/Rectangle 23.svg';
 import Header from '../../components/header/Header';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { firestore } from '../../firebase/firebase';
 import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
@@ -793,7 +792,6 @@ const ExpressCheckout = () => {
           )
         )}
 
-        <ToastContainer />
       </div>
     </>
   );

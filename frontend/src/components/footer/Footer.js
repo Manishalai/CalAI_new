@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { firestore } from '../../firebase/firebase'; // Ensure this path matches where your firebase.js is located
 import { collection, addDoc } from 'firebase/firestore';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { handleSuccess } from '../../notifications/notify';
 import axios from 'axios';
 
@@ -578,7 +577,6 @@ const Footer = () => {
           </div>
         </footer>
       </div>
-      <ToastContainer />
     </>
   );
 };
