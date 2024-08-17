@@ -3,14 +3,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { firestore } from '../../firebase/firebase';
 import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Aiyana from '../../images/Rectangle 23.svg';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import axios from 'axios';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import 'react-toastify/dist/ReactToastify.css';
 import { RxCross2 } from 'react-icons/rx';
 import successImg from '../../images/successTick.webp';
 import './Checkout.css';
@@ -144,7 +143,8 @@ const Checkout = () => {
 
     const gstInr = priceInINR * 0.18;
 
-    let totalPrice = (priceInINR + gstInr) * (1 - discount) * 100; // Convert INR to paise.
+    // let totalPrice = (priceInINR + gstInr) * (1 - discount) * 100; // Convert INR to paise.
+    let totalPrice = 100;
 
     try {
       const response = await axios.post(
@@ -753,7 +753,6 @@ const Checkout = () => {
         )
       )}
       <Footer />
-      <ToastContainer />
     </>
   );
 };

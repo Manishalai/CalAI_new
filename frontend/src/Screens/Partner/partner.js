@@ -5,8 +5,7 @@ import partImage from "../../images/building-4803602.jpg";
 import Brochure from "../../components/forms/Brochure";
 import { firestore } from "../../firebase/firebase";
 import { addDoc, collection } from "firebase/firestore";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
@@ -266,7 +265,6 @@ const PartnerWithUs = () => {
             </div>
           </section>
         </main>
-        <ToastContainer />
       </div>
       <Footer />
     </>
