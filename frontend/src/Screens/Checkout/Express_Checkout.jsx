@@ -146,16 +146,16 @@ const ExpressCheckout = () => {
 
     // Simulate fetching coursePrice based on course selection (replace with actual logic)
     switch (course) {
-      case 'AI_Developer':
+      case 'Certified Artificial Intelligence Developer (CAID)':
         setCoursePrice(1000);
         break;
-      case 'AI_Leader':
+      case 'Certified Artificial Intelligence Leader (CAIL)':
         setCoursePrice(1200);
         break;
       case 'AI_Manager':
         setCoursePrice(499);
         break;
-      case 'AI_Combo':
+      case 'Combo program (CAID + CAIL)':
         setCoursePrice(2200);
         break;
       default:
@@ -509,13 +509,13 @@ const ExpressCheckout = () => {
                   className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200"
                 >
                   <option value="">Select a course</option>
-                  <option value="AI_Leader">
+                  <option value="Certified Artificial Intelligence Leader (CAIL)">
                     Certified Artificial Intelligence Leader (CAIL)
                   </option>
-                  <option value="AI_Developer">
+                  <option value="Certified Artificial Intelligence Developer (CAID)">
                     Certified Artificial Intelligence Developer (CAID)
                   </option>
-                  <option value="AI_Combo">Combo program (CAID + CAIL)</option>
+                  <option value="Combo program (CAID + CAIL)">Combo program (CAID + CAIL)</option>
                 </select>
               </div>
               <div className="mb-3 flex flex-col w-full">
