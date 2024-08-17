@@ -22,6 +22,7 @@ const ExpressCheckout = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('US');
   const [coupon, setCoupon] = useState('');
   const [discount, setDiscount] = useState(0);
   const [couponApplied, setCouponApplied] = useState(false);
@@ -54,6 +55,10 @@ const ExpressCheckout = () => {
 
   const handlePhoneChange = (value) => {
     setPhone(value);
+  };
+
+  const handleCountryChange = (country) => {
+    setSelectedCountry(country);
   };
 
   const handleCouponChange = (e) => {
@@ -550,31 +555,42 @@ const ExpressCheckout = () => {
                   id="phone"
                   value={phone}
                   onChange={handlePhoneChange}
+                  onCountryChange={handleCountryChange}
                   className="px-2 py-1 border-2 mt-1 border-gray-400 w-full p-2 rounded bg-gray-200"
                 />
               </div>
               <hr className="col-span-2 border-t border-gray-600" />
-              <div className="w-full flex flex-row md:flex-row justify-between">
-                <div className="w-1/2 flex justify-end mr-2">
+              <div className="w-full flex flex-row sm:flex-col sm:items-center md:flex-row justify-center">
+                <div className=" flex justify-end mr-2">
                   <label htmlFor="totalFees" className="text-lg font-medium">
                     Total Fees:
                   </label>
+                  <p className=' text-[18px] text-[#CBA135] sm:text-[16px] lg:text-[18px]'>
+                    {discount > 0 ? (
+                      <span className="text-[#CBA135] line-through ml-2 font-semibold">
+                        ${coursePrice.toFixed(2)}
+                      </span>
+                    ) : (
+                      <span className="text-[#CBA135] ml-2 font-semibold">
+                        ${coursePrice.toFixed(2)}
+                      </span>
+                    )}
+                  </p>
                 </div>
-                <div className=" w-1/2 text-[18px] text-[#CBA135] sm:text-[16px] lg:text-[18px] flex items-start">
+                <div className=" text-[18px] text-[#CBA135] sm:text-[16px] lg:text-[18px] flex flex-row items-start justify-center">
                   {discount > 0 && (
-                    <span className="text-[#CBA135] line-through mr-2">
-                      ${coursePrice.toFixed(2)}
+                    <span
+                      className='text-green-600 font-semibold'
+                    >
+                      ${(coursePrice * (1 - discount)).toFixed(2)}
                     </span>
                   )}
-                  <span
-                    className={
-                      discount > 0
-                        ? 'text-green-600 font-semibold'
-                        : 'font-semibold'
-                    }
-                  >
-                    ${(coursePrice * (1 - discount)).toFixed(2)}
-                  </span>
+
+                  {selectedCountry === 'IN' && (
+                    <span className="text-sm ml-3 mt-1 text-gray-600">
+                      (18% GST Applicable)
+                    </span>
+                  )}
                 </div>
               </div>
               <hr className="w-full border-t border-gray-600" />

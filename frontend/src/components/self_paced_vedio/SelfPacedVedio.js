@@ -7,7 +7,7 @@ const SelfPacedLearning = () => {
     <div className="my-8 p-4">
       {/* Heading Section */}
       <h2 className="text-3xl text-[#074D8D] font-bold mb-4 ">
-        Self-Paced Learning Experience
+        Program introduction video
       </h2>
 
       {/* Content Section */}
