@@ -75,7 +75,7 @@ const SelfVedio = () => {
       );
 
       handleSuccess(response);
-      await addDoc(collection(firestore, "brochure_download"), {
+      await addDoc(collection(firestore, "self_paced_video"), {
         email: email,
         name: name,
         phone: phone,
@@ -106,7 +106,7 @@ const SelfVedio = () => {
         );
 
         handleSuccess(response);
-        await addDoc(collection(firestore, "brochure_download"), {
+        await addDoc(collection(firestore, "self_paced_video"), {
           email: email,
           name: name,
           phone: phone,
