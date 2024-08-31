@@ -1,18 +1,18 @@
-import React from "react";
-import brain from "../../images/brain.svg";
-import badge from "../../images/badge.svg";
-import vedios from "../../images/videos.svg";
-import books from "../../images/books.svg";
-import terminal from "../../images/terminal-window-line.svg";
-import star from "../../images/Star 1.png";
-import h_star from "../../images/4.8.png";
-import instructor from "../../images/1679927695375.jpg";
-import LinkedInLogo from "../../images/linkedin-2815969.jpg";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import Speaker from "../speakers/Speaker";
+import React from 'react';
+import brain from '../../images/brain.svg';
+import badge from '../../images/badge.svg';
+import vedios from '../../images/videos.svg';
+import books from '../../images/books.svg';
+import terminal from '../../images/terminal-window-line.svg';
+import star from '../../images/Star 1.png';
+import h_star from '../../images/4.8.png';
+import instructor from '../../images/1679927695375.jpg';
+import LinkedInLogo from '../../images/linkedin-2815969.jpg';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import Speaker from '../speakers/Speaker';
 
 const AIL_content = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -27,11 +27,11 @@ const AIL_content = () => {
   }, []);
   const handleApplyNowClick = (coursePath, courseName, price) => {
     if (currentUser) {
-      navigate("/checkout", {
+      navigate('/checkout', {
         state: { courseName, price }, // Pass course details
       });
     } else {
-      navigate("/login&signup", {
+      navigate('/login&signup', {
         state: { from: `/checkout`, courseName, price },
       });
     }
@@ -177,7 +177,7 @@ const AIL_content = () => {
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
               <details>
                 <summary class="py-2 outline-none cursor-pointer focus:underline">
-                  {" "}
+                  {' '}
                   Lecture 4: AI Applications in Healthcare and Finance
                 </summary>
                 <div class="px-4 pb-4">
@@ -269,7 +269,7 @@ const AIL_content = () => {
           <div class=" mx-4 relative">
             <div class="relative flex p-4 justify-between">
               <h1 class=" text-2xl text-[#074D8D] font-semibold">
-                Module 4: Ethical and Societal Implications of AI{" "}
+                Module 4: Ethical and Societal Implications of AI{' '}
               </h1>
               <h1 class="text-2xl text-[#CBA135] font-semibold">8%</h1>
             </div>
@@ -294,7 +294,7 @@ const AIL_content = () => {
 
               <details>
                 <summary class="py-2 outline-none cursor-pointer focus:underline">
-                  Lecture 9: Bias and Fairness in AI Systems{" "}
+                  Lecture 9: Bias and Fairness in AI Systems{' '}
                 </summary>
                 <div class="px-4 pb-4">
                   <ul class="list-disc list-inside">
@@ -334,8 +334,8 @@ const AIL_content = () => {
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
               <details>
                 <summary class="py-2 outline-none cursor-pointer focus:underline">
-                  {" "}
-                  Lecture 11: Economies of AI-based Business Models{" "}
+                  {' '}
+                  Lecture 11: Economies of AI-based Business Models{' '}
                 </summary>
                 <div class="px-4 pb-4">
                   <ul class="list-disc list-inside">
@@ -463,7 +463,7 @@ const AIL_content = () => {
             <ul class="grid grid-cols-2 p-4 list-inside list-disc text-[18px] md:grid-cols-1">
               <details>
                 <summary class="py-2 outline-none cursor-pointer focus:underline">
-                  Lecture 18: Leading AI Innovation{" "}
+                  Lecture 18: Leading AI Innovation{' '}
                 </summary>
                 <div class="px-4 pb-4">
                   <ul class="list-disc list-inside">
@@ -530,9 +530,9 @@ const AIL_content = () => {
             className="relative overflow-hidden mt-4 ml-7 bg-[#074D8D] text-white p-2 text-lg font-bold group"
             onClick={() =>
               handleApplyNowClick(
-                "/register",
-                "Certified Artificial Intelligence Leader (CAIL)",
-                1200
+                '/register',
+                'Certified Artificial Intelligence Leader (CAIL)',
+                1200,
               )
             }
           >
@@ -542,18 +542,15 @@ const AIL_content = () => {
           <div class="bg-[#e7e7e7] mx-4 relative mt-4 p-4">
             <h1 class="text-2xl font-bold">
               Program Fee: $1200. Limited Offer: Apply now to avail a 10% Early
-              bird discount with code{" "}
-              <strong style={{ color: "blue" }}>EarlyBird10</strong> at
+              bird discount with code{' '}
+              <strong style={{ color: 'blue' }}>EarlyBird10</strong> at
               checkout!
             </h1>
           </div>
           {/* Instructor Section */}
           <div className="bg-slate-100 flex flex-row md:flex-col mx-4 rounded-md shadow-md relative my-4 p-4">
             {!showVideo ? (
-              <div
-                className="w-1/2 md:w-full flex flex-col p-2 items-center"
-                onClick={() => setShowVideo(true)}
-              >
+              <div className="w-1/2 md:w-full flex flex-col p-2 items-center">
                 <img
                   src={instructor} // Replace with the actual URL or import of the instructor's image
                   alt="Instructor"
@@ -570,7 +567,7 @@ const AIL_content = () => {
                       <span className="text-sm font-bold">
                         LinkedIn Activity
                       </span>
-                      <span className="text-xs">40k+ followers</span>{" "}
+                      <span className="text-xs">40k+ followers</span>{' '}
                       {/* Replace with actual follower count */}
                     </div>
                   </button>
@@ -607,12 +604,12 @@ const AIL_content = () => {
                 Adjunct Professor at Columbia University and taught at NYU Stern
                 and Imperial Bussiness School.
               </p>
-              <button
+              {/* <button
                 className="mt-4 mx-auto bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600"
                 onClick={() => setShowVideo(!showVideo)}
               >
                 {showVideo ? "Hide Intro" : "Show Intro"}
-              </button>
+              </button> */}
             </div>
           </div>
 
