@@ -1,8 +1,12 @@
-import React from "react";
-import self from "../../images/self.jpg";
-import SelfVedio from "../forms/SelfVedio";
+import React from 'react';
+import self from '../../images/self.jpg';
+import SelfVedio from '../forms/SelfVedio';
+import SelfVideoDev from '../forms/SelfVideoDev';
+import { useLocation } from 'react-router-dom';
 
 const SelfPacedLearning = () => {
+  const location = useLocation();
+
   return (
     <div className="my-8 p-4">
       {/* Heading Section */}
@@ -45,7 +49,11 @@ const SelfPacedLearning = () => {
             href="#your-link" // replace with your actual link or route
             className="inline-block bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:bg-blue-900 transition"
           >
-            <SelfVedio />
+            {location.pathname === '/AI_Leader' ? (
+              <SelfVedio />
+            ) : (
+              <SelfVideoDev />
+            )}
           </button>
         </div>
       </div>
