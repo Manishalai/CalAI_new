@@ -35,6 +35,7 @@ import PayPal880 from "./Screens/Checkout/PayPal880.jsx";
 import Razorpay300 from "./Screens/Checkout/RaorPay300.jsx";
 import Razorpay360 from "./Screens/Checkout/RazorPay360.jsx";
 import ProgramIntroVideo from "./Screens/ProgramVideos/ProgramIntroVideo.jsx";
+import ProgramIntroVideoDev from "./Screens/ProgramVideos/ProgramIntroVideoDev.jsx";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -86,6 +87,7 @@ const App = () => {
         <Route path="/cal_AI_pay.html" element={<Razorpay300 />} />
         <Route path="/cal_AI_pay2.html" element={<Razorpay360 />} />
         <Route path="/program_intro_video" element={<ProgramIntroVideo />} />
+        <Route path="/program_intro_video_dev" element={<ProgramIntroVideoDev/>} />
       </Routes>
     </Router>
   );

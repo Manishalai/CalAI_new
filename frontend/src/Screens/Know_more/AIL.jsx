@@ -15,7 +15,7 @@ const AIL = () => {
       <Navbar2 />
       <CAIL_Hero />
       <div id="program-details">
-        <AIL_content />\
+        <AIL_content />
       </div>
       <div
         id="ratings"
