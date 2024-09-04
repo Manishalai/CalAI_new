@@ -1,18 +1,21 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
-import { firestore } from "../../firebase/firebase"; // Ensure this path matches where your firebase.js is located
-import { collection, addDoc } from "firebase/firestore";
-import axios from "axios";
-import "react-toastify/dist/ReactToastify.css";
-import { handleSuccess } from "../../notifications/notify";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { firestore } from '../../firebase/firebase'; // Ensure this path matches where your firebase.js is located
+import { collection, addDoc } from 'firebase/firestore';
+import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { handleSuccess } from '../../notifications/notify';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import { useCRM } from '../../context/CRMcontext';
 
 const CAID_Brochure = () => {
   const [showForm, setShowForm] = useState(false);
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const { sendDataToCRM } = useCRM();
 
   const handleButtonClick = () => {
     setShowForm(true);
@@ -29,7 +32,7 @@ const CAID_Brochure = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !name || !phone) {
-      toast.error("All fields required");
+      toast.error('All fields required');
       return;
     }
 
@@ -42,22 +45,22 @@ const CAID_Brochure = () => {
         `https://api.brevo.com/v3/contacts/${email}`,
         {
           headers: {
-            "api-key": apiKey,
+            'api-key': apiKey,
           },
-        }
+        },
       );
       console.log(checkResponse);
       if (checkResponse.data) {
         // Delete the existing contact
         await axios.delete(`https://api.brevo.com/v3/contacts/${email}`, {
           headers: {
-            "api-key": apiKey,
+            'api-key': apiKey,
           },
         });
       }
 
       const response = await axios.post(
-        "https://api.brevo.com/v3/contacts",
+        'https://api.brevo.com/v3/contacts',
         {
           email: email,
           attributes: {
@@ -68,56 +71,66 @@ const CAID_Brochure = () => {
         },
         {
           headers: {
-            "Content-Type": "application/json",
-            "api-key": apiKey,
+            'Content-Type': 'application/json',
+            'api-key': apiKey,
           },
-        }
+        },
       );
 
-      handleSuccess(response);
-      await addDoc(collection(firestore, "brochure_download"), {
+      await addDoc(collection(firestore, 'brochure_download'), {
         email: email,
         name: name,
         phone: phone,
         timestamp: new Date(),
         brevo_id: response.data.id,
       });
-      setEmail("");
-      setName("");
-      setPhone("");
-    } catch (error) {
-      console.log("Error", error);
-      if (error.response.status === 404) {
-        const response = await axios.post(
-          "https://api.brevo.com/v3/contacts",
-          {
-            email: email,
-            attributes: {
-              FIRSTNAME: name,
-              PHONE: phone,
-            },
-            listIds: [listId],
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "api-key": apiKey,
-            },
-          }
-        );
+      
+      // Send data to CRM
+      console.log('before crm');
+      await sendDataToCRM({ email, name, phone ,source:"AI-Dev-Brochure"});
+      console.log('after crm');
 
-        handleSuccess(response);
-        await addDoc(collection(firestore, "brochure_download"), {
-          email: email,
-          name: name,
-          phone: phone,
-          timestamp: new Date(),
-          brevo_id: response.data.id,
-        });
-        setEmail("");
-        setName("");
-        setPhone("");
-      } else toast.error("An unexpected error occured.");
+      handleSuccess(response);
+      
+      setEmail('');
+      setName('');
+      setPhone('');
+    } catch (error) {
+      console.log('Error', error);
+      // if (error.response.status === 404) {
+      //   const response = await axios.post(
+      //     'https://api.brevo.com/v3/contacts',
+      //     {
+      //       email: email,
+      //       attributes: {
+      //         FIRSTNAME: name,
+      //         PHONE: phone,
+      //       },
+      //       listIds: [listId],
+      //     },
+      //     {
+      //       headers: {
+      //         'Content-Type': 'application/json',
+      //         'api-key': apiKey,
+      //       },
+      //     },
+      //   );
+
+      //   handleSuccess(response);
+      //   await addDoc(collection(firestore, 'brochure_download'), {
+      //     email: email,
+      //     name: name,
+      //     phone: phone,
+      //     timestamp: new Date(),
+      //     brevo_id: response.data.id,
+      //   });
+      //   setEmail('');
+      //   setName('');
+      //   setPhone('');
+      // } else toast.error('An unexpected error occured.');
+      setEmail('');
+      setName('');
+      setPhone('');
     }
     setShowForm(false);
   };
@@ -172,7 +185,7 @@ const CAID_Brochure = () => {
                   onChange={handlePhoneChange}
                   className="w-full h-10 px-3 text-black bg-slate-100 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring-indigo-500"
                 />
-              </div>{" "}
+              </div>{' '}
               <div>
                 <label
                   htmlFor="email"
