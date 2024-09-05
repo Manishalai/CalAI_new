@@ -61,20 +61,20 @@ const Navbar2 = () => {
               {showDropdown && (
                 <div className="absolute left-0 mt-1 w-100 bg-white border border-gray-200 rounded-md shadow-lg z-10">
                   <Link
-                    to="/AI_Leader"
+                    to="/Artificial-intelligence-certifications/certified-ai-lLeader"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 whitespace-nowrap"
                   >
                     Certified Artificial Intelligence Leader (CAIL<sup>TM</sup>)
                   </Link>
                   <Link
-                    to="/AI_Developer"
+                    to="/Artificial-intelligence-certifications/certified-ai-developer"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 whitespace-nowrap"
                   >
                     Certified Artificial Intelligence Developer (CAID{" "}
                     <sup>TM</sup>)
                   </Link>
                   <Link
-                    to="/AI_Manager"
+                    to="/Artificial-intelligence-certifications/certified-ai-manager"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 whitespace-nowrap"
                   >
                     Certified Artificial Intelligence Manager (CAIM{" "}
@@ -140,7 +140,7 @@ const Navbar2 = () => {
             </Link>
           </li>
           <li>
-            <Link to="/Certifications">
+            <Link to="/Artificial-intelligence-certifications">
               <button
                 id="certificate"
                 className="inline-flex m-1 shrink-0 items-center border-transparent text-[18px] font-medium hover:border-orange-300 hover:text-orange-500"

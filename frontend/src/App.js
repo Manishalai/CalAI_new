@@ -55,8 +55,11 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login&signup" element={<Login />} />
         <Route path="/AI_Developer" element={<AID />} />
+        <Route path="/Artificial-intelligence-certifications/certified-ai-developer" element={<AID />} />
         <Route path="/AI_Manager" element={<AIM />} />
+        <Route path="/Artificial-intelligence-certifications/certified-ai-manager" element={<AIM />} />
         <Route path="/AI_Leader" element={<AIL />} />
+        <Route path="/Artificial-intelligence-certifications/certified-ai-leader" element={<AIL />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
@@ -75,6 +78,7 @@ const App = () => {
         <Route path="/partnerWithUs" element={<PartnerWithUs />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Certifications" element={<CertificationPage />} />
+        <Route path="/Artificial-intelligence-certifications" element={<CertificationPage />} />
         <Route
           path="/register_form/register.html"
           element={<ExpressCheckout />}

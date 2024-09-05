@@ -39,7 +39,7 @@ export const handleSuccess = (response) => {
       title: "Success!",
       text: "Yay !! You subscribed to our Newsletter",
     });
-  } else if (JSON.parse(response.config.data).listIds[0] === 98) {
+  } else if (JSON.parse(response.config.data).listIds[0] === 103 || JSON.parse(response.config.data).listIds[0] === 104) {
     MySwal.fire({
       icon: "success",
       title: "Success!",

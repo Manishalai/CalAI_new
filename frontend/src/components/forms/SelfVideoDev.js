@@ -88,6 +88,7 @@ const SelfVideoDev = () => {
       // Send data to CRM
       await sendDataToCRM({ email, name, phone ,source:"Leader-program-video"});
 
+      console.log("lead video res:",response);
       handleSuccess(response);
       
       setEmail("");
