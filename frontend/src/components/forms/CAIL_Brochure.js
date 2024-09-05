@@ -88,6 +88,7 @@ const CAIL_Brochure = () => {
       // Send data to CRM
       await sendDataToCRM({ email, name, phone ,source:"AI-Leader-Brochure"});
 
+      console.log("suces res:",response);
       handleSuccess(response);
 
       setEmail("");
