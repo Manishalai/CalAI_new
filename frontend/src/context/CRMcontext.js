@@ -15,7 +15,6 @@ export const CRMProvider = ({ children }) => {
           leadData
         }
       );
-      console.log('crm res:', response);
       return response;
     } catch (error) {
       setLoading(false);

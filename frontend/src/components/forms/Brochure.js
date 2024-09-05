@@ -7,12 +7,15 @@ import "react-toastify/dist/ReactToastify.css";
 import { handleSuccess } from "../../notifications/notify";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { useCRM } from '../../context/CRMcontext';
 
 const SelfVedio = () => {
   const [showForm, setShowForm] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+
+  const { sendDataToCRM } = useCRM();
 
   const handleButtonClick = () => {
     setShowForm(true);
@@ -74,7 +77,6 @@ const SelfVedio = () => {
         }
       );
 
-      handleSuccess(response);
       await addDoc(collection(firestore, "brochure_download"), {
         email: email,
         name: name,
@@ -82,6 +84,11 @@ const SelfVedio = () => {
         timestamp: new Date(),
         brevo_id: response.data.id,
       });
+      // Send data to CRM
+      await sendDataToCRM({ email, name, phone ,source:"Download-Brochure"});
+
+      handleSuccess(response);
+      
       setEmail("");
       setName("");
       setPhone("");

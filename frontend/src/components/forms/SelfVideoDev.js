@@ -7,12 +7,15 @@ import { addDoc, collection } from "firebase/firestore";
 import { handleSuccess } from "../../notifications/notify";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { useCRM } from '../../context/CRMcontext';
 
 const SelfVideoDev = () => {
   const [showForm, setShowForm] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+
+  const { sendDataToCRM } = useCRM();
 
   const handleButtonClick = () => {
     setShowForm(true);
@@ -74,7 +77,6 @@ const SelfVideoDev = () => {
         }
       );
 
-      handleSuccess(response);
       await addDoc(collection(firestore, "self_paced_video"), {
         email: email,
         name: name,
@@ -82,6 +84,12 @@ const SelfVideoDev = () => {
         timestamp: new Date(),
         brevo_id: response.data.id,
       });
+
+      // Send data to CRM
+      await sendDataToCRM({ email, name, phone ,source:"Leader-program-video"});
+
+      handleSuccess(response);
+      
       setEmail("");
       setName("");
       setPhone("");
