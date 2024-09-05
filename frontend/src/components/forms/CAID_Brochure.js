@@ -86,9 +86,7 @@ const CAID_Brochure = () => {
       });
       
       // Send data to CRM
-      console.log('before crm');
       await sendDataToCRM({ email, name, phone ,source:"AI-Dev-Brochure"});
-      console.log('after crm');
 
       handleSuccess(response);
       
