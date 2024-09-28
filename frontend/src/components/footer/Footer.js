@@ -331,7 +331,7 @@ const Footer = () => {
                   {/* ***** */}
                 </div>
                 {/* PAYMENTS LINKS */}
-                {location.pathname === '/partnerWithUs' && (
+                {/* {location.pathname === '/partnerWithUs' && (
                   <div class="flex-col">
                     <p class="font-medium text-lg text-gray-900">
                       Payments Links
@@ -393,7 +393,7 @@ const Footer = () => {
                       </li>
                     </ul>
                   </div>
-                )}
+                )} */}
 
                 {/* CERTIFICATION */}
                 <div className="flex flex-col gap-4">
@@ -404,7 +404,7 @@ const Footer = () => {
                     <ul className="mt-6 space-y-4 text-sm ">
                       <li>
                         <Link
-                          to="/AI_Developer"
+                          to="/Artificial-intelligence-certifications/certified-ai-developer"
                           class="text-gray-700 transition hover:opacity-75"
                         >
                           {' '}
@@ -414,7 +414,7 @@ const Footer = () => {
 
                       <li>
                         <Link
-                          to="/AI_Manager"
+                          to="/Artificial-intelligence-certifications/certified-ai-manager"
                           class="text-gray-700 transition hover:opacity-75"
                         >
                           {' '}
@@ -424,7 +424,7 @@ const Footer = () => {
 
                       <li>
                         <Link
-                          to="/AI_Leader"
+                          to="/Artificial-intelligence-certifications/certified-ai-leader"
                           class="text-gray-700 transition hover:opacity-75"
                         >
                           {' '}
@@ -471,6 +471,15 @@ const Footer = () => {
                         {' '}
                         Privacy Policy
                       </Link>
+                    </li>
+                    <li>
+                    <Link
+                          to="/register_form/register.html"
+                          class="text-gray-700 transition hover:opacity-75"
+                        >
+                          {' '}
+                          Express-Checkout
+                        </Link>
                     </li>
                     <li>
                       <Link

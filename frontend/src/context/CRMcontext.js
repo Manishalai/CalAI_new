@@ -22,8 +22,23 @@ export const CRMProvider = ({ children }) => {
     }
   };
 
+  const sendDataToHubsPot = async (leadData) => {
+    console.log("leadData:",leadData);
+    try {
+      const response = axios.post(`${process.env.REACT_APP_SERVER_URL}/send-data-hubspot`,{
+        leadData
+      }
+    );
+    console.log("sendDataToHubsPot res:",response);
+    return response;
+    } catch (error) {
+      console.log("Hubspot error:",error);
+      throw error;
+    }
+  }
+
   return (
-    <CRMContext.Provider value={{ sendDataToCRM, loading }}>
+    <CRMContext.Provider value={{ sendDataToCRM, loading ,sendDataToHubsPot}}>
       {children}
     </CRMContext.Provider>
   );
