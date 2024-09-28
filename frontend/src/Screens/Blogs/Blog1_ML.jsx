@@ -98,13 +98,13 @@ const Blog_PF = () => {
                   </li>
                 </Link>
               </ul>
-              <div className="mt-4 space-y-4">
+              {/* <div className="mt-4 space-y-4">
                 <Link to="/StartTest">
                   <h2 className="text-[22px] md:text-[25px] font-bold text-[#074D8D]">
                     Start Scholarship Test Now!
                   </h2>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

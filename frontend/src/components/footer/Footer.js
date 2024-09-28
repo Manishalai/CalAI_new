@@ -434,7 +434,7 @@ const Footer = () => {
                     </ul>
                   </div>
 
-                  {location.pathname === '/partnerWithUs' && (
+                  {/* {location.pathname === '/partnerWithUs' && (
                     <div>
                       <p className="font-medium text-lg text-gray-900">
                         Registered address:
@@ -446,7 +446,7 @@ const Footer = () => {
                         Palpreneur web agreegator private limited
                         </p>
                     </div>
-                  )}
+                  )} */}
                 </div>
 
                 {/* QUICK LINKS */}
