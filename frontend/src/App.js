@@ -54,11 +54,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login&signup" element={<Login />} />
-        <Route path="/AI_Developer" element={<AID />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-developer" element={<AID />} />
-        <Route path="/AI_Manager" element={<AIM />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-manager" element={<AIM />} />
-        <Route path="/AI_Leader" element={<AIL />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-leader" element={<AIL />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/success" element={<Success />} />

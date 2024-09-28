@@ -15,7 +15,7 @@ const CAID_Brochure = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const { sendDataToCRM } = useCRM();
+  const { sendDataToCRM, sendDataToHubsPot } = useCRM();
 
   const handleButtonClick = () => {
     setShowForm(true);
@@ -86,9 +86,12 @@ const CAID_Brochure = () => {
       });
       
       // Send data to CRM
-      await sendDataToCRM({ email, name, phone ,source:"AI-Dev-Brochure"});
+      // await sendDataToCRM({ email, name, phone ,source:"AI-Dev-Brochure"});
 
-      console.log("suces res:",response);
+      // Send data to HUBSPOT
+      // await sendDataToHubsPot({ email, name, phone ,source:"AI-Dev-Brochure"})
+
+      // console.log("suces res:",response);
       handleSuccess(response);
       
       setEmail('');
