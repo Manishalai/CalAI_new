@@ -36,11 +36,11 @@ const testimonials = [
     image: aadil,
     linkedin:
       'https://www.linkedin.com/posts/aadilfatmi_calai-california-artificial-intelligence-activity-7234432097115938816-QuAq/?utm_source=combined_share_message&utm_medium=member_desktop',
-    text: `I’m happy to share my experience with the Certified Artificial Intelligence Leader (CAIL) program at the CalAI :California Artificial Intelligence Institute. I chose this program because it focuses on developing leadership skills and applying AI strategically.
+    text: `I’m happy to share my experience with the Certified Artificial Intelligence Leader (CAIL) program at the CalAI. I chose this program because it focuses on developing leadership skills and applying AI strategically.
 
 The program has been a great fit for my busy schedule with its flexible pace. It dives deep into AI, offering both the theory and practical tools that have already started making a difference in my projects.
 
-The knowledge I’ve gained is practical and directly useful. The certification helps leaders like me to make the most of AI. I’d recommend the CalAI :California Artificial Intelligence Institute program to any leader wanting to use AI in their strategy. It’s a smart investment for your growth and your organisation’s success.`,
+The knowledge I’ve gained is practical and directly useful. `,
     country: 'UAE',
     certification: 'Certified Artificial Intelligence Leader (CAIL™)',
     exCompany: 'Ex-Interserve, Ex-Topaz Energy and Marine',

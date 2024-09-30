@@ -1,13 +1,27 @@
 // src/AIProgramFinder.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SuitableProgram from "../popup/SuitableProgram";
+import { getVideoUrl } from "../../firebase/getVideoUrl";
 const AIProgramFinder = () => {
   const navigate = useNavigate();
   const [qualification, setQualification] = useState("");
   const [experience, setExperience] = useState("");
   const [errors, setErrors] = useState({ qualification: "", experience: "" });
   const [showPopup, setShowPopup] = useState(false);
+  const [videoUrl,setVideoUrl] = useState('');
+  const videoName = 'videoplaybackintro.mp4';
+
+  useEffect(() => {
+    const fetchVideoUrl = async () => {
+      const url = await getVideoUrl(videoName);
+      if(url){
+        console.log("url intor:",url);
+        setVideoUrl(url);
+      }
+    };
+    fetchVideoUrl();
+  },[videoName])
 
   const handleQualificationChange = (event) => {
     console.log(event.target.value);
@@ -131,17 +145,45 @@ const AIProgramFinder = () => {
                 Check Now
               </button>
             </form>
-            <div className="w-1/2 md:w-full flex justify-start items-start p-4">
-              <div className="bg-white shadow-lg rounded-lg overflow-hidden w-3/4 md:w-full">
-                <iframe
-                  title="Calai"
-                  className="w-full h-64 md:h-96"
-                  src="https://www.youtube.com/embed/CZ7sASs6oJE"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
+            <div className="w-full max-w-2xl mx-auto p-1 sm:p-1 sm:m-0 rounded-lg shadow-lg bg-gray-100">
+          {videoUrl ? (
+            <div className="relative pb-[56.25%] h-0">
+              <video
+              controls
+                className="absolute top-0 left-0 w-full h-full rounded-md"
+                controlsList="nodownload"
+                autoPlay 
+                muted 
+              >
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
+          ) : (
+            <div className="w-full h-[530px] sm:h-[300px] flex items-center justify-center">
+              <svg
+                className="animate-spin h-12 w-12 sm:h-10 sm:w-10 text-blue-500"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            </div>
+          )}
+        </div>
           </div>
         </div>
       </div>
