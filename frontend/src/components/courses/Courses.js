@@ -65,7 +65,7 @@ const Courses = () => {
             <button
               id="knowMore-CAID"
               className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
-              onClick={() => navigate("/AI_Developer")}
+              onClick={() => navigate("/Artificial-intelligence-certifications/certified-ai-developer")}
             >
               Know More
             </button>
@@ -114,7 +114,7 @@ const Courses = () => {
             <button
               id="knowMore-CAIL"
               className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
-              onClick={() => navigate("/AI_Leader")}
+              onClick={() => navigate("/Artificial-intelligence-certifications/certified-ai-leader")}
             >
               Know More
             </button>
@@ -163,7 +163,7 @@ const Courses = () => {
             <button
               id="knowMore-CAIM"
               className="w-[225px] bg-white font-bold rounded-bl-lg lg:w-[480px]"
-              onClick={() => navigate("/AI_Manager")}
+              onClick={() => navigate("/Artificial-intelligence-certifications/certified-ai-manager")}
             >
               Know More
             </button>
