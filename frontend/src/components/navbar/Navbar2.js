@@ -61,7 +61,7 @@ const Navbar2 = () => {
               {showDropdown && (
                 <div className="absolute left-0 mt-1 w-100 bg-white border border-gray-200 rounded-md shadow-lg z-10">
                   <Link
-                    to="/Artificial-intelligence-certifications/certified-ai-lLeader"
+                    to="/Artificial-intelligence-certifications/certified-ai-leader"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100 whitespace-nowrap"
                   >
                     Certified Artificial Intelligence Leader (CAIL<sup>TM</sup>)
