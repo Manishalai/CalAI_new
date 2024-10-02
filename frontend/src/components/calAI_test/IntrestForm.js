@@ -70,8 +70,8 @@ const IntrestForm = () => {
   };
 
   const courseOptions = [
-    { key: "/ai_leader", value: `${courseName}` },
-    { key: "/ai_developer", value: `${courseName}s` },
+    { key: "/Artificial-intelligence-certifications/certified-ai-leader", value: `${courseName}` },
+    { key: "/Artificial-intelligence-certifications/certified-ai-developer", value: `${courseName}s` },
     // Add more course options as needed
   ];
 

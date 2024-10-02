@@ -145,22 +145,20 @@ const AIProgramFinder = () => {
                 Check Now
               </button>
             </form>
-            <div className="w-full max-w-2xl mx-auto p-1 sm:p-1 sm:m-0 rounded-lg shadow-lg bg-gray-100">
+            <div className="w-full max-w-md mx-auto p-1 sm:p-1 sm:mt-4 rounded-lg shadow-lg bg-gray-100">
           {videoUrl ? (
             <div className="relative pb-[56.25%] h-0">
               <video
               controls
                 className="absolute top-0 left-0 w-full h-full rounded-md"
                 controlsList="nodownload"
-                autoPlay 
-                muted 
               >
                 <source src={videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
           ) : (
-            <div className="w-full h-[530px] sm:h-[300px] flex items-center justify-center">
+            <div className="w-full h-[250px] sm:h-[190px] flex items-center justify-center">
               <svg
                 className="animate-spin h-12 w-12 sm:h-10 sm:w-10 text-blue-500"
                 xmlns="http://www.w3.org/2000/svg"

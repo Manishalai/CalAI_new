@@ -102,7 +102,7 @@ const SuitableProgram = ({ onClose, field, eligible }) => {
                       "5-16 Weeks",
                       true,
                       1000,
-                      "/AI_Developer"
+                      "/Artificial-intelligence-certifications/certified-ai-developer"
                     )}
                   </>
                 ) : (
@@ -121,7 +121,7 @@ const SuitableProgram = ({ onClose, field, eligible }) => {
                       "8-24 Weeks",
                       false,
                       1200,
-                      "/AI_Leader"
+                      "/Artificial-intelligence-certifications/certified-ai-leader"
                     )}
                   </>
                 )}
@@ -134,7 +134,7 @@ const SuitableProgram = ({ onClose, field, eligible }) => {
                   "8-24 Weeks",
                   false,
                   1200,
-                  "/AI_Leader"
+                  "/Artificial-intelligence-certifications/certified-ai-leader"
                 )}
               </>
             )}
