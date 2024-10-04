@@ -68,7 +68,7 @@ const AIL_content = () => {
             strategic business optimization
           </p>
           <h1 class="p-4 text-3xl font-semibold">
-            Programming skills are mandatory to apply for AI Lead certification.
+            Programming skills are not mandatory to apply for AI Lead certification.
           </h1>
         </div>
       </div>
@@ -541,10 +541,7 @@ const AIL_content = () => {
           </button>
           <div class="bg-[#e7e7e7] mx-4 relative mt-4 p-4">
             <h1 class="text-2xl font-bold">
-              Program Fee: $1200. Limited Offer: Apply now to avail a 10% Early
-              bird discount with code{' '}
-              <strong style={{ color: 'blue' }}>EarlyBird10</strong> at
-              checkout!
+              Program Fee: $1200. For <strong style={{ color: '#0000ffb3' }}>group of 3 or more</strong>, email at info@calai.org with your group nomination for a <strong style={{ color: '#0000ffb3' }}>$120 discount</strong>.{' '}
             </h1>
           </div>
           {/* Instructor Section */}
