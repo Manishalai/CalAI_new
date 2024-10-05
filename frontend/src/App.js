@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Home from "./Screens/Home.jsx";
 import Login from "./Screens/Login/Login.jsx";
@@ -54,6 +54,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/index.html" element={<Navigate to="/" replace/>} />
         <Route path="/login&signup" element={<Login />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-developer" element={<AID />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-manager" element={<AIM />} />
@@ -90,7 +91,7 @@ const App = () => {
         <Route path="/cal_AI_pay2.html" element={<Razorpay360 />} />
         <Route path="/program_intro_video" element={<ProgramIntroVideo />} />
         <Route path="/program_intro_video_dev" element={<ProgramIntroVideoDev/>} />
-        <Route path="*" element={<NoPage/>}/>
+        {/* <Route path="*" element={<NoPage/>}/> */}
       </Routes>
     </Router>
   );
