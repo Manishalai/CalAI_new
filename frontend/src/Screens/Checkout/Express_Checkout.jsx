@@ -7,7 +7,13 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { firestore } from '../../firebase/firebase';
-import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  setDoc,
+  serverTimestamp,
+  getDoc,
+} from 'firebase/firestore';
 import axios from 'axios';
 import { RxCross2 } from 'react-icons/rx';
 import successImg from '../../images/successTick.webp';
@@ -32,6 +38,7 @@ const ExpressCheckout = () => {
   const [isPaymentConfirmed, setIsPaymentConfirmed] = useState(false);
   const [transactionId, setTransactionId] = useState('');
   const [showPayPopUp, setShowPayPopUp] = useState(false);
+  const [isGstEnabled, setIsGstEnabled] = useState(false);
 
   const navigate = useNavigate();
 
@@ -50,6 +57,20 @@ const ExpressCheckout = () => {
 
     // Cleanup function
     return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const fecthIsGstEnabled = async () => {
+      // Fetch GST setting (true/false) from your database or Firestore
+      const gstSettingRef = doc(firestore, 'settings', 'gstStatus');
+      const gstSettingDoc = await getDoc(gstSettingRef);
+      const isGstEnabled = gstSettingDoc.exists()
+        ? gstSettingDoc.data().isGstEnabled
+        : true; // Default it is true if not set
+      setIsGstEnabled(isGstEnabled);
+    };
+
+    fecthIsGstEnabled();
   }, []);
 
   const handlePhoneChange = (value) => {
@@ -170,9 +191,16 @@ const ExpressCheckout = () => {
     const exchangeRate = `${process.env.REACT_APP_EXCHANGE_RATE}`;
     let priceInINR = coursePrice * exchangeRate; // Convert USD to INR
 
-    const gstInr = priceInINR * 0.18;
+    let gstInr = 0;
+    console.log('isGstEnabledtop:', isGstEnabled);
+    if (isGstEnabled) {
+      console.log('isGstEnabled:', isGstEnabled);
+      gstInr = priceInINR * 0.18; // Apply 18% GST if enabled
+    }
 
     let totalPrice = (priceInINR + gstInr) * (1 - discount) * 100; // Convert INR to paise.
+    console.log('gstInr:', gstInr);
+    console.log('totalPrice:', totalPrice);
 
     try {
       const response = await axios.post(
@@ -515,7 +543,9 @@ const ExpressCheckout = () => {
                   <option value="Certified Artificial Intelligence Developer (CAID)">
                     Certified Artificial Intelligence Developer (CAID)
                   </option>
-                  <option value="Combo program (CAID + CAIL)">Combo program (CAID + CAIL)</option>
+                  <option value="Combo program (CAID + CAIL)">
+                    Combo program (CAID + CAIL)
+                  </option>
                 </select>
               </div>
               <div className="mb-3 flex flex-col w-full">
@@ -564,7 +594,7 @@ const ExpressCheckout = () => {
                   <label htmlFor="totalFees" className="text-lg font-medium">
                     Total Fees:
                   </label>
-                  <p className=' text-[18px] text-[#CBA135] sm:text-[16px] lg:text-[18px]'>
+                  <p className=" text-[18px] text-[#CBA135] sm:text-[16px] lg:text-[18px]">
                     {discount > 0 ? (
                       <span className="text-[#CBA135] line-through ml-2 font-semibold">
                         ${coursePrice.toFixed(2)}
@@ -578,14 +608,12 @@ const ExpressCheckout = () => {
                 </div>
                 <div className=" text-[18px] text-[#CBA135] sm:text-[16px] lg:text-[18px] flex flex-row items-start justify-center">
                   {discount > 0 && (
-                    <span
-                      className='text-green-600 font-semibold'
-                    >
+                    <span className="text-green-600 font-semibold">
                       ${(coursePrice * (1 - discount)).toFixed(2)}
                     </span>
                   )}
 
-                  {selectedCountry === 'IN' && (
+                  {selectedCountry === 'IN' && isGstEnabled && (
                     <span className="text-sm ml-3 mt-1 text-gray-600">
                       (18% GST Applicable)
                     </span>
@@ -791,7 +819,6 @@ const ExpressCheckout = () => {
             </div>
           )
         )}
-
       </div>
     </>
   );
