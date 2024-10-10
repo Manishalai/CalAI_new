@@ -456,7 +456,7 @@ const Footer = () => {
                   <ul className="mt-6 space-y-4 text-sm">
                     <li>
                       <Link
-                        to="/Terms&Conditions"
+                        to="/terms-conditions"
                         class="text-gray-700 transition hover:opacity-75"
                       >
                         {' '}

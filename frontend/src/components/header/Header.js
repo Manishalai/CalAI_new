@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { getAuth, signOut } from "firebase/auth";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import LogoutIcon from "@mui/icons-material/Logout";
-import logo from "../../images/calAILOGO.png";
-import EmailIcon from "@mui/icons-material/Email";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CallIcon from "@mui/icons-material/Call";
+import EmailIcon from "@mui/icons-material/Email";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { getAuth, signOut } from "firebase/auth";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import logo from "../../images/calAILOGO.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Header = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const handleLogin = () => {
-    navigate("/login&signup"); // Adjust the path to your login route
+    navigate("/login-signup"); // Adjust the path to your login route
   };
 
   const handleProfile = () => {

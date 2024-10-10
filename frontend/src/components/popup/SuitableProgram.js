@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import badge from "../../images/streamline_star-badge-solid.svg";
 import CloseIcon from "@mui/icons-material/Close";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import badge from "../../images/streamline_star-badge-solid.svg";
 
 const SuitableProgram = ({ onClose, field, eligible }) => {
   console.log(eligible);
@@ -23,7 +23,7 @@ const SuitableProgram = ({ onClose, field, eligible }) => {
         state: { courseName, price },
       });
     } else {
-      navigate("/login&signup");
+      navigate("/login-signup");
     }
   };
 

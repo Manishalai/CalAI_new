@@ -1,42 +1,38 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import Home from "./Screens/Home.jsx";
-import Login from "./Screens/Login/Login.jsx";
-import AID from "./Screens/Know_more/AID.jsx";
-import AIM from "./Screens/Know_more/AIM.jsx";
-import AIL from "./Screens/Know_more/AIL.jsx";
-import PvP from "./Screens/TnC&PvP/PvPo.jsx";
-import TNC from "./Screens/TnC&PvP/TNC.jsx";
-import Blog_AI from "./Screens/Blogs/Blog6_AI.jsx";
-import Blog_ES from "./Screens/Blogs/Blog3_ES.jsx";
-import Blog_MP from "./Screens/Blogs/Blog5_MP.jsx";
-import Blog_UC from "./Screens/Blogs/Blog4_UC.jsx";
-import Blog_PF from "./Screens/Blogs/Blog2_PF.jsx";
-import Blog_ML from "./Screens/Blogs/Blog1_ML.jsx";
-import Checkout from "./Screens/Checkout/Checkout.jsx";
-import Profile from "./Screens/Profile/Profile.jsx";
-import Success from "./Screens/PostCheckout/Success.jsx";
-import Cancel from "./Screens/PostCheckout/Cancel.jsx";
-import { ContactUs } from "./components/contact/Contact.js";
-import StartTest from "./components/calAI_test/StartTest.js";
-import TestPage from "./components/calAI_test/ScholarshipTest.js";
+import React, { useEffect, useState } from "react";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import IntrestForm from "./components/calAI_test/IntrestForm.js";
-import PartnerWithUs from "./Screens/Partner/partner.js";
+import TestPage from "./components/calAI_test/ScholarshipTest.js";
+import StartTest from "./components/calAI_test/StartTest.js";
 import AboutUs from "./Screens/AboutUs/AboutUs.js";
+import Blog_ML from "./Screens/Blogs/Blog1_ML.jsx";
+import Blog_PF from "./Screens/Blogs/Blog2_PF.jsx";
+import Blog_ES from "./Screens/Blogs/Blog3_ES.jsx";
+import Blog_UC from "./Screens/Blogs/Blog4_UC.jsx";
+import Blog_MP from "./Screens/Blogs/Blog5_MP.jsx";
+import Blog_AI from "./Screens/Blogs/Blog6_AI.jsx";
 import CertificationPage from "./Screens/Certifications/Certifications.js";
+import Checkout from "./Screens/Checkout/Checkout.jsx";
 import ExpressCheckout from "./Screens/Checkout/Express_Checkout.jsx";
-import PayPal270 from "./Screens/Checkout/PayPal270.jsx";
 import PayPal400 from "./Screens/Checkout/PayPal400.jsx";
 import PayPal480 from "./Screens/Checkout/PayPal480.jsx";
-import PayPal250 from "./Screens/Checkout/PayPal250.jsx";
 import PayPal880 from "./Screens/Checkout/PayPal880.jsx";
 import Razorpay300 from "./Screens/Checkout/RaorPay300.jsx";
 import Razorpay360 from "./Screens/Checkout/RazorPay360.jsx";
+import Home from "./Screens/Home.jsx";
+import AID from "./Screens/Know_more/AID.jsx";
+import AIL from "./Screens/Know_more/AIL.jsx";
+import AIM from "./Screens/Know_more/AIM.jsx";
+import Login from "./Screens/Login/Login.jsx";
+import NoPage from "./Screens/NoPage.jsx";
+import PartnerWithUs from "./Screens/Partner/partner.js";
+import Cancel from "./Screens/PostCheckout/Cancel.jsx";
+import Success from "./Screens/PostCheckout/Success.jsx";
+import Profile from "./Screens/Profile/Profile.jsx";
 import ProgramIntroVideo from "./Screens/ProgramVideos/ProgramIntroVideo.jsx";
 import ProgramIntroVideoDev from "./Screens/ProgramVideos/ProgramIntroVideoDev.jsx";
-import NoPage from "./Screens/NoPage.jsx";
+import PvP from "./Screens/TnC&PvP/PvPo.jsx";
+import TNC from "./Screens/TnC&PvP/TNC.jsx";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -56,7 +52,7 @@ const App = () => {
         <Route index path="/" element={<Home />} />
         <Route path="/certificate/:id" element={<Home />} />
         <Route path="/index.html" element={<Navigate to="/" replace/>} />
-        <Route path="/login&signup" element={<Login />} />
+        <Route path="/login-signup" element={<Login />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-developer" element={<AID />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-manager" element={<AIM />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-leader" element={<AIL />} />
@@ -65,7 +61,7 @@ const App = () => {
         <Route path="/cancel" element={<Cancel />} />
         <Route path="/user/Profile" element={<Profile />} />
         <Route path="/Privacy_Policy" element={<PvP />} />
-        <Route path="/Terms&Conditions" element={<TNC />} />
+        <Route path="/terms-conditions" element={<TNC />} />
         <Route path="/StartTest" element={<StartTest />} />
         <Route path="/IntrestForm" element={<IntrestForm />} />
         <Route path="/calAIscholarshipTestPage" element={<TestPage />} />

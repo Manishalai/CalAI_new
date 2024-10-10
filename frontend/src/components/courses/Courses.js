@@ -1,9 +1,8 @@
 // src/components/Courses.jsx
-import React from "react";
-import { useState, useEffect } from "react";
-import badge from "../../images/streamline_star-badge-solid.svg";
-import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import badge from "../../images/streamline_star-badge-solid.svg";
 
 const Courses = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -22,7 +21,7 @@ const Courses = () => {
         state: { courseName, price }, // Pass course details
       });
     } else {
-      navigate("/login&signup", {
+      navigate("/login-signup", {
         state: { from: `/checkout`, courseName, price },
       });
     }

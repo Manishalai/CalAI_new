@@ -1,16 +1,15 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Slider from "../slider/Slider";
-import Courses2 from "../courses/Courses2";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { firestore } from "../../firebase/firebase";
-import { collection, addDoc } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Courses2 from "../courses/Courses2";
+import Footer from "../footer/Footer";
+import Header from "../header/Header";
+import Slider from "../slider/Slider";
 
 const StartTest = () => {
   const navigate = useNavigate();
@@ -61,7 +60,7 @@ const StartTest = () => {
           state: { courseName, price: "1000" }, // Pass course details
         });
       } else {
-        navigate("/login&signup", {
+        navigate("/login-signup", {
           state: { from: `/checkout`, courseName, price: "1000" },
         });
       }
@@ -71,7 +70,7 @@ const StartTest = () => {
           state: { courseName, price: "1200" }, // Pass course details
         });
       } else {
-        navigate("/login&signup", {
+        navigate("/login-signup", {
           state: { from: `/checkout`, courseName, price: "1200" },
         });
       }

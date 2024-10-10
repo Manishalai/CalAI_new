@@ -1,9 +1,9 @@
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
 
 const certifications = [
   {
@@ -84,7 +84,7 @@ const CertificationPage = () => {
         state: { courseName, price }, // Pass course details
       });
     } else {
-      navigate("/login&signup", {
+      navigate("/login-signup", {
         state: { from: "/checkout", courseName, price },
       });
     }

@@ -1,18 +1,13 @@
-import React from 'react';
-import brain from '../../images/brain.svg';
-import badge from '../../images/badge.svg';
-import vedios from '../../images/videos.svg';
-import books from '../../images/books.svg';
-import terminal from '../../images/terminal-window-line.svg';
-import star from '../../images/Star 1.png';
-import h_star from '../../images/4.8.png';
-import instructor from '../../images/1679927695375.jpg';
-import LinkedInLogo from '../../images/linkedin-2815969.jpg';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import Speaker from '../speakers/Speaker';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import instructor from '../../images/1679927695375.jpg';
+import badge from '../../images/badge.svg';
+import books from '../../images/books.svg';
+import brain from '../../images/brain.svg';
+import LinkedInLogo from '../../images/linkedin-2815969.jpg';
+import terminal from '../../images/terminal-window-line.svg';
+import vedios from '../../images/videos.svg';
 
 const AIL_content = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -31,7 +26,7 @@ const AIL_content = () => {
         state: { courseName, price }, // Pass course details
       });
     } else {
-      navigate('/login&signup', {
+      navigate('/login-signup', {
         state: { from: `/checkout`, courseName, price },
       });
     }
