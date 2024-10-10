@@ -53,7 +53,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index path="/" element={<Home />} />
         <Route path="/certificate/:id" element={<Home />} />
         <Route path="/index.html" element={<Navigate to="/" replace/>} />
         <Route path="/login&signup" element={<Login />} />
