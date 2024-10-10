@@ -54,6 +54,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/certificate/:id" element={<Home />} />
         <Route path="/index.html" element={<Navigate to="/" replace/>} />
         <Route path="/login&signup" element={<Login />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-developer" element={<AID />} />
@@ -91,7 +92,7 @@ const App = () => {
         <Route path="/cal_AI_pay2.html" element={<Razorpay360 />} />
         <Route path="/program_intro_video" element={<ProgramIntroVideo />} />
         <Route path="/program_intro_video_dev" element={<ProgramIntroVideoDev/>} />
-        {/* <Route path="*" element={<NoPage/>}/> */}
+        <Route path="*" element={<NoPage/>}/>
       </Routes>
     </Router>
   );

@@ -1,3 +1,19 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /index.html
+Disallow: /AILP.html
+Disallow: /AI-Lead.html
+Disallow: /AILeadership.html
+Disallow: /scholarship.html
+Disallow: /AI revolutionizes communication through NLP.html
+Disallow: /Brochure.html
+Disallow: /Home
+Disallow: /AI_Leader
+Disallow: /starttest.html
+Disallow: /schedule.html
+Disallow: /aritficialIntelligenclead.html
+Disallow: /Maximize productivity ChatGPT tools, tips, efficiency.html
+Disallow: /CalAI_ Brochure.pdf
+Disallow: /Blog.html
+Disallow: /Enhancing Software Development with Generative AI.html
+Disallow: /hplogo
