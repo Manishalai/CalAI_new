@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-import Navbar from "../../components/navbar/Navbar";
 import { Link } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import Navbar from "../../components/navbar/Navbar";
 
 const PayPal250 = () => {
   const [sdkLoaded, setSdkLoaded] = useState(false);
@@ -92,7 +92,7 @@ const PayPal250 = () => {
             />
             <label htmlFor="terms-checkbox">
               I agree to the{" "}
-              <Link to="/Terms&Conditions" style={{ color: "blue" }}>
+              <Link to="/terms-conditions" style={{ color: "blue" }}>
                 Terms and Conditions
               </Link>{" "}
               and{" "}

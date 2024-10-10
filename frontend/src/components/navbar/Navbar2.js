@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
 import MenuIcon from "@mui/icons-material/Menu";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar2 = () => {
   const navigate = useNavigate();
@@ -167,7 +167,7 @@ const Navbar2 = () => {
             </button>
           </li>
           <li>
-            <Link to="/Terms&Conditions">
+            <Link to="/terms-conditions">
               <button className="inline-flex m-1 shrink-0 items-center border-transparenttext-[18px] font-medium hover:border-orange-300 hover:text-orange-500">
                 Terms and Conditions
               </button>

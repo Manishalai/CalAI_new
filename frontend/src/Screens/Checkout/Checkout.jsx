@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { firestore } from '../../firebase/firebase';
-import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { toast } from 'react-toastify';
-import Aiyana from '../../images/Rectangle 23.svg';
-import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
 import axios from 'axios';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { collection, doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { MdOutlineFileCopy } from 'react-icons/md';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { RxCross2 } from 'react-icons/rx';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Footer from '../../components/footer/Footer';
+import Header from '../../components/header/Header';
+import { firestore } from '../../firebase/firebase';
+import Aiyana from '../../images/Rectangle 23.svg';
 import successImg from '../../images/successTick.webp';
 import './Checkout.css';
-import { MdOutlineFileCopy } from 'react-icons/md';
 
 const Checkout = () => {
   const location = useLocation();
@@ -590,7 +589,7 @@ const Checkout = () => {
               <label htmlFor="terms">
                 I accept the{' '}
                 <Link
-                  to="/Terms&Conditions"
+                  to="/terms-conditions"
                   className="text-blue-500 hover:underline"
                 >
                   terms and conditions

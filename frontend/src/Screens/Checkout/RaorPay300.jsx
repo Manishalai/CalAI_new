@@ -66,7 +66,7 @@ const Razorpay300 = () => {
             />
             <label htmlFor="terms-checkbox">
               I agree to the{" "}
-              <a href="/Terms&Conditions" className="text-blue-500">
+              <a href="/terms-conditions" className="text-blue-500">
                 Terms and Conditions
               </a>{" "}
               and{" "}

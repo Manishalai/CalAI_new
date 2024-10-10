@@ -3,9 +3,9 @@
     "version": 2,
     "routes": [
       {
-        "src": "/terms&conditions.html",
+        "src": "/terms-conditions.html",
         "status": 301,
-        "headers": { "Location": "https://www.calai.org/Terms&Conditions" }
+        "headers": { "Location": "https://www.calai.org/terms-conditions" }
       },
       {
         "src": "https://calai.org/register_form/register.html",

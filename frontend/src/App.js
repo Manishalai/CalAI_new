@@ -51,7 +51,6 @@ const App = () => {
       <Routes>
         <Route index path="/" element={<Home />} />
         <Route path="/certificate/:id" element={<Home />} />
-        <Route path="/index.html" element={<Navigate to="/" replace/>} />
         <Route path="/login-signup" element={<Login />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-developer" element={<AID />} />
         <Route path="/Artificial-intelligence-certifications/certified-ai-manager" element={<AIM />} />

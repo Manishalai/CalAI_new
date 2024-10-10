@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { toast } from 'react-toastify';
-import Aiyana from '../../images/Rectangle 23.svg';
-import Header from '../../components/header/Header';
+import {
+    collection,
+    doc,
+    getDoc,
+    serverTimestamp,
+    setDoc,
+} from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { MdOutlineFileCopy } from 'react-icons/md';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Header from '../../components/header/Header';
 import { firestore } from '../../firebase/firebase';
-import {
-  collection,
-  doc,
-  setDoc,
-  serverTimestamp,
-  getDoc,
-} from 'firebase/firestore';
-import axios from 'axios';
-import { RxCross2 } from 'react-icons/rx';
+import Aiyana from '../../images/Rectangle 23.svg';
 import successImg from '../../images/successTick.webp';
 import './Checkout.css';
-import { MdOutlineFileCopy } from 'react-icons/md';
 
 const ExpressCheckout = () => {
   const [loading, setLoading] = useState(false);
@@ -660,7 +659,7 @@ const ExpressCheckout = () => {
               <label htmlFor="terms">
                 I accept the{' '}
                 <Link
-                  to="/Terms&Conditions"
+                  to="/terms-conditions"
                   className="text-blue-500 hover:underline"
                 >
                   terms and conditions
